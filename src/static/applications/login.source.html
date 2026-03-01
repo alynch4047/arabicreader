@@ -1,0 +1,79 @@
+<!--login -->
+<div dojoType="dijit.layout.ContentPane" title="Login"  id="navigate_login" >
+
+	<div id="login_page" >
+		<!--  p id="login_title">
+		Welcome to the ArabicReader Web Site and Application.
+		</p-->
+		<form id="login_form" method="post" >
+			<table>
+				<tr>
+					<td>
+						Username (Email Address):
+					</td>
+					<td>
+						<input type="text" dojoType='dijit.form.TextBox'
+						 style="width:30em" id="login_username">
+						</input>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					Password:
+					</td>
+					<td>
+						<input type="password" dojoType='dijit.form.TextBox'
+						 style="width:30em" id="login_password">
+						</input>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					</td>
+					<td>
+						<button dojoType="dijit.form.Button" label="Login To ArabicReader" id="login_submit"
+							onclick="login_.submit_login" >
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					</td>
+					<td>
+						<button dojoType="dijit.form.Button" label="Forgotten Password" id="login_forgotten_password"
+							onclick="login_.forgotten_password" >
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					</td>
+					<td>
+						<p id="login_status">
+						</p>
+					</td>
+				</tr>
+			</table>
+		
+			<div id="login_spacer"></div>
+			
+		</form>
+		<div id="signup_ad">
+				<img src="images/logo.png" id="login_signup_logo"></img>
+				<p>
+				Signing up for Arabic Reader gives you a number of benefits. You can upload
+				your own texts, your vocabulary revision lists will be saved between sessions
+				and you can save your vocabulary lists as pdf files for printing and off-line
+				revision.
+				</p>
+				<button dojoType="dijit.form.Button" label="Sign Up For Arabic Reader"
+				    id="login_signup" onclick="mode.goto_signup">
+					<!--span width="140px"> </span-->
+				</button>
+				<div class="clear_fix">.</div>
+			</div>
+	</div>
+	
+	<#include forgotten_password_dialog.html#>
+	
+</div>

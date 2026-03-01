@@ -1,0 +1,104 @@
+<!-- library-->
+<div id="navigate_read" >
+	 <div class="google_bar">
+	   <nobr>
+			<div class="google_menu_bar" style="float: none;">
+			    <div onclick="library.select_text();" class="google_menu_text" id="menu_read">Select Text To Read</div>
+	    		<div onclick="library.highlight_unknown_words();" class="google_menu_text" id="menu_upload">Highlight Unknown Words</div>
+	    		<div onclick="library.select_preferences();" class="google_menu_text" id="menu_revise">Select Preferences</div>
+	    	</div>
+	   </nobr>
+	 </div>
+
+   <div id="library_preferences_dialog" dojoType="dijit.Dialog" 
+	 execute="library.set_preferences(arguments[0]);"
+		title="Preferences">
+		<div dojotype="dijit.layout.ContentPane">
+			<table>
+				<tr>
+				    <td>
+						<button dojoType="dijit.form.Button"
+					       label="Colour Scheme"  
+					       onclick="dijit.byId('library_color_dialog').show()"
+					       id="library_colour_scheme">
+						</button>
+						<button dojoType="dijit.form.Button"
+					       label="Font"
+					       onclick="dijit.byId('library_font_dialog').show()"
+					       id="library_font">
+						</button>
+					</td>
+				</tr>
+				<tr>
+				<td align="center">
+				<button dojoType=dijit.form.Button onclick="library.preferences_done">OK</button>
+				</td>
+				</tr>
+			</table>
+		</div>
+   </div>
+
+   <div dojoType="dijit.Dialog" id="library_color_dialog"
+	    title="Choose A Colour Scheme"
+	    execute="library.change_colour_scheme();">
+	    <table>
+		    <tr>
+		    	<td>Background Colour:
+		    	</td>
+		    	<td>Font Colour:
+		    	</td>
+		    </tr>
+	        <tr>
+	        	<td>
+	        		<div dojoType="dijit.ColorPalette"
+	        		 onChange="library.set_background_colour(this.value);">
+	        		</div>
+	        	</td>
+	        	<td>
+	        		<div dojoType="dijit.ColorPalette"
+	        		 onChange="library.set_font_colour(this.value);">
+	        		</div>
+	        	</td>
+	        </tr>
+	        <tr>
+	            <td colspan="2" align="center">
+	              <button dojoType="dijit.form.Button" type="submit">OK</button>
+	            </td>
+	        </tr>
+	    </table>
+	 	<div id="library_colour_sample" width="150px" height="50px" align="center">
+	 	</div>
+   </div>
+   
+    <div dojoType="dijit.Dialog" id="library_font_dialog"
+	    title="Choose A Font"
+	    execute="font_manager.change_font();">
+	    <table>
+		    <tr>
+		    	<td>Font Family:
+		    	</td>
+		    	<td>Font Size:
+		    	</td>
+		    </tr>
+	        <tr>
+	        	<td class="speedAidCombo">
+                      <select dojoType='dijit.form.ComboBox' id='central_text_arabic_font_family'
+                      onchange='font_manager.choose_arabic_font_family(this.value)'>
+                      </select>
+                </td>
+                <td class="speedAidCombo">
+                      <select dojoType='dijit.form.ComboBox' id='central_text_arabic_font_size'
+                      onchange='font_manager.choose_arabic_font_size(this.value)'>
+                      </select>
+                </td>
+	        </tr>
+	        <tr>
+	            <td colspan="2" align="center">
+	              <button dojoType="dijit.form.Button" type="submit">OK</button>
+	              <button dojoType=dijit.form.Button onclick="dijit.byId('library_font_dialog').hide();">Cancel</button>
+	            </td>
+	        </tr>
+	    </table>
+   </div>
+  
+</div>

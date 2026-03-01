@@ -1,0 +1,34 @@
+<!-- arabic reader body -->
+<body class='soria'>
+  
+    <#include web_large_floating_panels.html#>
+  
+    <!-- main menu -->
+   <#include main_menu.html#>
+   
+   <#include web_large.html#>
+   
+   <div id="forum_holder_node">
+   	 <div id="forum_placeholder">
+   	 </div>
+   </div>
+   
+	<!-- read main text -->
+	<div dojoType="dijit.layout.BorderContainer" design="headline"
+	       id="text_browser_border_container">
+	       
+	   <!-- root, word meaning and vocab -->
+	   <#include grammar_vocab.html#>
+	   
+	   <!-- main content panel -->
+	   <div dojoType="dijit.layout.ContentPane" region="center"
+	      id='central_text_pane'>
+	      
+	        <!-- main reading area -->
+		    <#include central_text.html#>
+	
+	   </div>
+	   
+	</div>
+
+</body>

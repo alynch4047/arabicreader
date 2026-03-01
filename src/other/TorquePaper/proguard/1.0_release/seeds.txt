@@ -1,0 +1,67 @@
+net.margaritov.preference.colorpicker.ColorPickerPanelView
+net.margaritov.preference.colorpicker.ColorPickerPanelView: ColorPickerPanelView(android.content.Context)
+net.margaritov.preference.colorpicker.ColorPickerPanelView: ColorPickerPanelView(android.content.Context,android.util.AttributeSet)
+net.margaritov.preference.colorpicker.ColorPickerPanelView: ColorPickerPanelView(android.content.Context,android.util.AttributeSet,int)
+net.margaritov.preference.colorpicker.ColorPickerPanelView: void setColor(int)
+net.margaritov.preference.colorpicker.ColorPickerPanelView: int getColor()
+net.margaritov.preference.colorpicker.ColorPickerPanelView: void setBorderColor(int)
+net.margaritov.preference.colorpicker.ColorPickerPanelView: int getBorderColor()
+net.margaritov.preference.colorpicker.ColorPickerPreference
+net.margaritov.preference.colorpicker.ColorPickerPreference: ColorPickerPreference(android.content.Context)
+net.margaritov.preference.colorpicker.ColorPickerPreference: ColorPickerPreference(android.content.Context,android.util.AttributeSet)
+net.margaritov.preference.colorpicker.ColorPickerPreference: ColorPickerPreference(android.content.Context,android.util.AttributeSet,int)
+net.margaritov.preference.colorpicker.ColorPickerPreference$SavedState
+net.margaritov.preference.colorpicker.ColorPickerPreference$SavedState: android.os.Parcelable$Creator CREATOR
+net.margaritov.preference.colorpicker.ColorPickerView
+net.margaritov.preference.colorpicker.ColorPickerView: ColorPickerView(android.content.Context)
+net.margaritov.preference.colorpicker.ColorPickerView: ColorPickerView(android.content.Context,android.util.AttributeSet)
+net.margaritov.preference.colorpicker.ColorPickerView: ColorPickerView(android.content.Context,android.util.AttributeSet,int)
+net.margaritov.preference.colorpicker.ColorPickerView: int getPrefferedWidth()
+net.margaritov.preference.colorpicker.ColorPickerView: int getPrefferedHeight()
+net.margaritov.preference.colorpicker.ColorPickerView: void setOnColorChangedListener(net.margaritov.preference.colorpicker.ColorPickerView$OnColorChangedListener)
+net.margaritov.preference.colorpicker.ColorPickerView: void setBorderColor(int)
+net.margaritov.preference.colorpicker.ColorPickerView: int getBorderColor()
+net.margaritov.preference.colorpicker.ColorPickerView: int getColor()
+net.margaritov.preference.colorpicker.ColorPickerView: void setColor(int)
+net.margaritov.preference.colorpicker.ColorPickerView: float getDrawingOffset()
+net.margaritov.preference.colorpicker.ColorPickerView: void setAlphaSliderVisible(boolean)
+net.margaritov.preference.colorpicker.ColorPickerView: void setSliderTrackerColor(int)
+net.margaritov.preference.colorpicker.ColorPickerView: int getSliderTrackerColor()
+net.margaritov.preference.colorpicker.ColorPickerView: void setAlphaSliderText(int)
+net.margaritov.preference.colorpicker.ColorPickerView: void setAlphaSliderText(java.lang.String)
+net.margaritov.preference.colorpicker.ColorPickerView: java.lang.String getAlphaSliderText()
+uk.co.torquesoftware.preferences.SeekBarPreference
+uk.co.torquesoftware.preferences.SeekBarPreference: SeekBarPreference(android.content.Context,android.util.AttributeSet)
+uk.co.torquesoftware.torquepaper.R$array: int torquepaper_pattern_names
+uk.co.torquesoftware.torquepaper.R$array: int torquepaper_sizes
+uk.co.torquesoftware.torquepaper.R$drawable: int icon
+uk.co.torquesoftware.torquepaper.R$id: int color_picker_view
+uk.co.torquesoftware.torquepaper.R$id: int new_color_panel
+uk.co.torquesoftware.torquepaper.R$id: int old_color_panel
+uk.co.torquesoftware.torquepaper.R$integer: int COLOR_BLUE
+uk.co.torquesoftware.torquepaper.R$integer: int COLOR_BLUE_2
+uk.co.torquesoftware.torquepaper.R$integer: int COLOR_BLUE_3
+uk.co.torquesoftware.torquepaper.R$layout: int dialog_color_picker
+uk.co.torquesoftware.torquepaper.R$string: int app_name
+uk.co.torquesoftware.torquepaper.R$string: int dialog_color_picker
+uk.co.torquesoftware.torquepaper.R$string: int pref_category
+uk.co.torquesoftware.torquepaper.R$string: int press_color_to_apply
+uk.co.torquesoftware.torquepaper.R$string: int primary_colour_summary
+uk.co.torquesoftware.torquepaper.R$string: int primary_colour_title
+uk.co.torquesoftware.torquepaper.R$string: int secondary_colour_summary
+uk.co.torquesoftware.torquepaper.R$string: int secondary_colour_title
+uk.co.torquesoftware.torquepaper.R$string: int tertiary_colour_summary
+uk.co.torquesoftware.torquepaper.R$string: int tertiary_colour_title
+uk.co.torquesoftware.torquepaper.R$string: int torquepaper_rotate_colours
+uk.co.torquesoftware.torquepaper.R$string: int torquepaper_rotatecolours_title
+uk.co.torquesoftware.torquepaper.R$string: int torquepaper_settings
+uk.co.torquesoftware.torquepaper.R$string: int torquepaper_settings_summary
+uk.co.torquesoftware.torquepaper.R$string: int torquepaper_settings_title
+uk.co.torquesoftware.torquepaper.R$string: int torquepaper_size_summary
+uk.co.torquesoftware.torquepaper.R$string: int torquepaper_size_title
+uk.co.torquesoftware.torquepaper.R$xml: int torquepaper
+uk.co.torquesoftware.torquepaper.R$xml: int torquepaper_settings
+uk.co.torquesoftware.torquepaper.TorquePaper
+uk.co.torquesoftware.torquepaper.TorquePaper: TorquePaper()
+uk.co.torquesoftware.torquepaper.TorquePaperSettings
+uk.co.torquesoftware.torquepaper.TorquePaperSettings: TorquePaperSettings()

@@ -1,0 +1,729 @@
+html, body, #main{	
+	width: 100%;	/* make the body expand to fill the visible window */
+	height: 100%;
+	overflow: hidden;	/* erase window level scrollbars */
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	font-family: Myriad,Tahoma,Verdana,sans-serif;
+}
+
+body {
+	background: #E2EBF2;
+}
+
+/*********** Main Sections ***************/
+
+.soria_background {
+background: #E2EBF2;
+}
+
+.soria .dijitSplitContainer-dijitContentPane, .soria .dijitBorderContainer-dijitContentPane {
+padding: 0px;
+}
+
+.soria .dijitSplitContainer-child, .soria .dijitBorderContainer-child {
+border: 0px;
+}
+
+#text_browser_border_container, #new_definition_border_container {
+height: 95%;
+width: 98%;
+border: 10px;
+padding: 10px;
+clear: both;
+}
+
+#main_left_pane {
+width: 250px;
+border: 2px LightGrey solid;
+padding: 3px;
+}
+
+#central_text_pane {
+border: 2px LightGrey solid;
+padding: 3px;
+}
+
+#main_top_pane {
+height: 40px;
+border: 1px LightGrey solid;
+padding: 3px;
+}
+
+/** General ******************************/
+
+.bar_title {
+	background: #cccccc;
+	/*background:#fff url("../dojo/dijit/themes/tundra/images/titleBar.png") repeat-x bottom left;*/
+    background:#fff url("titleBarBlue.png") repeat-x bottom left;
+	border:1px solid #bfbfbf;
+	padding:4px 4px 2px 4px;
+}
+
+h1.bar_title {
+font-size: 15px;
+}
+
+/*** Rounded Rectangle *******************/
+
+.rr_box_blue {
+width: 100%;
+background: no-repeat left bottom;
+background-image: url("images/roundedrect_bottomleft.png");
+}
+
+.rr_box_outer_blue {
+background: no-repeat right bottom;
+background-image: url("images/roundedrect_bottomright.png");
+}
+
+.rr_box_inner_blue {
+background: no-repeat left top;
+background-image: url("images/roundedrect_topleft.png");
+}
+
+.rr_box_header_blue {
+text-align: center;
+background: no-repeat right top;
+background-image: url("images/roundedrect_topright.png");
+}
+
+.rr_box_black {
+width: 100%;
+background: no-repeat left bottom;
+background-image: url("images/roundedrect_bottomleft_black.png");
+}
+
+.rr_box_outer_black {
+background: no-repeat right bottom;
+background-image: url("images/roundedrect_bottomright_black.png");
+}
+
+.rr_box_inner_black {
+background: no-repeat left top;
+background-image: url("images/roundedrect_topleft_black.png");
+}
+
+.rr_box_header_black {
+text-align: center;
+background: no-repeat right top;
+background-image: url("images/roundedrect_topright_black.png");
+}
+
+.rr_box_content {
+width: 100%;
+background: transparent;
+}
+
+/** Search page ******************/
+
+.search_page {
+font-size: 12px;
+text-align: left;
+}
+
+.search_page h3 {
+font-size: 17px;
+}
+
+/** large web ********************/
+
+#floating_full_screen_pane {
+position: absolute;
+top: 140px;
+border: solid black 2px;
+padding: 5px;
+z-index: 999; 
+right: 65px;
+background-color: #FFFF66;
+cursor: pointer;
+}
+
+#large_iframe_holder {
+clear: both;
+width: 100%;
+} 
+
+#floating_word_meaning_pane, #floating_word_root_pane {
+font-size: 12px;
+position: absolute;
+z-index: 100;
+}
+
+/*** Word Meaning Section ****************/
+
+.word_meaning_section {
+margin: 2px;
+padding: 2px;
+}
+
+#word_meaning_pane {
+overflow: visible;
+border: 0px;
+padding: 0px;
+}
+
+.word_meaning_arabic {	
+color: white;
+text-align: center;
+padding-top: 8px;
+font-family:Simplified Arabic,Tahoma;
+}
+
+.word_meaning_english {	
+color: white;
+text-align: center;
+padding-bottom: 8px;
+}
+
+#no_meaning_found_header {
+background-color: #cccccc;
+border:1px solid #bfbfbf;
+padding:4px 4px 2px 4px;
+font-size: 15px;
+text-align: center;
+color: red;
+}
+
+#add_new_word {
+width: 90%;
+margin: 5px;
+border:2px solid #bfbfbf;
+padding:4px 4px 2px 4px;
+text-align: center;
+cursor: pointer;
+}
+
+/********* Status Events *******************/
+
+.status_running {
+background-color: #FFCC33;
+font-size: 12px;
+}
+
+.status_completed {
+background-color: #99CC66;
+font-size: 12px;
+}
+
+.status_failed {
+background-color: red;
+font-size: 12px;
+cursor: pointer;
+}
+
+.status_desc {
+display: inline;
+float:right;	
+}
+
+/*** Central Text Section ******************/
+
+#central_text {	
+background-color: white ;
+color: black;
+font-size: 20px;
+padding:20px;
+text-align:right;
+font-family:Traditional Arabic;
+}
+
+.moused_central_word {
+text-decoration: underline;
+color: blue;
+}
+
+.normal_central_word {
+
+}
+
+#read_pane_toolbar {
+padding: 0px;
+border: 0px;
+background: #E2EBF2;
+}
+
+/**** Navigate Section *************************/
+
+.grey_banner {
+background:#fff url("dojo/dijit/themes/tundra/images/titleBar.png") repeat-x bottom left;
+border:1px solid #bfbfbf;
+padding:4px 4px 2px 4px;
+}
+
+#navigate_current_location {
+
+}
+
+#navigate_available_links {
+
+}
+
+#navigate_title {
+text-align: center;
+}
+
+#navigate_pane {
+background: #E2EBF2;
+}
+
+
+/**** Revise section **************************/
+
+.organise_vocab_cell {
+width: 220px;
+vertical-align: top;
+}
+
+#navigate_revise {
+overflow: visible;
+}
+
+#revise_organise {
+background-color: #FFFFE0;
+overflow: auto;
+}
+
+#revise_download {
+background-color: #FFFFE0;
+overflow: auto;
+}
+
+#revise_download_info {
+padding: 10px;
+margin-left: 10%;
+margin-right: 10%;
+}
+
+#revise_download_info_text {
+font-family:Times,serif;
+margin-left: 14%;
+margin-right: 14%;
+}
+
+#revise_test {
+background-color: #FFFFE0;
+overflow: auto;
+}
+
+/****** Main Menu Section **********************/
+
+.google_bar {
+display: block;
+background: #E2EBF2;
+}
+
+.google_menu_bar {
+font-family: arial, sans-serif;
+font-size: 13px;
+margin-right: 0.8em;
+color: blue;
+height: 22px;
+float: left;
+padding-left: 10px;
+padding-top: 5px;
+padding-bottom: 4px;
+background: #E2EBF2;
+}
+
+.google_user {
+font-family: arial, sans-serif;
+font-size: 13px;
+margin-right: 0.8em;
+color: blue;
+height: 22px;
+float: right;
+padding-top: 5px;
+padding-bottom: 4px;
+}
+
+.google_menu_chosen {
+color: black;
+text-decoration: none !important;
+font-weight: bold;
+} 
+
+.google_menu_text {
+text-decoration: underline;
+border-left: 80px;
+border-right: 80px;
+padding-right:20px;
+cursor: pointer;
+display: inline;
+}
+
+.main_menu_button {
+cursor: pointer;
+margin: 1px;
+}
+
+#menu_revise_vocabulary {
+width: 23%;
+float: left;
+}
+
+#main_menu_columns_2_and_3 {
+width: 75%;
+float: right;
+}
+
+#menu_read_main_text {
+width: 72%;
+float: left;
+}
+
+#menu_maintain_database {
+width: 23%;
+float: right;
+}
+
+#menu_status {
+font-weight: bold;
+color: black;
+background-color: #FFCC33;
+float: left;
+border-left: 80px;
+border-right: 80px;
+padding-right:80px;
+display: inline;
+}
+
+/**** Root Section ******************************/
+
+.sarf_icon {
+width: 24px;
+height: 24px;
+margin-left: 4px;
+margin-right: 4px;
+}
+
+.clear_fix:after {
+content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;
+}
+
+.root_section {
+/*margin: 15px;*/
+}
+
+.variation_texts {
+float: right;
+margin-bottom: 8px;
+}
+
+.root_word {	
+color: white;
+text-align: right;
+margin: 0 8px;
+font-family:Simplified Arabic,Tahoma;
+}
+
+.root_meaning {	
+color: white;
+text-align: right; 
+float: left;
+margin: 0 8px;
+}
+
+.toolbar_button {
+cursor: pointer;
+float: left;
+margin-top: 4px;
+margin-bottom: 6px;
+border-color: gray;
+border-width: 1px;
+border-style: solid;
+}
+
+/**** Maintain Database Section ********************/
+
+legend {
+  padding: 0.2em 0.5em;
+  border:1px solid blue;
+  color:blue;
+  font-size:90%;
+  text-align:right;
+}
+
+fieldset { 
+border:1px solid blue;
+margin: 5px;
+ }
+
+.wideCrudButton .dijitButtonNode {
+	width: 200px !important;
+}
+
+.crudButton .dijitButtonNode {
+	width: 100px !important;
+}
+.crudButtonHover .dijitButtonNode {
+	
+}
+.crudButtonFocused .dijitButtonNode {
+	
+}
+.crudButtonActive .dijitButtonNode {
+	
+}
+.speedAidCombo .dijitComboBox  {
+width: 200px !important;
+font-size: 18px;
+}
+
+#maintain_database_panel {
+width: 700px;
+margin: 0 auto;
+}
+
+#new_definition_header {
+background:#fff url("dojo/dijit/themes/tundra/images/titleBar.png") repeat-x bottom left;
+}
+
+#new_definition_form {
+background-color:#FFFFCC;
+border:1px solid blue;
+margin: 5px;
+}
+
+.save_icon, .back_icon, .forward_icon, .delete_icon, .new_icon,
+ .find_icon, .last_icon, .correct_icon, .wrong_icon {
+background-repeat: no-repeat;
+width: 22px;
+height: 22px;
+text-align: center;
+}
+
+.save_icon {
+background-image: url("images/document-save.png");
+}
+
+.find_icon {
+background-image: url("images/mail-find.png");
+}
+
+.back_icon {
+background-image: url("images/go-previous.png");
+}
+
+.forward_icon {
+background-image: url("images/go-next.png");
+}
+
+.last_icon {
+background-image: url("images/go-last.png");
+}
+
+.delete_icon {
+background-image: url("images/edit-delete.png");
+}
+
+.new_icon {
+background-image: url("images/document-new.png");
+}
+
+.correct_icon {
+background-image: url("images/crystal_clear_action_apply.png");
+}
+
+.wrong_icon {
+background-image: url("images/crystal_clear_action_button_cancel.png");
+}
+
+.new_word_right {
+font-size: 18px;
+}
+
+.new_word_root {
+width: 50px;
+}
+
+.large_font {
+font-size: 25px !important;
+}
+
+#new_word_text {
+background-color: #326033;
+}
+
+#new_word_creator_nickname {
+font-weight: bold;
+}
+
+#virtual_keyboard {
+/*width: 550px;*/
+}
+
+#keyboard_button {
+font-size: 18px;
+}
+
+.db_status {
+color: red;
+}
+
+#add_word_to_db {
+padding-left: 260px;
+}
+
+/******** login page ************************/
+
+#login_title, #signup_title {
+background:#fff url("dojo/dijit/themes/tundra/images/titleBar.png") repeat-x bottom left;
+font-size: 20px;
+text-align: center;
+}
+
+#login_password {
+
+}
+
+#login_page, #signup_page {
+text-align: left;
+background-color:#CCCCFF;
+padding: 10px;
+}
+
+#login_signup_logo {
+width: 300px;
+float: left;
+height: 200px;
+padding-right: 10px;
+}
+
+#login_signup {
+display: block;
+}
+
+#login_status, #signup_status, #my_reader_status {
+color: red;
+}
+
+#login_spacer {
+height: 100px;
+}
+
+/******** about page ************************/
+
+#qisas {
+font-size: 20px;
+color: red;
+}
+
+#under_development {
+font-size: 16px;
+color: green;
+}
+
+#about_banner, #login_banner, #signup_banner  {
+text-align: center;
+font-size: 15px;
+padding: 4px;
+margin: 0px;
+}
+
+.about_link, .share_link, .delete_link {
+text-decoration: underline;
+color: blue;
+cursor: pointer;
+}
+
+.delete_link, .share_link {
+font-size: 10px;
+}
+
+.delete_link {
+color: red;
+}
+
+.user_instruction {
+color: red;
+}
+
+.upload_instructions {
+text-align: left;
+font-size: 12px;
+}
+
+#about_title {
+background:#fff url("dojo/dijit/themes/tundra/images/titleBar.png") repeat-x bottom left;
+font-size: 20px;
+text-align: center;
+}
+
+#about_page {
+text-align: left;
+background-color:#CCCCFF;
+padding: 10px;
+}
+
+/********** Library ******************/
+#library_private_fieldset, #library_public_fieldset {
+display: inline;
+}
+
+#navigate_library {
+font-size: 12px;
+}
+
+#navigate_page_panel {
+font-size: 12px;
+font-family: Myriad,Tahoma,Verdana,sans-serif;
+}
+
+/********** Custom Widgets ******************/
+
+.arwTooltip {
+font-size: 30px;
+}
+
+/***** SPIFFY CORNERS ******************/
+#revise_menu{
+	display:inline;
+}
+.spiffy_menu{
+display:inline;
+color: white;
+padding: 10px;
+cursor: pointer;
+width: 200px;
+}
+.spiffy{display:block}
+.spiffy *{
+  display:block;
+  height:1px;
+  overflow:hidden;
+  font-size:.01em;
+  background:#0056B3}
+.spiffy1{
+  margin-left:3px;
+  margin-right:3px;
+  padding-left:1px;
+  padding-right:1px;
+  border-left:1px solid #58886d;
+  border-right:1px solid #58886d;
+  background:#266c94}
+.spiffy2{
+  margin-left:1px;
+  margin-right:1px;
+  padding-right:1px;
+  padding-left:1px;
+  border-left:1px solid #8ba645;
+  border-right:1px solid #8ba645;
+  background:#1d669b}
+.spiffy3{
+  margin-left:1px;
+  margin-right:1px;
+  border-left:1px solid #1d669b;
+  border-right:1px solid #1d669b;}
+.spiffy4{
+  border-left:1px solid #58886d;
+  border-right:1px solid #58886d}
+.spiffy5{
+  border-left:1px solid #266c94;
+  border-right:1px solid #266c94}
+.spiffyfg{
+  background:#0056B3}

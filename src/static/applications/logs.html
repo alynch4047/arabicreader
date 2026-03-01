@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+  	<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+  	
+    <title>Arabic Reader Logs</title>
+    
+    <link rel="shortcut icon" href="images/favicon.png"
+        type="image/png" />
+
+    <script type="text/javascript"
+            src="dojo/dojo/dojo.js"
+	        djConfig="isDebug: true, parseOnLoad: true, usePlainJson: true, preventBackButtonFix: false">
+    </script>
+    
+    <script type="text/javascript" src="cookies.js"></script>
+    <script type="text/javascript" src="network.js"></script>
+    <script type="text/javascript" src="logs.js"></script>
+
+    <script type="text/javascript">
+    	dojo.require("dojo.cookie");
+  		dojo.addOnLoad(init_logs);
+    </script>
+    
+    <style type="text/css">
+    	@import "dojo/dijit/themes/tundra/tundra.css";
+        @import "logs.css";
+    </style>
+  </head>
+
+  <body class='tundra'>
+  
+ 		<div id="logs_main">
+ 		</div>
+
+  </body>
+</html> 

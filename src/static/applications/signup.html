@@ -1,0 +1,54 @@
+<!--signup -->
+<div dojoType="dijit.layout.ContentPane" title="Signup"  id="navigate_signup" >
+
+	<div id="signup_page" >
+		<!-- p id="signup_title">
+		Welcome to the ArabicReader Web Site and Application.
+		</p-->
+		<table>
+			<tr>
+				<td width="90px">
+					Email Address:
+				</td>
+				<td width="150px">
+					<input type="text" dojoType='dijit.form.TextBox' style="width:20em"
+							 id="signup_emailaddress">
+					</input>
+				</td>
+				<td>
+					<p> Your email address will be used as your user name and will
+					not be shared with or visible to any other party. Please see
+					our privacy policy.
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				Nickname:
+				</td>
+				<td width="150px">
+					<input type="text" dojoType='dijit.form.TextBox' style="width:20em"
+							id="signup_nickname">
+					</input>
+				</td>
+				<td>
+					<p>
+					Your nickname is used when referring to you on the site. For instance,
+					if you add a new word to the database then the creation of that entry
+					will be marked with your nickname. This ensures that your email
+					address remains private.
+					</p>
+				</td>
+			</tr>
+		</table>
+		<p>
+		After signing up, your password will be emailed to you at the address you entered.
+		</p>
+		<button dojoType="dijit.form.Button" label="Create my account." id="signup_submit"
+			onclick="login_.submit_signup">
+			<span width="200px"> </span>
+		</button>
+		<p id="signup_status">
+		</p>
+	</div>
+</div>

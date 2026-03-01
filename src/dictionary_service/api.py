@@ -1,0 +1,7 @@
+from dictionary_service.i_dictionary import IDictionary
+from dictionary_service.dictionary import Dictionary
+from dictionary_service.dictionary_handler import DictionaryHandler
+from dictionary_service.word_database import WordDatabase
+from dictionary_service.i_word_database import IWordDatabase
+from dictionary_service.sql_database.sql_database import SQLDatabase, disconnect
+from dictionary_service.test.test_word_database import create_test_word_database

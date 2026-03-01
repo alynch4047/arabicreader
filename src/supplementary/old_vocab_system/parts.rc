@@ -1,0 +1,18 @@
+<!DOCTYPE kpartgui ><kpartgui version="1" name="pyParts" >
+ <MenuBar>
+  <Menu name="File" >
+   <text>&amp;File</text>
+   <ActionList name="recent" />
+   <Action name="quitAction" />
+  </Menu>
+  <Merge/>
+ </MenuBar>
+ <ToolBar noMerge="1" name="mainToolBar" >
+  <text>Main Toolbar</text>
+  <Separator weakSeparator="1" name="separator_0" />
+  <Text>Main</Text>
+  <Merge/>
+  <Action name="quitAction" />
+ </ToolBar>
+ <ActionProperties/>
+</kpartgui>

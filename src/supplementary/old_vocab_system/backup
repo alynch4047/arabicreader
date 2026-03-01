@@ -1,0 +1,10 @@
+rm -rf *pyc
+rm -rd *~
+rm -rf psout*
+rm -rf *pdf
+rm -rf out
+rm -rf debugout
+cd ..
+tar -cf vocab.tar sqlite
+bzip2 -f vocab.tar
+

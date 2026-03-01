@@ -1,0 +1,31 @@
+
+/Baghdad findfont
+dup length dict begin
+{ 1 index /FID ne
+    {def} 
+    {pop pop}
+    ifelse
+} forall
+/Encoding haqqenc def
+currentdict
+end
+/Baghdad2 exch definefont pop
+
+/FT {
+/Times-Roman findfont
+exch scalefont
+setfont
+} def
+
+/FTB {
+/Times-Bold findfont
+exch scalefont
+setfont
+} def
+
+/FB {
+/Baghdad2 findfont
+exch scalefont
+setfont
+} def
+

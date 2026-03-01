@@ -1,0 +1,3 @@
+
+from quran_service.quran_xml_reader import QuranXMLReader
+from quran_service.quran_url import QuranURL

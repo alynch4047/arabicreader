@@ -1,0 +1,8 @@
+content     arext    chrome/content/
+content     arext    chrome/content/ contentaccessible=yes
+overlay chrome://browser/content/browser.xul chrome://arext/content/browser.xul
+
+locale	arext	en-US	locale/en-US/
+
+skin	arext	classic/1.0	skin/
+style	chrome://global/content/customizeToolbar.xul	chrome://arext/skin/skin.css

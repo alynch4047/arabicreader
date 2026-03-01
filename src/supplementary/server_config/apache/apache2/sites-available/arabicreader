@@ -1,0 +1,99 @@
+<VirtualHost *>
+	ServerName arabicreader.net
+	Redirect permanent / http://www.arabicreader.net/
+</VirtualHost>
+
+<VirtualHost *>
+
+	ServerName www.arabicreader.net
+ 
+	ServerAdmin webmaster@arabicreader.net
+	
+	DocumentRoot /home/ar/arabicreader/static/applications
+
+	RewriteEngine on
+
+	RewriteRule ^/$ /arabic_reader.html [R]
+
+
+	ProxyPreserveHost On
+
+
+	<Directory />
+		Options FollowSymLinks
+		AllowOverride None
+	</Directory>
+	<Directory /home/ar/arabicreader/static/applications>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order allow,deny
+		allow from all
+	</Directory>
+
+	<Location /services>
+		  Order allow,deny
+		  allow from all
+		  # cherrypy 408 errors as per http://cherrypy.org/ticket/853
+		  SetEnv proxy-nokeepalive 1 
+		  ProxyPass http://localhost:8080/services
+		  ProxyPassReverse  http://localhost:8080/services
+	</Location>
+
+	ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+	<Directory "/usr/lib/cgi-bin">
+		AllowOverride None
+		Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+		Order allow,deny
+		Allow from all
+	</Directory>
+
+	ErrorLog /var/log/apache2/error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel info
+
+	CustomLog /var/log/apache2/access.log combined
+	ServerSignature On
+
+    Alias /doc/ "/usr/share/doc/"
+    <Directory "/usr/share/doc/">
+        Options Indexes MultiViews FollowSymLinks
+        AllowOverride None
+        Order deny,allow
+        Deny from all
+        Allow from 127.0.0.0/255.0.0.0 ::1/128
+    </Directory>
+
+    AddType text/javascript .js
+    AddType text/css .css
+
+    # dont compress if .js.gz is found
+    <FilesMatch .*\.js$>
+    		RewriteEngine On
+
+		# gzipped
+		RewriteCond %{HTTP_USER_AGENT} !.*Safari.*
+		RewriteCond %{HTTP:Accept-Encoding} gzip
+		RewriteCond %{REQUEST_FILENAME}.gz -f
+		RewriteRule (.*)\.js$ $1\.js.gz [L]
+
+	        # on-fly gzip
+		ForceType text/javascript
+		AddOutputFilterByType DEFLATE text/javascript
+    </FilesMatch>
+
+    # Every CSS file we pass throughout "mod_deflate"
+    AddOutputFilterByType DEFLATE text/css
+
+    # and rest of content that is HTML or XML data - we also compress
+    AddOutputFilterByType DEFLATE text/plain text/html text/xml
+
+    # log deflate records to ../deflate_log
+    #DeflateFilterNote Input input_info    
+    #DeflateFilterNote Output output_info
+    #DeflateFilterNote Ratio ratio_info
+    #LogFormat '"%r" %{output_info}n/%{input_info}n (%{ratio_info}n%%)' deflate
+    #CustomLog /var/log/apache2/deflate_log deflate
+
+</VirtualHost>

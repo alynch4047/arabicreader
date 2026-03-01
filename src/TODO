@@ -1,0 +1,16 @@
+
+TODO:
+=====
+
+
+1. Provide visual status (for IE etc) of what is being requested and progress/failure (DONE)
+
+1a. Show latest status in menu bar centre (DONE)
+
+2. Map arabicreader.net to www.arabicreader.net
+
+3. Think about bookmarks and not using href hashes
+
+4. Add auto-retry for 408 errors (FIXED IN APACHE)
+
+5. After upload/logon refresh search page 

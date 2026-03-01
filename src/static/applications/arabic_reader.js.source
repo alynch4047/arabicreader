@@ -1,0 +1,74 @@
+
+<#include init_ar.js#>
+
+<#include preferences_manager.js#>
+
+<#include font_manager.js#>
+
+<#include lookups.js#>
+
+<#include arabic.js#>
+
+<#include central_text.js#>
+
+<#include data.js#>
+
+<#include html_maker.js#>
+
+<#include mode.js#>
+
+<#include navigate.js#>
+
+<#include network.js#>
+
+<#include new_definition.js#>
+
+<#include root.js#>
+
+<#include rounded.js#>
+
+<#include virtual_keyboard.js#>
+
+<#include vocab.js#>
+
+<#include word_meaning.js#>
+
+<#include about.js#>
+
+<#include login.js#>
+
+<#include cookies.js#>
+
+<#include main_menu.js#>
+
+<#include upload.js#>
+
+<#include library.js#>
+
+<#include dynamic_css.js#>
+
+<#include db_navigate.js#>
+
+<#include db_data_form_row.js#>
+
+<#include db_data_form.js#>
+
+<#include my_reader.js#>
+
+<#include word_set.js#>
+
+<#include caret.js#>
+
+<#include md5.js#>
+
+<#include webtoolkit.aim.js#>
+
+<#include translator.js#>
+
+<#include utils.js#>
+
+<#include status.js#>
+
+<#include revise.js#>
+
+<#include organise_vocab.js#>

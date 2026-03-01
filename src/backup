@@ -1,0 +1,8 @@
+cd ..
+rm -rf arabicreader_backup
+cd arabicreader
+svn export . ../arabicreader_backup
+cd ..
+mv arabicreader.tar.gz arabicreader-previous.tar.gz
+rm -rf arabicreader_backup/third_party
+tar -zcf arabicreader.tar.gz arabicreader_backup

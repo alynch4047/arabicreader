@@ -1,0 +1,1 @@
+./run_ar_server -c /home/abdulhaq/PycharmProjects/arabicreader/local.config $*

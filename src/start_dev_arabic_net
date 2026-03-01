@@ -1,0 +1,1 @@
+./run_ar_server -c /home/ar/dev_arabicreader/arabic.net.dev.config $*

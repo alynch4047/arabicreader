@@ -1,0 +1,2 @@
+ps ax | grep "python run_server.py" | awk '{print $1}' | xargs -I xx kill xx   
+

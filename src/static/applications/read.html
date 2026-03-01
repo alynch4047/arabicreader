@@ -1,0 +1,29 @@
+<!-- Read-->
+<div id="navigate_read_text_area">
+	<div id='central_text'>
+		<div id='central_text_content'>
+		</div>
+		<div id="navigate_page_panel">
+			<button dojoType="dijit.form.Button" label="Previous Page"
+				 id="navigate_previous_page"
+				 onClick="central_text.goto_previous_page();">
+			</button>
+			<button dojoType="dijit.form.Button" label="Next Page"
+				 id="navigate_next_page" 
+				 onClick="central_text.goto_next_page();">
+			</button>
+		</div>
+	</div>
+	
+
+	
+	<!--frameborder=0 border=0  to stop scroll bar in IE see
+	   				 http://www.mattcutts.com/blog/iframe-height-scrollbar-example/-->
+	   				 
+	<div id="embedded_iframe_holder">	
+	   <iframe id='central_text_iframe'  
+	  		 frameborder=0 border=0 scrolling="auto"
+	   	     width="100%" >
+	   </iframe>
+	</div>
+</div>

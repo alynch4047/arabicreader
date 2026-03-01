@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css" ?>
+<?xml-stylesheet href="chrome://browser/skin/browser.css" type="text/css" ?>
+
+<!DOCTYPE page SYSTEM "chrome://arext/locale/translations.dtd">
+
+
+<page id="sbEmptySidebar" title="&arsidebar.title;"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
+  <script src="ar_sidebar.js" />         
+  <vbox flex="1">
+    <label id="atest" value="&arsidebar.title;" />
+    <iframe id="ar_browser" type="content-targetable" flex="1"></iframe>
+  </vbox>
+</page>

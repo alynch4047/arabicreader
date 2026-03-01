@@ -1,0 +1,64 @@
+<!--  Upload -->
+ <div dojoType="dijit.layout.ContentPane" title="Upload" id="navigate_upload"  >
+
+	 <form action="/services/library/upload" method="post" enctype="multipart/form-data"
+	  onsubmit="return AIM.submit(this, {'onStart' : upload_.start, 'onComplete' : upload_.finish})">
+     	<div  dir="ltr" align="left">
+     	<p>
+     	Upload your personal documents to ArabicReader and read them online. For instance,
+     	students can upload their coursework and help each other by adding to the database
+     	any words that are unknown to the system. Your fellow students can then upload and 
+     	read the same text and will not need to spend time looking up words in the dictionary,
+     	and can instead focus on memorising the vocabulary and studying the grammar.
+     	</p>
+     	<p>
+     	Also, you can upload essays and books (subject to copyright of course) and
+     	read them online with the full facilities of the one-click online
+     	dictionary functionality.
+     	</p>
+     	</div>
+     	<table>
+     	<tr>
+	        <td>
+	        	<label>Title:</label>
+	        </td> 
+	        <td>
+	        	<input type="text" dojoType='dijit.form.TextBox' name="upload_title"></input>
+	        </td>
+	        
+	    </tr>
+	    	<td colspan="2" class="upload_instructions">
+	        Please enter the title of this document. You will be able to choose this document
+	        by name in the Read section of the site, in the My Library area.
+	        </td>
+	    <tr>
+	    </tr>
+    	<tr> 
+	        <td>
+	        	<label>File:</label> 
+	        </td>
+	        <td>
+	        	<input type="file" dojoType='dijit.form.TextBox' name="upload_file"></input>
+	        </td>
+     	</tr>
+     	<tr>
+     	<td colspan="2" class="upload_instructions">
+	        N.B. The file must be a text file in utf-8 encoding. Microsoft Word documents
+	        can be converted to this format by going <span class='user_instruction'>File/Save As...</span>,
+	         choosing <span class='user_instruction'>'Plain Text (*.txt)'</span>,
+	        and then select <span class='user_instruction'>Unicode (UTF-8)</span>
+	         from the <span class='user_instruction'>Other encoding</span> radio button. 
+	        </td>
+     	<tr>
+     	</tr>
+        <tr>
+	        <td>
+		        <button type="submit" value="SUBMIT" label="Upload"
+		         dojoType="dijit.form.Button" id="upload_submit">
+		        </button>
+	    	</td>
+    	</tr>
+    	</table>
+    </form>
+	
+ </div> 			

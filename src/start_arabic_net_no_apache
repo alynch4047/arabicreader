@@ -1,0 +1,1 @@
+./run_ar_server -c /home/ar/arabicreader/arabic.net.noapache.config $*

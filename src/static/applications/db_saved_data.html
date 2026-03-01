@@ -1,0 +1,89 @@
+
+		
+<fieldset id='saved_data_fieldset'>
+<legend>Stored Data</legend>
+<table>
+<tr>
+	<td>
+	<label class='new_word_left'>Noun/Verb:</label>
+	</td>
+	<td>
+	  <div class='new_word_right'>
+		<select value='Noun' onChange='db_data_form.noun_verb_changed'
+			 dojoType='dijit.form.ComboBox' id='word_type'>
+   					<option selected value='N' >Noun</option>
+   					<option value='V'>Verb</option>
+   					<option value='H'>Preposition</option>
+   					<option value='NA'>Name</option>
+   		</select>
+   	  </div>
+   	</td>
+</tr>
+<tr>
+	<td>
+    <label class='new_word_left_root' id="root_l_label">Root:</label>
+    </td>
+    <td>
+    <table>
+	    <tr>
+	    	<td>
+	    	<label>L:</label>
+	    	</td>
+		    <td>
+			<input class='new_word_root large_font' type="text" maxLength="1"
+				 dojoType='dijit.form.TextBox' id='root_l' >
+			</input>
+			</td>
+			<td>
+		    <label>C:</label>
+		    </td>
+		    <td>
+			<input class='new_word_root large_font' type="text" maxLength="1"
+				 dojoType='dijit.form.TextBox' id='root_c' >
+			</input>
+			</td>
+			<td>
+			<label>F:</label>
+			</td>
+			<td>
+			<input class='new_word_root large_font' type="text" maxLength="1"
+				dojoType='dijit.form.TextBox' id='root_f' >
+			</input>
+			</td>
+		</tr>
+	</table>
+	</td>
+</tr>
+<tr>
+	<td>
+	<label class='new_word_left'>Meaning:</label>
+	</td>
+	<td>
+	<input class='new_word_right' type="text"
+		 dojoType='dijit.form.TextBox' id='new_word_text_meaning' >
+	</input>
+	</td>
+</tr>
+<tr>
+	<td>
+	<label class='new_word_left'>Entered By:</label>
+	</td>
+	<td>
+	<p id='new_word_creator_nickname'>
+	</p>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">
+		<div id="vocab_db_words_table"> 
+		</div>
+		
+	</td>
+</tr>
+</table>
+<button dojoType="dijit.form.Button" baseClass="wideCrudButton"
+  	        label="Add New Variation" id="db_add_new_variation"  iconClass="new_icon"
+			onclick="db_data_form.add_new_variation">
+</button>
+</fieldset>
+			

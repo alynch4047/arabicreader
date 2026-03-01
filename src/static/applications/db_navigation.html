@@ -1,0 +1,75 @@
+<fieldset id='db_navigation_fieldset'>
+	<legend>Navigation</legend>
+	<table>
+	<tr>
+		<td>
+		<table>
+		<tr>
+			<td>
+			<button dojoType="dijit.form.Button" baseClass="crudButton"
+	  	        label="Previous" id="db_previous_word" iconClass="back_icon"
+				onclick="db_navigate.previous_word">
+				<span width="140px"> </span>
+			</button>
+			</td>
+			<td>
+			<button dojoType="dijit.form.Button"  baseClass="crudButton"
+	  	        label="Next" id="db_next_word"  iconClass="forward_icon"
+				onclick="db_navigate.next_word">
+				<span width="140px"> </span>
+			</button>
+			</td>
+			<td>
+			<button dojoType="dijit.form.Button"  baseClass="crudButton"
+	  	        label="Last" id="db_last_word"  iconClass="last_icon"
+				onclick="db_navigate.last_word">
+				<span width="140px"> </span>
+			</button>
+			</td>
+			<td width="40px">
+			</td>
+			<td colSpan="2">
+			   <input id="db_my_words_only_cb" dojotype="dijit.form.CheckBox"
+	              name="developer" checked="checked" value="off" type="checkbox">
+	           </input>
+	    	   <label for="db_my_words_only_cb">My Words Only
+	    	   </label> 
+			</td>
+		</tr>
+		<tr>	
+			<td>
+			<button dojoType="dijit.form.Button" baseClass="crudButton"
+	  	         label="New" id="db_new_word"  iconClass="new_icon"
+				onclick="db_navigate.new_word">
+			</button>
+			</td>
+			<td>
+			<button dojoType="dijit.form.Button" baseClass="crudButton"
+	  	        label="Save" id="db_save_word"  iconClass="save_icon"
+				onclick="db_navigate.save_word">
+				<span width="140px"> </span>
+			</button>
+			</td>
+			<td>
+			<button dojoType="dijit.form.Button" baseClass="crudButton"
+	  	        label="Delete" id="db_delete_word"  iconClass="delete_icon"
+				onclick="db_navigate.delete_word">
+			</button>
+			</td>
+			<td width="40px">
+			</td>
+			<td>
+			  <p>Filter:
+			  </p>
+			</td>
+			<td>
+			  <input type="text" dojoType='dijit.form.TextBox' style="width:6em"
+						 id='db_navigate_filter'>
+			  </input>
+			</td>
+		</tr>
+		</table>
+		</td>
+	</tr>
+	</table>
+</fieldset>

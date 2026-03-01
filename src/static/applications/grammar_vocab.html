@@ -1,0 +1,70 @@
+<div dojoType="dijit.layout.ContentPane" region="left" splitter="true" id="main_left_pane">
+   <!-- word meaning panel -->
+   <div dojoType="dijit.TitlePane"  id='word_meaning_pane' title="Possible Word Meanings">
+      
+		<div class='word_meaning_section' id='word_meaning'>
+		</div>	
+		
+		<div id='no_meaning_found_header'>
+		  <div id='no_meaning_found_message'>
+		  </div>
+		  <div id='add_new_word'>Add Definition
+		  </div>
+		</div>	    
+		      
+   </div>
+   <!-- root panel -->
+   <div dojoType="dijit.layout.ContentPane" id='root_words_pane' >
+     
+		<div id="root_banner" >
+			<div id='root_text' dojoType="dijit.TitlePane" title="Word Root">
+			</div>	
+		</div>	         
+     
+   </div>
+   <!-- vocab summary panel -->
+   <div dojoType="dijit.layout.ContentPane" id='vocab_pane' >
+      
+		<div id='vocabulary_title_wrapper'>
+			<div dojoType='dijit.TitlePane' id="vocabulary_text" title="Recent Vocabulary">
+			</div>
+		</div>              
+   </div>
+   <!-- status panel -->
+   <div dojoType="dijit.layout.ContentPane" id='status_pane' >
+      
+		<div id='status_title_wrapper'>
+			<div dojoType='dijit.TitlePane'  title="Status">
+				<div id="status_events"></div>
+			</div>
+		</div>              
+   </div>
+   	<!--status - error report -->
+	<div id="status_error_pane" dojoType="dijit.Dialog" 
+	    execute="status_.error_pane_closed();"
+		title="View Error Details">
+		<div dojotype="dijit.layout.ContentPane">
+			<div id="status_error_pane_content">
+				<table>
+			        <tr  colspan="2">
+		                <td>
+		                  <p id='status_error_name'>
+				          </p>
+		                </td>
+			        </tr>
+			  		<tr>
+				        <td colspan="2">
+				          <p id='status_error_message'>
+				          </p>
+				        </td>
+			        </tr>
+			        <tr>
+		                <td colspan="2" align="center">
+		                     <button dojoType=dijit.form.Button type="submit">OK</button>
+		                </td>
+			        </tr>
+			    </table>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,68 @@
+ 
+ <!-- Revise -->
+ 
+ 
+ <div id="navigate_revise">
+	 <div>
+		 <div class="google_bar">
+		   <nobr>
+				<div class="google_menu_bar" style="float: none;">
+				    <div onclick="mode.goto_test_vocab(true)" class="google_menu_text" id="menu_read">Revise Vocabulary</div>
+		    		<div onclick="mode.goto_download_vocab(true)" class="google_menu_text" id="menu_upload">Download Vocabulary</div>
+		    		<div onclick="mode.goto_organise_vocab(true)" class="google_menu_text" id="menu_revise">Organise Vocabulary</div>
+		    	</div>
+		   </nobr>
+		</div>
+	</div>
+	<div>
+		        <!-- revise test -->
+        <div id="revise_test">
+            
+            <p>
+                The revision is conducted in 3 steps:
+                <ol>
+                    <li>Click the 'Revise' button</li>
+                    <li>Memorise the meanings of the words in the list</li>
+                    <li>Click the 'Begin Test' button</li>
+                    <li>Starting from the top, try to remember the meaning of the word. Click 'Show Answer'
+                     to see if you got the answer right. If so, click the green tick. If not, click
+                     the red cross.</li>
+                     <li>When you have completed all the words a score will be given. More importantly,
+                     the system remembers which words you got wrong. These will be given priority
+                     on the next test, so that words which you often get wrong will be presented
+                     in the tests more frequently.</li>
+                </ol>
+            </p>
+            
+            <button dojoType="dijit.form.Button" 
+                            onclick="revise.start_revise" label="Revise">
+            </button>
+            <button dojoType="dijit.form.Button" 
+                            onclick="revise.begin_test" label="Begin Test">
+            </button>
+            <div id="revision_word_list">
+            </div>
+        </div>
+
+		        <!-- revise download -->
+        <div id="revise_download">
+            <div id="revise_download_info">
+            <p id="revise_download_info_text"><a href="/services/vocabulary/vocab.pdf">Download</a> your
+             vocabulary as a pdf file, allowing you to revise when away from the PC.</p>
+            <!-- a href="/services/vocabulary/test.pdf">Test pdf file</a-->
+            <a href="/services/vocabulary/vocab.pdf">
+                <img src="images/arabicreader_pdf.jpg"></img>
+            </a>
+            </div>
+            
+        </div>
+
+		        <!-- revise organise -->
+        <div id="revise_organise">
+            <div id="organise_vocab_wordsets">
+            </div>
+        </div>
+
+	</div>
+ 
+ </div> 			

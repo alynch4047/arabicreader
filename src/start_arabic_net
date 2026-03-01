@@ -1,0 +1,3 @@
+/usr/lib/postgresql/9.1/bin/pg_ctl -D /home/ar/postgres -l /home/ar/pg.log start
+cd /home/ar/arabicreader
+/home/ar/arabicreader/run_ar_server -c /home/ar/arabicreader/arabic.net.config $*

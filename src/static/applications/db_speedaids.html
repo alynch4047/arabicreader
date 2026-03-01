@@ -1,0 +1,49 @@
+<!--db speed aids -->
+
+<div id="speed_aids_dialog" dojoType="dijit.Dialog" 
+  execute=""
+	title="Word Entry Speed Aids">
+	<div dojotype="dijit.layout.ContentPane">
+		<div id="speed_aids_content_pane">
+			<table>
+				<tr>
+	                <td colspan="2" align="center">
+	                     <h3>
+	                     To help save you some time in entering the details,
+	                      choose from the first list the nearest word to the one you wish to add.
+	                      Then, to save time on entering the root letters, you can also
+	                      choose the nearest root letters from the list on the right.
+	                      If you don't want to use this facility then simply press 'OK' 
+	                     </h3>
+	                </td>
+		        </tr>
+				<tr>
+					<td>
+						<label class='new_word_left '>Possible Words:</label>
+					</td>
+					<td>
+						<label class='new_word_left'>Suggested Roots:</label>
+					</td>
+				</tr>
+				<tr>
+					<td class="speedAidCombo">
+						  <select dojoType='dijit.form.ComboBox' id='possible_word_texts'
+						  onchange='new_definition.possible_text_changed'
+							 itemExtraClass="large_font">
+						  </select>
+					</td>
+					<td class="speedAidCombo">
+							<select dojoType='dijit.form.FilteringSelect' id='proposed_roots'  
+								onchange='new_definition.possible_root_changed'>
+				   			</select>
+					</td>
+				</tr>
+				<tr>
+	                <td colspan="2" align="center">
+	                     <button dojoType=dijit.form.Button type="submit">OK</button>
+	                </td>
+		        </tr>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,233 @@
+ <!-- maintain database -->
+<div dojoType="dijit.layout.ContentPane" id="maintain_database_panel">
+				   
+		<div id='new_definition_header' class="bar_title"></div>
+		
+		<div id='new_definition_form'>
+
+		        <!--db speed aids -->
+        <div id="speed_aids_dialog" dojoType="dijit.Dialog" 
+          execute=""
+            title="Word Entry Speed Aids">
+            <div dojotype="dijit.layout.ContentPane">
+                <div id="speed_aids_content_pane">
+                    <table>
+                        <tr>
+                            <td colspan="2" align="center">
+                                 <h3>
+                                 To help save you some time in entering the details,
+                                  choose from the first list the nearest word to the one you wish to add.
+                                  Then, to save time on entering the root letters, you can also
+                                  choose the nearest root letters from the list on the right.
+                                  If you don't want to use this facility then simply press 'OK' 
+                                 </h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class='new_word_left '>Possible Words:</label>
+                            </td>
+                            <td>
+                                <label class='new_word_left'>Suggested Roots:</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="speedAidCombo">
+                                  <select dojoType='dijit.form.ComboBox' id='possible_word_texts'
+                                  onchange='new_definition.possible_text_changed'
+                                     itemExtraClass="large_font">
+                                  </select>
+                            </td>
+                            <td class="speedAidCombo">
+                                    <select dojoType='dijit.form.FilteringSelect' id='proposed_roots'  
+                                        onchange='new_definition.possible_root_changed'>
+                                       </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                 <button dojoType=dijit.form.Button type="submit">OK</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+		
+		        <fieldset id='db_navigation_fieldset'>
+            <legend>Navigation</legend>
+            <table>
+            <tr>
+                <td>
+                <table>
+                <tr>
+                    <td>
+                    <button dojoType="dijit.form.Button" baseClass="crudButton"
+                          label="Previous" id="db_previous_word" iconClass="back_icon"
+                        onclick="db_navigate.previous_word">
+                        <span width="140px"> </span>
+                    </button>
+                    </td>
+                    <td>
+                    <button dojoType="dijit.form.Button"  baseClass="crudButton"
+                          label="Next" id="db_next_word"  iconClass="forward_icon"
+                        onclick="db_navigate.next_word">
+                        <span width="140px"> </span>
+                    </button>
+                    </td>
+                    <td>
+                    <button dojoType="dijit.form.Button"  baseClass="crudButton"
+                          label="Last" id="db_last_word"  iconClass="last_icon"
+                        onclick="db_navigate.last_word">
+                        <span width="140px"> </span>
+                    </button>
+                    </td>
+                    <td width="40px">
+                    </td>
+                    <td colSpan="2">
+                       <input id="db_my_words_only_cb" dojotype="dijit.form.CheckBox"
+                          name="developer" checked="checked" value="off" type="checkbox">
+                       </input>
+                       <label for="db_my_words_only_cb">My Words Only
+                       </label> 
+                    </td>
+                </tr>
+                <tr>    
+                    <td>
+                    <button dojoType="dijit.form.Button" baseClass="crudButton"
+                           label="New" id="db_new_word"  iconClass="new_icon"
+                        onclick="db_navigate.new_word">
+                    </button>
+                    </td>
+                    <td>
+                    <button dojoType="dijit.form.Button" baseClass="crudButton"
+                          label="Save" id="db_save_word"  iconClass="save_icon"
+                        onclick="db_navigate.save_word">
+                        <span width="140px"> </span>
+                    </button>
+                    </td>
+                    <td>
+                    <button dojoType="dijit.form.Button" baseClass="crudButton"
+                          label="Delete" id="db_delete_word"  iconClass="delete_icon"
+                        onclick="db_navigate.delete_word">
+                    </button>
+                    </td>
+                    <td width="40px">
+                    </td>
+                    <td>
+                      <p>Filter:
+                      </p>
+                    </td>
+                    <td>
+                      <input type="text" dojoType='dijit.form.TextBox' style="width:6em"
+                                 id='db_navigate_filter'>
+                      </input>
+                    </td>
+                </tr>
+                </table>
+                </td>
+            </tr>
+            </table>
+        </fieldset>
+
+		
+		                
+        <fieldset id='saved_data_fieldset'>
+        <legend>Stored Data</legend>
+        <table>
+        <tr>
+            <td>
+            <label class='new_word_left'>Noun/Verb:</label>
+            </td>
+            <td>
+              <div class='new_word_right'>
+                <select value='Noun' onChange='db_data_form.noun_verb_changed'
+                     dojoType='dijit.form.ComboBox' id='word_type'>
+                               <option selected value='N' >Noun</option>
+                               <option value='V'>Verb</option>
+                               <option value='H'>Preposition</option>
+                               <option value='NA'>Name</option>
+                   </select>
+                 </div>
+               </td>
+        </tr>
+        <tr>
+            <td>
+            <label class='new_word_left_root' id="root_l_label">Root:</label>
+            </td>
+            <td>
+            <table>
+                <tr>
+                    <td>
+                    <label>L:</label>
+                    </td>
+                    <td>
+                    <input class='new_word_root large_font' type="text" maxLength="1"
+                         dojoType='dijit.form.TextBox' id='root_l' >
+                    </input>
+                    </td>
+                    <td>
+                    <label>C:</label>
+                    </td>
+                    <td>
+                    <input class='new_word_root large_font' type="text" maxLength="1"
+                         dojoType='dijit.form.TextBox' id='root_c' >
+                    </input>
+                    </td>
+                    <td>
+                    <label>F:</label>
+                    </td>
+                    <td>
+                    <input class='new_word_root large_font' type="text" maxLength="1"
+                        dojoType='dijit.form.TextBox' id='root_f' >
+                    </input>
+                    </td>
+                </tr>
+            </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <label class='new_word_left'>Meaning:</label>
+            </td>
+            <td>
+            <input class='new_word_right' type="text"
+                 dojoType='dijit.form.TextBox' id='new_word_text_meaning' >
+            </input>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <label class='new_word_left'>Entered By:</label>
+            </td>
+            <td>
+            <p id='new_word_creator_nickname'>
+            </p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="vocab_db_words_table"> 
+                </div>
+                
+            </td>
+        </tr>
+        </table>
+        <button dojoType="dijit.form.Button" baseClass="wideCrudButton"
+                      label="Add New Variation" id="db_add_new_variation"  iconClass="new_icon"
+                    onclick="db_data_form.add_new_variation">
+        </button>
+        </fieldset>
+                    
+
+					
+		</div>   
+			
+		<label class='db_status' id='add_to_db_status'>Ready</label>
+			
+		<div id='virtual_keyboard'></div>		
+		
+		<!--a href="backup/vocab_database.dmp">Download the Vocab Database</a-->
+
+</div>	

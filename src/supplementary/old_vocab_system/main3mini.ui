@@ -1,0 +1,23 @@
+<!DOCTYPE UI><UI>
+<class>MainEntry</class>
+<widget>
+    <class>QWidget</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>frmMainEntry</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>343</width>
+            <height>419</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Vocabulary Database</string>
+    </property>
+</widget>
+</UI>

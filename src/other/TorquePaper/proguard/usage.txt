@@ -1,0 +1,90 @@
+android.annotation.SuppressLint
+android.annotation.TargetApi
+net.margaritov.preference.colorpicker.ColorPickerDialog:
+    116:116:public int getColor()
+net.margaritov.preference.colorpicker.ColorPickerPanelView:
+    private static final float BORDER_WIDTH_PX
+net.margaritov.preference.colorpicker.ColorPickerPreference:
+    private static final java.lang.String androidns
+    193:194:public void setAlphaSliderEnabled(boolean)
+    202:223:public static java.lang.String convertToARGB(int)
+net.margaritov.preference.colorpicker.ColorPickerView:
+    private static final int PANEL_SAT_VAL
+    private static final int PANEL_HUE
+    private static final int PANEL_ALPHA
+    private static final float BORDER_WIDTH_PX
+net.margaritov.preference.colorpicker.Test
+net.margaritov.preference.colorpicker.Test$1
+uk.co.torquesoftware.preferences.SeekBarPreference:
+    private static final java.lang.String androidns
+    97:97:public void setMax(int)
+    98:98:public int getMax()
+    101:104:public void setProgress(int)
+    105:105:public int getProgress()
+uk.co.torquesoftware.torquepaper.BuildConfig
+uk.co.torquesoftware.torquepaper.DisplayProperties:
+    private int secondaryFillColour
+    private int tertiaryFillColour
+    32:33:public void setPrimaryFillColour(int)
+    42:43:public void setLineColour(int)
+    47:47:public int getLineColour()
+    52:53:public void setLineThickness(int)
+    57:57:public int getLineThickness()
+    62:63:public void setSecondaryFillColour(int)
+    67:67:public int getSecondaryFillColour()
+    72:73:public void setTertiaryFillColour(int)
+    77:77:public int getTertiaryFillColour()
+uk.co.torquesoftware.torquepaper.IDisplayProperties:
+    public abstract void setLineThickness(int)
+    public abstract int getLineThickness()
+    public abstract void setPrimaryFillColour(int)
+    public abstract void setSecondaryFillColour(int)
+    public abstract int getSecondaryFillColour()
+    public abstract void setTertiaryFillColour(int)
+    public abstract int getTertiaryFillColour()
+    public abstract void setLineColour(int)
+    public abstract int getLineColour()
+uk.co.torquesoftware.torquepaper.ITheme:
+    public abstract void setDisplayProperties(uk.co.torquesoftware.torquepaper.IDisplayProperties[])
+    public abstract int getTouchX()
+    public abstract int getTouchY()
+    public abstract float getCyclePercentage()
+uk.co.torquesoftware.torquepaper.Line:
+    17:17:public uk.co.torquesoftware.torquepaper.Point getStartPoint()
+    21:22:public void setStartPoint(uk.co.torquesoftware.torquepaper.Point)
+    25:25:public uk.co.torquesoftware.torquepaper.Point getEndPoint()
+    29:30:public void setEndPoint(uk.co.torquesoftware.torquepaper.Point)
+    37:40:public void draw(android.graphics.Canvas,android.graphics.Paint)
+uk.co.torquesoftware.torquepaper.Point:
+    18:18:public uk.co.torquesoftware.torquepaper.Point minus(uk.co.torquesoftware.torquepaper.Point)
+uk.co.torquesoftware.torquepaper.Polygon:
+    26:26:public uk.co.torquesoftware.torquepaper.Line[] getLines()
+    30:31:public void setLines(uk.co.torquesoftware.torquepaper.Line[])
+    64:64:public double getRadius()
+    116:116:public double getDistanceToCentreSide()
+    162:163:public void setCentre(uk.co.torquesoftware.torquepaper.Point)
+    166:176:public void drawLines(android.graphics.Canvas)
+    220:239:public void draw(android.graphics.Canvas)
+    242:264:public void drawPoints(android.graphics.Canvas)
+    267:267:public double getInnerCircleRatio()
+    276:276:public int getNumSides()
+uk.co.torquesoftware.torquepaper.PolygonBuilder:
+    3:3:public PolygonBuilder()
+uk.co.torquesoftware.torquepaper.PolygonLayout:
+    6:6:public PolygonLayout()
+uk.co.torquesoftware.torquepaper.R
+uk.co.torquesoftware.torquepaper.R$array
+uk.co.torquesoftware.torquepaper.R$attr
+uk.co.torquesoftware.torquepaper.R$drawable
+uk.co.torquesoftware.torquepaper.R$id
+uk.co.torquesoftware.torquepaper.R$integer
+uk.co.torquesoftware.torquepaper.R$layout
+uk.co.torquesoftware.torquepaper.R$string
+uk.co.torquesoftware.torquepaper.R$xml
+uk.co.torquesoftware.torquepaper.Theme:
+    28:29:public void setDisplayProperties(uk.co.torquesoftware.torquepaper.IDisplayProperties[])
+    33:33:public int getTouchX()
+    38:38:public int getTouchY()
+    43:43:public float getCyclePercentage()
+uk.co.torquesoftware.torquepaper.TorquePaper:
+    public static final java.lang.String SHARED_PREFS_NAME

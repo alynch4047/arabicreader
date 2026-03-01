@@ -1,0 +1,28 @@
+<!-- revise test -->
+<div id="revise_test">
+	
+	<p>
+		The revision is conducted in 3 steps:
+		<ol>
+			<li>Click the 'Revise' button</li>
+			<li>Memorise the meanings of the words in the list</li>
+			<li>Click the 'Begin Test' button</li>
+			<li>Starting from the top, try to remember the meaning of the word. Click 'Show Answer'
+			 to see if you got the answer right. If so, click the green tick. If not, click
+			 the red cross.</li>
+			 <li>When you have completed all the words a score will be given. More importantly,
+			 the system remembers which words you got wrong. These will be given priority
+			 on the next test, so that words which you often get wrong will be presented
+			 in the tests more frequently.</li>
+		</ol>
+	</p>
+	
+	<button dojoType="dijit.form.Button" 
+					onclick="revise.start_revise" label="Revise">
+	</button>
+	<button dojoType="dijit.form.Button" 
+					onclick="revise.begin_test" label="Begin Test">
+	</button>
+	<div id="revision_word_list">
+	</div>
+</div>

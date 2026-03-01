@@ -1,0 +1,3 @@
+
+
+from vocabulary_service.vocabulary_handler import VocabularyHandler

@@ -1,0 +1,1176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+  	<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+  	
+    <title>Arabic Reader DEBUG</title>
+    
+    <style type="text/css">
+    	@import "dojo/dijit/themes/soria/soria.css";
+    	@import "dojo/dojox/layout/resources/FloatingPane.css";	
+	    @import "dojo/dojox/layout/resources/ResizeHandle.css";
+        @import "arabic_reader.css";
+    </style>
+    
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png"></link>
+
+    <script type="text/javascript"
+            src="dojo/dojo/dojo.js"
+	        djConfig="isDebug: true, parseOnLoad: true, usePlainJson: true, preventBackButtonFix: false">
+    </script>
+    
+	    <script type="text/javascript" src="init_ar.js"></script>
+    <script type="text/javascript" src="preferences_manager.js"></script>
+    <script type="text/javascript" src="font_manager.js"></script>
+    <script type="text/javascript" src="db_navigate.js"></script>
+    <script type="text/javascript" src="lookups.js"></script>
+    <script type="text/javascript" src="upload.js"></script>
+    <script type="text/javascript" src="arabic.js"></script>
+    <script type="text/javascript" src="caret.js"></script>
+    <script type="text/javascript" src="central_text.js"></script>
+    <script type="text/javascript" src="html_maker.js"></script>
+    <script type="text/javascript" src="mode.js"></script>
+    <script type="text/javascript" src="navigate.js"></script>
+    <script type="text/javascript" src="network.js"></script>
+    <script type="text/javascript" src="new_definition.js"></script>
+    <script type="text/javascript" src="root.js"></script>
+    <script type="text/javascript" src="rounded.js"></script>
+    <script type="text/javascript" src="virtual_keyboard.js"></script>
+    <script type="text/javascript" src="vocab.js"></script>
+    <script type="text/javascript" src="word_meaning.js"></script>
+    <script type="text/javascript" src="about.js"></script>
+    <script type="text/javascript" src="login.js"></script>
+    <script type="text/javascript" src="cookies.js"></script>
+    <script type="text/javascript" src="main_menu.js"></script>
+    <script type="text/javascript" src="library.js"></script>
+    <script type="text/javascript" src="dynamic_css.js"></script>
+    <script type="text/javascript" src="db_data_form_row.js"></script>
+    <script type="text/javascript" src="db_data_form.js"></script>
+    <script type="text/javascript" src="my_reader.js"></script>
+    <script type="text/javascript" src="word_set.js"></script>
+    <script type="text/javascript" src="webtoolkit.aim.js"></script>
+    <script type="text/javascript" src="md5.js"></script>
+    <script type="text/javascript" src="translator.js"></script>
+    <script type="text/javascript" src="utils.js"></script>
+    <script type="text/javascript" src="status.js"></script>
+    <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript" src="revise.js"></script>
+    <script type="text/javascript" src="organise_vocab.js"></script>
+
+
+    <script type="text/javascript">
+    	          dojo.registerModulePath("arabic_reader_widgets",
+                    "../../arabic_reader_widgets");
+          dojo.require("dojo.cookie");
+          dojo.require("dojo.data.ItemFileReadStore");
+          dojo.require("dojo.back");
+          dojo.require("dijit.form.Form");
+          dojo.require("dijit.form.Button");
+          dojo.require("dijit.form.FilteringSelect");
+          dojo.require("dijit.form.TextBox");
+          dojo.require("dijit.form.ComboBox");
+          dojo.require("dijit.form.CheckBox");
+          dojo.require("dijit.layout.ContentPane");
+          dojo.require("dijit.TitlePane");
+          dojo.require("dijit.layout.BorderContainer");
+          dojo.require("dijit.Tooltip");
+          dojo.require("dijit.Dialog");
+          dojo.require("dijit.ColorPalette");
+          dojo.require("dojox.layout.FloatingPane");
+          dojo.require("dojo.parser");
+          dojo.require("arabic_reader_widgets.Tooltip");
+
+    	dojo.addOnLoad(init_arabic_reader);
+    </script>
+    
+
+  </head>
+  
+    <!-- arabic reader body -->
+  <body class='soria'>
+    
+          <!-- floating panels for maximized web -->
+      <div id="web_large_floating_panels">
+          <div id="floating_word_meaning_pane" dojoType="dojox.layout.FloatingPane" resizable="true" 
+          title="Possible Word Meanings">
+              <div dojotype="dijit.layout.ContentPane">
+                  <div id="floating_word_meaning_pane_content">
+                  </div>
+              </div>
+          </div>
+          
+          <div id="floating_word_root_pane" dojoType="dojox.layout.FloatingPane" resizable="true" 
+          title="Root Words">
+              <div dojotype="dijit.layout.ContentPane">
+                  <div id="floating_word_root_pane_content">
+                  </div>
+              </div>
+          </div>
+          
+            <div id="floating_full_screen_pane" onclick="mode.switch_large_web()">
+          Full Screen
+          </div>
+          
+      </div>
+    
+      <!-- main menu -->
+        <div class="google_bar">
+        <nobr>
+             <div class="google_menu_bar">
+                 <div onclick="mode.goto_read(true)" class="google_menu_text" id="menu_read">Read</div>
+                 <div onclick="mode.goto_upload(true)" class="google_menu_text" id="menu_upload">Upload</div>
+                 <div onclick="mode.goto_revise(true)" class="google_menu_text" id="menu_revise">My Vocabulary</div>
+                 <div onclick="mode.goto_database(true)" class="google_menu_text" id="menu_database">Database</div>
+                 <div onclick="mode.goto_forum(true)" class="google_menu_text" id="menu_forum">Forum</div>
+                 <div onclick="mode.goto_about(true)" class="google_menu_text" id="menu_about">About</div>
+             </div>
+        </nobr>
+        
+        <nobr>
+                <div class="google_menu_bar">
+                    <div id="menu_status">Loading</div>
+                </div>
+        </nobr>
+        
+         <nobr>
+             <div class="google_user">
+                 <div class="google_menu_chosen google_menu_text" id="menu_nickname">Guest</div>
+                 <div onclick="mode.goto_login(true)" class="google_menu_text" id="menu_login">Login/Register</div>
+                 <div onclick="mode.goto_help(true)" class="google_menu_text" id="menu_help">Help</div>
+                 <div onclick="mode.goto_my_reader(true)" class="google_menu_text" id="menu_my_reader">MyReader</div>
+             </div>
+        </nobr>
+     </div>
+     
+        <!-- maximized web page -->
+     <div id="web_large">
+         
+         <div id="large_iframe_holder">
+         </div>
+         
+     </div>
+     
+     <div id="forum_holder_node">
+          <div id="forum_placeholder">
+          </div>
+     </div>
+     
+      <!-- read main text -->
+      <div dojoType="dijit.layout.BorderContainer" design="headline"
+             id="text_browser_border_container">
+             
+         <!-- root, word meaning and vocab -->
+                <div dojoType="dijit.layout.ContentPane" region="left" splitter="true" id="main_left_pane">
+            <!-- word meaning panel -->
+            <div dojoType="dijit.TitlePane"  id='word_meaning_pane' title="Possible Word Meanings">
+               
+                 <div class='word_meaning_section' id='word_meaning'>
+                 </div>    
+                 
+                 <div id='no_meaning_found_header'>
+                   <div id='no_meaning_found_message'>
+                   </div>
+                   <div id='add_new_word'>Add Definition
+                   </div>
+                 </div>        
+                       
+            </div>
+            <!-- root panel -->
+            <div dojoType="dijit.layout.ContentPane" id='root_words_pane' >
+              
+                 <div id="root_banner" >
+                     <div id='root_text' dojoType="dijit.TitlePane" title="Word Root">
+                     </div>    
+                 </div>             
+              
+            </div>
+            <!-- vocab summary panel -->
+            <div dojoType="dijit.layout.ContentPane" id='vocab_pane' >
+               
+                 <div id='vocabulary_title_wrapper'>
+                     <div dojoType='dijit.TitlePane' id="vocabulary_text" title="Recent Vocabulary">
+                     </div>
+                 </div>              
+            </div>
+            <!-- status panel -->
+            <div dojoType="dijit.layout.ContentPane" id='status_pane' >
+               
+                 <div id='status_title_wrapper'>
+                     <div dojoType='dijit.TitlePane'  title="Status">
+                         <div id="status_events"></div>
+                     </div>
+                 </div>              
+            </div>
+                <!--status - error report -->
+             <div id="status_error_pane" dojoType="dijit.Dialog" 
+                 execute="status_.error_pane_closed();"
+                 title="View Error Details">
+                 <div dojotype="dijit.layout.ContentPane">
+                     <div id="status_error_pane_content">
+                         <table>
+                             <tr  colspan="2">
+                                 <td>
+                                   <p id='status_error_name'>
+                                   </p>
+                                 </td>
+                             </tr>
+                               <tr>
+                                 <td colspan="2">
+                                   <p id='status_error_message'>
+                                   </p>
+                                 </td>
+                             </tr>
+                             <tr>
+                                 <td colspan="2" align="center">
+                                      <button dojoType=dijit.form.Button type="submit">OK</button>
+                                 </td>
+                             </tr>
+                         </table>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         
+         <!-- main content panel -->
+         <div dojoType="dijit.layout.ContentPane" region="center"
+            id='central_text_pane'>
+            
+              <!-- main reading area -->
+                          <!-- central text reader -->
+                  
+                  <div dojoType="dijit.layout.BorderContainer" design="headline" class="soria_background"
+                                                              id="navigate_and_reader_panel" height="100%">
+                                                              
+                    <div dojoType="dijit.layout.ContentPane" id="read_pane_toolbar" class="soria_background" region="top" height="100px">
+                    
+                                <!-- library-->
+                       <div id="navigate_read" >
+                            <div class="google_bar">
+                              <nobr>
+                                   <div class="google_menu_bar" style="float: none;">
+                                       <div onclick="library.select_text();" class="google_menu_text" id="menu_read">Select Text To Read</div>
+                                       <div onclick="library.highlight_unknown_words();" class="google_menu_text" id="menu_upload">Highlight Unknown Words</div>
+                                       <div onclick="library.select_preferences();" class="google_menu_text" id="menu_revise">Select Preferences</div>
+                                   </div>
+                              </nobr>
+                            </div>
+                          <div id="library_preferences_dialog" dojoType="dijit.Dialog" 
+                            execute="library.set_preferences(arguments[0]);"
+                               title="Preferences">
+                               <div dojotype="dijit.layout.ContentPane">
+                                   <table>
+                                       <tr>
+                                           <td>
+                                               <button dojoType="dijit.form.Button"
+                                                  label="Colour Scheme"  
+                                                  onclick="dijit.byId('library_color_dialog').show()"
+                                                  id="library_colour_scheme">
+                                               </button>
+                                               <button dojoType="dijit.form.Button"
+                                                  label="Font"
+                                                  onclick="dijit.byId('library_font_dialog').show()"
+                                                  id="library_font">
+                                               </button>
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                       <td align="center">
+                                       <button dojoType=dijit.form.Button onclick="library.preferences_done">OK</button>
+                                       </td>
+                                       </tr>
+                                   </table>
+                               </div>
+                          </div>
+                          <div dojoType="dijit.Dialog" id="library_color_dialog"
+                               title="Choose A Colour Scheme"
+                               execute="library.change_colour_scheme();">
+                               <table>
+                                   <tr>
+                                       <td>Background Colour:
+                                       </td>
+                                       <td>Font Colour:
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>
+                                           <div dojoType="dijit.ColorPalette"
+                                            onChange="library.set_background_colour(this.value);">
+                                           </div>
+                                       </td>
+                                       <td>
+                                           <div dojoType="dijit.ColorPalette"
+                                            onChange="library.set_font_colour(this.value);">
+                                           </div>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td colspan="2" align="center">
+                                         <button dojoType="dijit.form.Button" type="submit">OK</button>
+                                       </td>
+                                   </tr>
+                               </table>
+                                <div id="library_colour_sample" width="150px" height="50px" align="center">
+                                </div>
+                          </div>
+                          
+                           <div dojoType="dijit.Dialog" id="library_font_dialog"
+                               title="Choose A Font"
+                               execute="font_manager.change_font();">
+                               <table>
+                                   <tr>
+                                       <td>Font Family:
+                                       </td>
+                                       <td>Font Size:
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td class="speedAidCombo">
+                                             <select dojoType='dijit.form.ComboBox' id='central_text_arabic_font_family'
+                                             onchange='font_manager.choose_arabic_font_family(this.value)'>
+                                             </select>
+                                       </td>
+                                       <td class="speedAidCombo">
+                                             <select dojoType='dijit.form.ComboBox' id='central_text_arabic_font_size'
+                                             onchange='font_manager.choose_arabic_font_size(this.value)'>
+                                             </select>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td colspan="2" align="center">
+                                         <button dojoType="dijit.form.Button" type="submit">OK</button>
+                                         <button dojoType=dijit.form.Button onclick="dijit.byId('library_font_dialog').hide();">Cancel</button>
+                                       </td>
+                                   </tr>
+                               </table>
+                          </div>
+                         
+                       </div>
+                    
+                    </div>
+                    <div dojoType="dijit.layout.ContentPane" id="navigate_pane" region="center">
+                      
+                                <!--library dialogs -->
+                       <div id="confirm_library_delete_dialog" dojoType="dijit.Dialog" 
+                         execute="library.do_delete_library_file(arguments[0]);"
+                           title="Delete Personal Library File">
+                           <div dojotype="dijit.layout.ContentPane">
+                               <div id="confirm_library_delete_content">
+                                   <table>
+                                       <tr>
+                                           <td colspan="2">
+                                             <p id="library_delete_message">
+                                             This will delete your library file.
+                                             
+                                             Click OK to continue or click on the 'x' to cancel.
+                                             </p>
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td colspan="2" align="center">
+                                                <button dojoType=dijit.form.Button type="submit">OK</button>
+                                           </td>
+                                       </tr>
+                                   </table>
+                               </div>
+                           </div>
+                       </div>
+                       <div id="confirm_library_share_dialog" dojoType="dijit.Dialog" 
+                         execute="library.do_share_library_file(arguments[0]);"
+                           title="Share Personal Library File">
+                           <div dojotype="dijit.layout.ContentPane">
+                               <div id="confirm_library_share_content">
+                                   <table>
+                                       <tr>
+                                           <td colspan="2">
+                                             <p id="library_share_message">
+                                             This will share your library file with all users.
+                                             
+                                             Click OK to continue or click on the 'x' to cancel.
+                                             </p>
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td colspan="2" align="center">
+                                                <button dojoType=dijit.form.Button type="submit">OK</button>
+                                           </td>
+                                       </tr>
+                                   </table>
+                               </div>
+                           </div>
+                       </div>
+                           
+                                <!--  Upload -->
+                        <div dojoType="dijit.layout.ContentPane" title="Upload" id="navigate_upload"  >
+                            <form action="/services/library/upload" method="post" enctype="multipart/form-data"
+                             onsubmit="return AIM.submit(this, {'onStart' : upload_.start, 'onComplete' : upload_.finish})">
+                                <div  dir="ltr" align="left">
+                                <p>
+                                Upload your personal documents to ArabicReader and read them online. For instance,
+                                students can upload their coursework and help each other by adding to the database
+                                any words that are unknown to the system. Your fellow students can then upload and 
+                                read the same text and will not need to spend time looking up words in the dictionary,
+                                and can instead focus on memorising the vocabulary and studying the grammar.
+                                </p>
+                                <p>
+                                Also, you can upload essays and books (subject to copyright of course) and
+                                read them online with the full facilities of the one-click online
+                                dictionary functionality.
+                                </p>
+                                </div>
+                                <table>
+                                <tr>
+                                   <td>
+                                       <label>Title:</label>
+                                   </td> 
+                                   <td>
+                                       <input type="text" dojoType='dijit.form.TextBox' name="upload_title"></input>
+                                   </td>
+                                   
+                               </tr>
+                                   <td colspan="2" class="upload_instructions">
+                                   Please enter the title of this document. You will be able to choose this document
+                                   by name in the Read section of the site, in the My Library area.
+                                   </td>
+                               <tr>
+                               </tr>
+                               <tr> 
+                                   <td>
+                                       <label>File:</label> 
+                                   </td>
+                                   <td>
+                                       <input type="file" dojoType='dijit.form.TextBox' name="upload_file"></input>
+                                   </td>
+                                </tr>
+                                <tr>
+                                <td colspan="2" class="upload_instructions">
+                                   N.B. The file must be a text file in utf-8 encoding. Microsoft Word documents
+                                   can be converted to this format by going <span class='user_instruction'>File/Save As...</span>,
+                                    choosing <span class='user_instruction'>'Plain Text (*.txt)'</span>,
+                                   and then select <span class='user_instruction'>Unicode (UTF-8)</span>
+                                    from the <span class='user_instruction'>Other encoding</span> radio button. 
+                                   </td>
+                                <tr>
+                                </tr>
+                               <tr>
+                                   <td>
+                                       <button type="submit" value="SUBMIT" label="Upload"
+                                        dojoType="dijit.form.Button" id="upload_submit">
+                                       </button>
+                                   </td>
+                               </tr>
+                               </table>
+                           </form>
+                           
+                        </div>             
+                           
+                                 
+                        <!-- My Reader -->
+                        <div dojoType="dijit.layout.ContentPane" title="Upload" id="navigate_my_reader" align="left" >
+                           <H3 align="center">In this area you can change your personal details and also view statistics about
+                           your use of the site.
+                           </H3> 
+                           
+                           <div>
+                           <button dojoType="dijit.form.Button" label="Change Password" id="my_reader_change_password" 
+                                       onclick="my_reader.show_change_password">
+                                       <span width="140px"> </span>
+                           </button>
+                           </div>
+                           <table>
+                             <tr>
+                               <td align="right">User name / email address:
+                               </td>
+                               <td id="my_reader_email_address">
+                               </td>
+                             </tr>
+                              <tr>
+                               <td align="right">Nickname:
+                               </td>
+                               <td id="my_reader_nickname">
+                               </td>
+                             </tr>
+                             <tr>
+                               <td align="right">Number of words added:
+                               </td>
+                               <td id="my_reader_num_words_added">
+                               </td>
+                             </tr>
+                             <tr>
+                               <td align="right">Last logged on:
+                               </td>
+                               <td id="my_reader_last_logged_on">
+                               </td>
+                             </tr>
+                           </table>
+                           <div>
+                           <button dojoType="dijit.form.Button" label="Deregister from ArabicReader" id="my_reader_deregister" 
+                                       onclick="my_reader.show_deregister">
+                                       <span width="140px"> </span>
+                           </button>
+                           </div>
+                           <p id="my_reader_status">
+                           </p>
+                           
+                           <div id="change_password_pane" dojoType="dijit.Dialog" 
+                           execute="my_reader.change_password(arguments[0]);"
+                               title="Change Password">
+                               <div dojotype="dijit.layout.ContentPane">
+                                   <div id="change_password_pane_content">
+                                   <table>
+                                       <tr>
+                                           <td><label>Old Password: </label>
+                                           </td>
+                                           <td><input dojoType="dijit.form.TextBox" type="password" 
+                                           name="change_password_old">
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td><label>New Password: </label>
+                                           </td>
+                                           <td><input dojoType="dijit.form.TextBox" type="password" 
+                                               name="change_password_new">
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td><label>Confirm New Password: </label>
+                                           </td>
+                                           <td><input dojoType="dijit.form.TextBox" type="password" 
+                                           name="change_password_new_confirm">
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td colspan="2" align="center">
+                                                <button dojoType=dijit.form.Button type="submit">OK</button>
+                                                <button dojoType=dijit.form.Button onclick="my_reader.cancel_change_password">Cancel</button>
+                                           </td>
+                                       </tr>
+                                   </table>
+                                   </div>
+                               </div>
+                           </div>
+                           
+                           <div id="deregister_pane" dojoType="dijit.Dialog" 
+                           execute="my_reader.deregister(arguments[0]);"
+                               title="Deregister From ArabicReader">
+                               <div dojotype="dijit.layout.ContentPane">
+                                   <div id="deregister_pane_content">
+                                   <table>
+                                       <tr>
+                                           <td colspan="2">
+                                             <p>
+                                             Deregistering from ArabicReader will remove your logon details
+                                             from the site. Any words that you have entered will in
+                                             future be maintained by the site administrator.
+                                             </p>
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td><label>Password: </label>
+                                           </td>
+                                           <td><input dojoType="dijit.form.TextBox" type="password" 
+                                           name="password">
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td align="center" colspan="2">
+                                                <button dojoType=dijit.form.Button type="submit">OK</button>
+                                                <button dojoType=dijit.form.Button onclick="my_reader.cancel_deregister">Cancel</button>
+                                           </td>
+                                       </tr>
+                                   </table>
+                                   </div>
+                               </div>
+                           </div>
+                        </div>             
+                           
+                                 
+                        <!-- Help -->
+                        <div dojoType="dijit.layout.ContentPane" title="Upload" id="navigate_help"  >
+                           Help - not yet implemented
+                        </div>             
+                           
+                                 
+                        <!-- Revise -->
+                        
+                        
+                        <div id="navigate_revise">
+                            <div>
+                                <div class="google_bar">
+                                  <nobr>
+                                       <div class="google_menu_bar" style="float: none;">
+                                           <div onclick="mode.goto_test_vocab(true)" class="google_menu_text" id="menu_read">Revise Vocabulary</div>
+                                           <div onclick="mode.goto_download_vocab(true)" class="google_menu_text" id="menu_upload">Download Vocabulary</div>
+                                           <div onclick="mode.goto_organise_vocab(true)" class="google_menu_text" id="menu_revise">Organise Vocabulary</div>
+                                       </div>
+                                  </nobr>
+                               </div>
+                           </div>
+                           <div>
+                                       <!-- revise test -->
+                               <div id="revise_test">
+                                   
+                                   <p>
+                                       The revision is conducted in 3 steps:
+                                       <ol>
+                                           <li>Click the 'Revise' button</li>
+                                           <li>Memorise the meanings of the words in the list</li>
+                                           <li>Click the 'Begin Test' button</li>
+                                           <li>Starting from the top, try to remember the meaning of the word. Click 'Show Answer'
+                                            to see if you got the answer right. If so, click the green tick. If not, click
+                                            the red cross.</li>
+                                            <li>When you have completed all the words a score will be given. More importantly,
+                                            the system remembers which words you got wrong. These will be given priority
+                                            on the next test, so that words which you often get wrong will be presented
+                                            in the tests more frequently.</li>
+                                       </ol>
+                                   </p>
+                                   
+                                   <button dojoType="dijit.form.Button" 
+                                                   onclick="revise.start_revise" label="Revise">
+                                   </button>
+                                   <button dojoType="dijit.form.Button" 
+                                                   onclick="revise.begin_test" label="Begin Test">
+                                   </button>
+                                   <div id="revision_word_list">
+                                   </div>
+                               </div>
+                                       <!-- revise download -->
+                               <div id="revise_download">
+                                   <div id="revise_download_info">
+                                   <p id="revise_download_info_text"><a href="/services/vocabulary/vocab.pdf">Download</a> your
+                                    vocabulary as a pdf file, allowing you to revise when away from the PC.</p>
+                                   <!-- a href="/services/vocabulary/test.pdf">Test pdf file</a-->
+                                   <a href="/services/vocabulary/vocab.pdf">
+                                       <img src="images/arabicreader_pdf.jpg"></img>
+                                   </a>
+                                   </div>
+                                   
+                               </div>
+                                       <!-- revise organise -->
+                               <div id="revise_organise">
+                                   <div id="organise_vocab_wordsets">
+                                   </div>
+                               </div>
+                           </div>
+                        
+                        </div>             
+                               
+                                <!--about -->
+                       <div dojoType="dijit.layout.ContentPane" title="About"  id="navigate_about" >
+                           <div id="about_page" >
+                               <p id="about_title">
+                               Welcome to the ArabicReader Web Site and Application.
+                               </p>
+                               <p id='qisas'>
+                               *** New - Qisas anNabiyyeen - We've started a new project aiming to enter all the 
+                               vocabulary for Qisas anNabiyyeen, so as to benefit all those arabic students out
+                               there who are using this text to improve their arabic. Click 
+                               <span class="about_link" onclick="navigate_.show_qisas()">here</span> to
+                               take a look at progress so far. ***
+                               </p>
+                               <p id="under_development">
+                               * This site is under development and is incomplete. However, feedback and comments
+                               are greatly appreciated. If you wish to make a comment or provide a suggestion, then please
+                               feel free to use the forums and do so. Also, if you register for the site then
+                               any words that you add to the database will be saved and used when the site
+                               becomes live (subject to moderation, of course) *
+                               </p>
+                               <p>
+                               ArabicReader (
+                               <span class="about_link" onclick="central_text.central_word_clicked('المساعد')">المساعد</span> 
+                               <span class="about_link" onclick="central_text.central_word_clicked('في')">في</span> 
+                               <span class="about_link" onclick="central_text.central_word_clicked('قراءة')">قراءة</span> 
+                               <span class="about_link" onclick="central_text.central_word_clicked('العربيّة')">العربيّة</span> 
+                               ) eases the reading of arabic texts. It is aimed at intermediate
+                                or advanced students of the Arabic language (
+                                <span class="about_link" onclick="central_text.central_word_clicked('اللغة')">اللغة</span> 
+                                <span class="about_link" onclick="central_text.central_word_clicked('العربيّة')">العربيّة</span>
+                                ) or even those who speak arabic
+                               but who are reading texts from an era or subject where some of the vocabulary 
+                               is not familiar to them.
+                               </p>
+                               <p>
+                               Arabic has an enormous lexicon and this is perhaps the greatest hurdle facing the student.
+                               While the student of English need only learn 1,500 words to get by, the student (
+                               <span class="about_link" onclick="central_text.central_word_clicked('طالب')">طالب</span>
+                               ) of 
+                               Arabic requires at least 6,000. ArabicReader allows the learner to read texts of their
+                               own choice and interest and then to acquire the words that they did not know.
+                                The essential process of 
+                               enlarging the vocabulary is thereby greatly eased and the learner can progress much
+                               more quickly than if they were tied to the slow process of
+                               looking words up in a printed dictionary. Words are also placed in the context of the
+                               root <span class="about_link" onclick="central_text.central_word_clicked('جذر')">جذر</span>
+                                from which they derive, giving the student an enhanced understanding of the
+                               underlying meaning of the word, and other similar words.
+                               </p>
+                               <p>
+                               In terms of the reading material available, the student can select from a large library
+                               of texts already available on the site such as 
+                               <span class="about_link" onclick="mode.show_demo_text()">this</span>
+                                example essay, upload their own text,
+                                or read any arabic web site such as  
+                               <span class="about_link" onclick="navigate_.show_demo_web()">an arabic news page</span>
+                               . 
+                               </p>
+                               <p>
+                               ArabicReader allows the reader to look up the meaning of any word simply by clicking on
+                               the word as they read it. If the reader chooses they can then add the word to their
+                               vocabulary list and the site will add it to their list of words to memorise. At any
+                               time the reader can then use ArabicReader to memorise the words they did not know or 
+                               print off an automatically generated pdf for later revision.  
+                               </p>
+                               <p>
+                               This website is not, and never will be, for arabic translation. The aim is to help
+                               a student to improve their knowledge of the arabic language, not to translate it
+                               for them.
+                               </p>
+                               <p>
+                               Finally, this application is a work-in-progress and needs your help.  When ArabicReader
+                               is requested the meaning of a word which has not been entered into its database, the
+                               option is presented to the user to add the meaning of that word to the database.
+                                You can improve
+                               the application by looking up the meaning in a dictionary and entering it into the
+                               ArabicReader database. That word is then available for anyone who needs to look it up.
+                               </p>
+                           </div>
+                       </div>
+                          
+                                 <!-- maintain database -->
+                       <div dojoType="dijit.layout.ContentPane" id="maintain_database_panel">
+                                          
+                               <div id='new_definition_header' class="bar_title"></div>
+                               
+                               <div id='new_definition_form'>
+                                       <!--db speed aids -->
+                               <div id="speed_aids_dialog" dojoType="dijit.Dialog" 
+                                 execute=""
+                                   title="Word Entry Speed Aids">
+                                   <div dojotype="dijit.layout.ContentPane">
+                                       <div id="speed_aids_content_pane">
+                                           <table>
+                                               <tr>
+                                                   <td colspan="2" align="center">
+                                                        <h3>
+                                                        To help save you some time in entering the details,
+                                                         choose from the first list the nearest word to the one you wish to add.
+                                                         Then, to save time on entering the root letters, you can also
+                                                         choose the nearest root letters from the list on the right.
+                                                         If you don't want to use this facility then simply press 'OK' 
+                                                        </h3>
+                                                   </td>
+                                               </tr>
+                                               <tr>
+                                                   <td>
+                                                       <label class='new_word_left '>Possible Words:</label>
+                                                   </td>
+                                                   <td>
+                                                       <label class='new_word_left'>Suggested Roots:</label>
+                                                   </td>
+                                               </tr>
+                                               <tr>
+                                                   <td class="speedAidCombo">
+                                                         <select dojoType='dijit.form.ComboBox' id='possible_word_texts'
+                                                         onchange='new_definition.possible_text_changed'
+                                                            itemExtraClass="large_font">
+                                                         </select>
+                                                   </td>
+                                                   <td class="speedAidCombo">
+                                                           <select dojoType='dijit.form.FilteringSelect' id='proposed_roots'  
+                                                               onchange='new_definition.possible_root_changed'>
+                                                              </select>
+                                                   </td>
+                                               </tr>
+                                               <tr>
+                                                   <td colspan="2" align="center">
+                                                        <button dojoType=dijit.form.Button type="submit">OK</button>
+                                                   </td>
+                                               </tr>
+                                           </table>
+                                       </div>
+                                   </div>
+                               </div>
+                               
+                                       <fieldset id='db_navigation_fieldset'>
+                                   <legend>Navigation</legend>
+                                   <table>
+                                   <tr>
+                                       <td>
+                                       <table>
+                                       <tr>
+                                           <td>
+                                           <button dojoType="dijit.form.Button" baseClass="crudButton"
+                                                 label="Previous" id="db_previous_word" iconClass="back_icon"
+                                               onclick="db_navigate.previous_word">
+                                               <span width="140px"> </span>
+                                           </button>
+                                           </td>
+                                           <td>
+                                           <button dojoType="dijit.form.Button"  baseClass="crudButton"
+                                                 label="Next" id="db_next_word"  iconClass="forward_icon"
+                                               onclick="db_navigate.next_word">
+                                               <span width="140px"> </span>
+                                           </button>
+                                           </td>
+                                           <td>
+                                           <button dojoType="dijit.form.Button"  baseClass="crudButton"
+                                                 label="Last" id="db_last_word"  iconClass="last_icon"
+                                               onclick="db_navigate.last_word">
+                                               <span width="140px"> </span>
+                                           </button>
+                                           </td>
+                                           <td width="40px">
+                                           </td>
+                                           <td colSpan="2">
+                                              <input id="db_my_words_only_cb" dojotype="dijit.form.CheckBox"
+                                                 name="developer" checked="checked" value="off" type="checkbox">
+                                              </input>
+                                              <label for="db_my_words_only_cb">My Words Only
+                                              </label> 
+                                           </td>
+                                       </tr>
+                                       <tr>    
+                                           <td>
+                                           <button dojoType="dijit.form.Button" baseClass="crudButton"
+                                                  label="New" id="db_new_word"  iconClass="new_icon"
+                                               onclick="db_navigate.new_word">
+                                           </button>
+                                           </td>
+                                           <td>
+                                           <button dojoType="dijit.form.Button" baseClass="crudButton"
+                                                 label="Save" id="db_save_word"  iconClass="save_icon"
+                                               onclick="db_navigate.save_word">
+                                               <span width="140px"> </span>
+                                           </button>
+                                           </td>
+                                           <td>
+                                           <button dojoType="dijit.form.Button" baseClass="crudButton"
+                                                 label="Delete" id="db_delete_word"  iconClass="delete_icon"
+                                               onclick="db_navigate.delete_word">
+                                           </button>
+                                           </td>
+                                           <td width="40px">
+                                           </td>
+                                           <td>
+                                             <p>Filter:
+                                             </p>
+                                           </td>
+                                           <td>
+                                             <input type="text" dojoType='dijit.form.TextBox' style="width:6em"
+                                                        id='db_navigate_filter'>
+                                             </input>
+                                           </td>
+                                       </tr>
+                                       </table>
+                                       </td>
+                                   </tr>
+                                   </table>
+                               </fieldset>
+                               
+                                               
+                               <fieldset id='saved_data_fieldset'>
+                               <legend>Stored Data</legend>
+                               <table>
+                               <tr>
+                                   <td>
+                                   <label class='new_word_left'>Noun/Verb:</label>
+                                   </td>
+                                   <td>
+                                     <div class='new_word_right'>
+                                       <select value='Noun' onChange='db_data_form.noun_verb_changed'
+                                            dojoType='dijit.form.ComboBox' id='word_type'>
+                                                      <option selected value='N' >Noun</option>
+                                                      <option value='V'>Verb</option>
+                                                      <option value='H'>Preposition</option>
+                                                      <option value='NA'>Name</option>
+                                          </select>
+                                        </div>
+                                      </td>
+                               </tr>
+                               <tr>
+                                   <td>
+                                   <label class='new_word_left_root' id="root_l_label">Root:</label>
+                                   </td>
+                                   <td>
+                                   <table>
+                                       <tr>
+                                           <td>
+                                           <label>L:</label>
+                                           </td>
+                                           <td>
+                                           <input class='new_word_root large_font' type="text" maxLength="1"
+                                                dojoType='dijit.form.TextBox' id='root_l' >
+                                           </input>
+                                           </td>
+                                           <td>
+                                           <label>C:</label>
+                                           </td>
+                                           <td>
+                                           <input class='new_word_root large_font' type="text" maxLength="1"
+                                                dojoType='dijit.form.TextBox' id='root_c' >
+                                           </input>
+                                           </td>
+                                           <td>
+                                           <label>F:</label>
+                                           </td>
+                                           <td>
+                                           <input class='new_word_root large_font' type="text" maxLength="1"
+                                               dojoType='dijit.form.TextBox' id='root_f' >
+                                           </input>
+                                           </td>
+                                       </tr>
+                                   </table>
+                                   </td>
+                               </tr>
+                               <tr>
+                                   <td>
+                                   <label class='new_word_left'>Meaning:</label>
+                                   </td>
+                                   <td>
+                                   <input class='new_word_right' type="text"
+                                        dojoType='dijit.form.TextBox' id='new_word_text_meaning' >
+                                   </input>
+                                   </td>
+                               </tr>
+                               <tr>
+                                   <td>
+                                   <label class='new_word_left'>Entered By:</label>
+                                   </td>
+                                   <td>
+                                   <p id='new_word_creator_nickname'>
+                                   </p>
+                                   </td>
+                               </tr>
+                               <tr>
+                                   <td colspan="2">
+                                       <div id="vocab_db_words_table"> 
+                                       </div>
+                                       
+                                   </td>
+                               </tr>
+                               </table>
+                               <button dojoType="dijit.form.Button" baseClass="wideCrudButton"
+                                             label="Add New Variation" id="db_add_new_variation"  iconClass="new_icon"
+                                           onclick="db_data_form.add_new_variation">
+                               </button>
+                               </fieldset>
+                                           
+                                           
+                               </div>   
+                                   
+                               <label class='db_status' id='add_to_db_status'>Ready</label>
+                                   
+                               <div id='virtual_keyboard'></div>        
+                               
+                               <!--a href="backup/vocab_database.dmp">Download the Vocab Database</a-->
+                       </div>    
+                                   
+                                <!--login -->
+                       <div dojoType="dijit.layout.ContentPane" title="Login"  id="navigate_login" >
+                           <div id="login_page" >
+                               <!--  p id="login_title">
+                               Welcome to the ArabicReader Web Site and Application.
+                               </p-->
+                               <form id="login_form" method="post" >
+                                   <table>
+                                       <tr>
+                                           <td>
+                                               Username (Email Address):
+                                           </td>
+                                           <td>
+                                               <input type="text" dojoType='dijit.form.TextBox'
+                                                style="width:30em" id="login_username">
+                                               </input>
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td>
+                                           Password:
+                                           </td>
+                                           <td>
+                                               <input type="password" dojoType='dijit.form.TextBox'
+                                                style="width:30em" id="login_password">
+                                               </input>
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td>
+                                           </td>
+                                           <td>
+                                               <button dojoType="dijit.form.Button" label="Login To ArabicReader" id="login_submit"
+                                                   onclick="login_.submit_login" >
+                                               </button>
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td>
+                                           </td>
+                                           <td>
+                                               <button dojoType="dijit.form.Button" label="Forgotten Password" id="login_forgotten_password"
+                                                   onclick="login_.forgotten_password" >
+                                               </button>
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td>
+                                           </td>
+                                           <td>
+                                               <p id="login_status">
+                                               </p>
+                                           </td>
+                                       </tr>
+                                   </table>
+                               
+                                   <div id="login_spacer"></div>
+                                   
+                               </form>
+                               <div id="signup_ad">
+                                       <img src="images/logo.png" id="login_signup_logo"></img>
+                                       <p>
+                                       Signing up for Arabic Reader gives you a number of benefits. You can upload
+                                       your own texts, your vocabulary revision lists will be saved between sessions
+                                       and you can save your vocabulary lists as pdf files for printing and off-line
+                                       revision.
+                                       </p>
+                                       <button dojoType="dijit.form.Button" label="Sign Up For Arabic Reader"
+                                           id="login_signup" onclick="mode.goto_signup">
+                                           <!--span width="140px"> </span-->
+                                       </button>
+                                       <div class="clear_fix">.</div>
+                                   </div>
+                           </div>
+                           
+                               <!--forgotten password -->
+                           <div id="forgotten_password_pane" dojoType="dijit.Dialog" 
+                             execute="login_.reset_password(arguments[0]);"
+                               title="Reset Your ArabicReader Password">
+                               <div dojotype="dijit.layout.ContentPane">
+                                   <div id="forgotten_password_pane_content">
+                                       <table>
+                                           <tr>
+                                               <td colspan="2">
+                                                 <p>
+                                                 This will reset your password and send a new password to
+                                                 your registered email address.
+                                                 
+                                                 You can then log on, go to My Reader, and change your password to one you prefer.
+                                                 </p>
+                                               </td>
+                                           </tr>
+                                           <tr>
+                                               <td><label>User Name (Registered Email Address): </label>
+                                               </td>
+                                               <td>
+                                                   <input dojoType="dijit.form.TextBox"  id="forgotten_email"
+                                                       name="email_address">
+                                                   </input>
+                                               </td>
+                                           </tr>
+                                           <tr>
+                                               <td colspan="2" align="center">
+                                                    <button dojoType=dijit.form.Button type="submit">OK</button>
+                                                    <button dojoType=dijit.form.Button onclick="dijit.byId('forgotten_password_pane').hide();">Cancel</button>
+                                               </td>
+                                           </tr>
+                                       </table>
+                                   </div>
+                               </div>
+                           </div>
+                           
+                       </div>
+                        
+                                <!--signup -->
+                       <div dojoType="dijit.layout.ContentPane" title="Signup"  id="navigate_signup" >
+                           <div id="signup_page" >
+                               <!-- p id="signup_title">
+                               Welcome to the ArabicReader Web Site and Application.
+                               </p-->
+                               <table>
+                                   <tr>
+                                       <td width="90px">
+                                           Email Address:
+                                       </td>
+                                       <td width="150px">
+                                           <input type="text" dojoType='dijit.form.TextBox' style="width:20em"
+                                                    id="signup_emailaddress">
+                                           </input>
+                                       </td>
+                                       <td>
+                                           <p> Your email address will be used as your user name and will
+                                           not be shared with or visible to any other party. Please see
+                                           our privacy policy.
+                                           </p>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>
+                                       Nickname:
+                                       </td>
+                                       <td width="150px">
+                                           <input type="text" dojoType='dijit.form.TextBox' style="width:20em"
+                                                   id="signup_nickname">
+                                           </input>
+                                       </td>
+                                       <td>
+                                           <p>
+                                           Your nickname is used when referring to you on the site. For instance,
+                                           if you add a new word to the database then the creation of that entry
+                                           will be marked with your nickname. This ensures that your email
+                                           address remains private.
+                                           </p>
+                                       </td>
+                                   </tr>
+                               </table>
+                               <p>
+                               After signing up, your password will be emailed to you at the address you entered.
+                               </p>
+                               <button dojoType="dijit.form.Button" label="Create my account." id="signup_submit"
+                                   onclick="login_.submit_signup">
+                                   <span width="200px"> </span>
+                               </button>
+                               <p id="signup_status">
+                               </p>
+                           </div>
+                       </div>
+                         
+                                <!-- Read-->
+                       <div id="navigate_read_text_area">
+                           <div id='central_text'>
+                               <div id='central_text_content'>
+                               </div>
+                               <div id="navigate_page_panel">
+                                   <button dojoType="dijit.form.Button" label="Previous Page"
+                                        id="navigate_previous_page"
+                                        onClick="central_text.goto_previous_page();">
+                                   </button>
+                                   <button dojoType="dijit.form.Button" label="Next Page"
+                                        id="navigate_next_page" 
+                                        onClick="central_text.goto_next_page();">
+                                   </button>
+                               </div>
+                           </div>
+                           
+                           
+                           <!--frameborder=0 border=0  to stop scroll bar in IE see
+                                               http://www.mattcutts.com/blog/iframe-height-scrollbar-example/-->
+                                               
+                           <div id="embedded_iframe_holder">    
+                              <iframe id='central_text_iframe'  
+                                      frameborder=0 border=0 scrolling="auto"
+                                       width="100%" >
+                              </iframe>
+                           </div>
+                       </div>
+                        
+                    </div>
+                    
+                  </div>
+      
+         </div>
+         
+      </div>
+  </body>
+
+
+</html> 

@@ -1,0 +1,23 @@
+<!-- web -->
+ <div dojoType="dijit.layout.ContentPane" title="Web" id="navigate_web" >
+ 	<table>
+	 	<tr>
+	 	<td>
+	    <label id="web_current_location_label">URL:</label>
+	    </td>
+	    <td>
+	   	<input type='text' dojoType="dijit.form.TextBox"
+	        id="navigate_current_location">
+		</input>
+		</td>
+		<td>
+		<label id="web_suggested_label">Suggested:</label>
+		</td>
+		<td>
+		<select dojoType='dijit.form.ComboBox' id='web_suggested_urls' 
+			onchange='navigate_.web_suggested_urls_changed'>
+	   	</select>
+	   	</td>
+	   	</tr>
+   	</table>
+ </div>

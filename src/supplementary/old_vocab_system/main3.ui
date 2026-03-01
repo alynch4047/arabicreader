@@ -1,0 +1,2403 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>MainEntry</class>
+<comment>Python:
+Python:# Import our custom widget.
+Python:from lineeditdrag import *
+Python:from lineeditarabic import *</comment>
+<widget class="QMainWindow">
+    <property name="name">
+        <cstring>frmMainEntry</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>743</width>
+            <height>662</height>
+        </rect>
+    </property>
+    <property name="minimumSize">
+        <size>
+            <width>21</width>
+            <height>181</height>
+        </size>
+    </property>
+    <property name="font">
+        <font>
+            <family>Bitstream Cyberbit</family>
+        </font>
+    </property>
+    <property name="caption">
+        <string>Vocabulary Database</string>
+    </property>
+    <property name="icon">
+        <pixmap>image0</pixmap>
+    </property>
+    <widget class="QFrame">
+        <property name="name">
+            <cstring>frmToolbar</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>731</width>
+                <height>50</height>
+            </rect>
+        </property>
+        <property name="frameShape">
+            <enum>StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+            <enum>Raised</enum>
+        </property>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>lblOrderBy</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>540</x>
+                    <y>10</y>
+                    <width>63</width>
+                    <height>29</height>
+                </rect>
+            </property>
+            <property name="focusPolicy">
+                <enum>NoFocus</enum>
+            </property>
+            <property name="text">
+                <string>Order By</string>
+            </property>
+        </widget>
+        <widget class="QPushButton">
+            <property name="name">
+                <cstring>pbFirst</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>11</x>
+                    <y>6</y>
+                    <width>46</width>
+                    <height>37</height>
+                </rect>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>0</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="text">
+                <string>&amp;First</string>
+            </property>
+        </widget>
+        <widget class="QPushButton">
+            <property name="name">
+                <cstring>pbLast</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>63</x>
+                    <y>6</y>
+                    <width>42</width>
+                    <height>37</height>
+                </rect>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>0</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="text">
+                <string>&amp;Last</string>
+            </property>
+        </widget>
+        <widget class="QPushButton">
+            <property name="name">
+                <cstring>pbReveal</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>238</x>
+                    <y>6</y>
+                    <width>57</width>
+                    <height>37</height>
+                </rect>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>0</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="text">
+                <string>&amp;Reveal</string>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Reveal meaning/arabic</string>
+            </property>
+        </widget>
+        <widget class="QPushButton">
+            <property name="name">
+                <cstring>pbSearch</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>301</x>
+                    <y>6</y>
+                    <width>54</width>
+                    <height>37</height>
+                </rect>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>0</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="text">
+                <string>&amp;Search</string>
+            </property>
+        </widget>
+        <widget class="QComboBox">
+            <item>
+                <property name="text">
+                    <string>Id</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>Kalima</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>Meaning</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>Jidhr</string>
+                </property>
+            </item>
+            <property name="name">
+                <cstring>cmbOrderBy</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>405</x>
+                    <y>10</y>
+                    <width>120</width>
+                    <height>30</height>
+                </rect>
+            </property>
+        </widget>
+        <widget class="QPushButton">
+            <property name="name">
+                <cstring>pbNext</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>185</x>
+                    <y>6</y>
+                    <width>47</width>
+                    <height>37</height>
+                </rect>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>0</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="text">
+                <string>&amp;Next</string>
+            </property>
+            <property name="autoRepeat">
+                <bool>true</bool>
+            </property>
+        </widget>
+        <widget class="QPushButton">
+            <property name="name">
+                <cstring>pbPrevious</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>111</x>
+                    <y>6</y>
+                    <width>68</width>
+                    <height>37</height>
+                </rect>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>0</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="text">
+                <string>&amp;Previous</string>
+            </property>
+            <property name="autoRepeat">
+                <bool>true</bool>
+            </property>
+        </widget>
+    </widget>
+    <widget class="QTabWidget">
+        <property name="name">
+            <cstring>tabVocab</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>49</y>
+                <width>730</width>
+                <height>520</height>
+            </rect>
+        </property>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>Enter/Revise</string>
+            </attribute>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pbClose</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>580</x>
+                        <y>490</y>
+                        <width>97</width>
+                        <height>37</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>&amp;Close</string>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>leId</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>579</x>
+                        <y>10</y>
+                        <width>60</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="paletteForegroundColor">
+                    <color>
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                    </color>
+                </property>
+                <property name="paletteBackgroundColor">
+                    <color>
+                        <red>211</red>
+                        <green>205</green>
+                        <blue>204</blue>
+                    </color>
+                </property>
+                <property name="focusPolicy">
+                    <enum>NoFocus</enum>
+                </property>
+                <property name="readOnly">
+                    <bool>true</bool>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pbUnicode</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>180</x>
+                        <y>10</y>
+                        <width>103</width>
+                        <height>37</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Unicode?</string>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>leMeaning</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>400</x>
+                        <y>210</y>
+                        <width>230</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>14</pointsize>
+                    </font>
+                </property>
+            </widget>
+            <widget class="lineeditarabic">
+                <property name="name">
+                    <cstring>leJidhr1</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>451</x>
+                        <y>4</y>
+                        <width>39</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>0</width>
+                        <height>33</height>
+                    </size>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>20</pointsize>
+                    </font>
+                </property>
+                <property name="focusPolicy">
+                    <enum>StrongFocus</enum>
+                </property>
+            </widget>
+            <widget class="lineeditarabic">
+                <property name="name">
+                    <cstring>leJidhr2</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>407</x>
+                        <y>4</y>
+                        <width>38</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>0</width>
+                        <height>33</height>
+                    </size>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>20</pointsize>
+                    </font>
+                </property>
+            </widget>
+            <widget class="lineeditarabic">
+                <property name="name">
+                    <cstring>leJidhr3</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>362</x>
+                        <y>4</y>
+                        <width>39</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>0</width>
+                        <height>33</height>
+                    </size>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>20</pointsize>
+                    </font>
+                </property>
+            </widget>
+            <widget class="lineeditarabic">
+                <property name="name">
+                    <cstring>leJidhr4</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>317</x>
+                        <y>4</y>
+                        <width>39</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>0</width>
+                        <height>33</height>
+                    </size>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>20</pointsize>
+                    </font>
+                </property>
+            </widget>
+            <widget class="lineeditarabic">
+                <property name="name">
+                    <cstring>leIsmP</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>216</x>
+                        <y>62</y>
+                        <width>159</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>20</pointsize>
+                    </font>
+                </property>
+            </widget>
+            <widget class="lineeditarabic">
+                <property name="name">
+                    <cstring>leIsmS</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>465</x>
+                        <y>63</y>
+                        <width>159</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>20</pointsize>
+                    </font>
+                </property>
+            </widget>
+            <widget class="lineeditarabic">
+                <property name="name">
+                    <cstring>leFilMa</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>464</x>
+                        <y>110</y>
+                        <width>159</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>20</pointsize>
+                    </font>
+                </property>
+            </widget>
+            <widget class="lineeditarabic">
+                <property name="name">
+                    <cstring>leFilMu</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>192</x>
+                        <y>110</y>
+                        <width>183</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>20</pointsize>
+                    </font>
+                </property>
+            </widget>
+            <widget class="lineeditarabic">
+                <property name="name">
+                    <cstring>leMasdar</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>18</x>
+                        <y>110</y>
+                        <width>142</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>20</pointsize>
+                    </font>
+                </property>
+            </widget>
+            <widget class="lineeditarabic">
+                <property name="name">
+                    <cstring>leExample</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>235</x>
+                        <y>262</y>
+                        <width>395</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>20</pointsize>
+                    </font>
+                </property>
+            </widget>
+            <widget class="lineeditarabic">
+                <property name="name">
+                    <cstring>leHarf</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>465</x>
+                        <y>161</y>
+                        <width>159</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>20</pointsize>
+                    </font>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>lblId</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>650</x>
+                        <y>11</y>
+                        <width>50</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="paletteBackgroundColor">
+                    <color>
+                        <red>238</red>
+                        <green>238</green>
+                        <blue>230</blue>
+                    </color>
+                </property>
+                <property name="backgroundOrigin">
+                    <enum>WindowOrigin</enum>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>16</pointsize>
+                    </font>
+                </property>
+                <property name="focusPolicy">
+                    <enum>NoFocus</enum>
+                </property>
+                <property name="frameShape">
+                    <enum>NoFrame</enum>
+                </property>
+                <property name="frameShadow">
+                    <enum>Raised</enum>
+                </property>
+                <property name="text">
+                    <string>Id</string>
+                </property>
+                <property name="readOnly">
+                    <bool>true</bool>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>lblJidhr</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>510</x>
+                        <y>11</y>
+                        <width>50</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="paletteBackgroundColor">
+                    <color>
+                        <red>238</red>
+                        <green>238</green>
+                        <blue>230</blue>
+                    </color>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>16</pointsize>
+                    </font>
+                </property>
+                <property name="focusPolicy">
+                    <enum>NoFocus</enum>
+                </property>
+                <property name="frameShape">
+                    <enum>NoFrame</enum>
+                </property>
+                <property name="text">
+                    <string>Jidhr</string>
+                </property>
+                <property name="readOnly">
+                    <bool>true</bool>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>lblFilMu</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>390</x>
+                        <y>111</y>
+                        <width>60</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="paletteBackgroundColor">
+                    <color>
+                        <red>238</red>
+                        <green>238</green>
+                        <blue>230</blue>
+                    </color>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>16</pointsize>
+                    </font>
+                </property>
+                <property name="focusPolicy">
+                    <enum>NoFocus</enum>
+                </property>
+                <property name="frameShape">
+                    <enum>NoFrame</enum>
+                </property>
+                <property name="text">
+                    <string>Mudari`</string>
+                </property>
+                <property name="readOnly">
+                    <bool>true</bool>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>lblFilMa</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>650</x>
+                        <y>111</y>
+                        <width>60</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="paletteBackgroundColor">
+                    <color>
+                        <red>238</red>
+                        <green>238</green>
+                        <blue>230</blue>
+                    </color>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>16</pointsize>
+                    </font>
+                </property>
+                <property name="focusPolicy">
+                    <enum>NoFocus</enum>
+                </property>
+                <property name="frameShape">
+                    <enum>NoFrame</enum>
+                </property>
+                <property name="text">
+                    <string>Madi</string>
+                </property>
+                <property name="readOnly">
+                    <bool>true</bool>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>lblHarf</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>650</x>
+                        <y>161</y>
+                        <width>60</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="paletteBackgroundColor">
+                    <color>
+                        <red>238</red>
+                        <green>238</green>
+                        <blue>230</blue>
+                    </color>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>16</pointsize>
+                    </font>
+                </property>
+                <property name="focusPolicy">
+                    <enum>NoFocus</enum>
+                </property>
+                <property name="frameShape">
+                    <enum>NoFrame</enum>
+                </property>
+                <property name="text">
+                    <string>Harf</string>
+                </property>
+                <property name="readOnly">
+                    <bool>true</bool>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>lblMeaning</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>646</x>
+                        <y>211</y>
+                        <width>60</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="paletteBackgroundColor">
+                    <color>
+                        <red>238</red>
+                        <green>238</green>
+                        <blue>230</blue>
+                    </color>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>16</pointsize>
+                    </font>
+                </property>
+                <property name="focusPolicy">
+                    <enum>NoFocus</enum>
+                </property>
+                <property name="frameShape">
+                    <enum>NoFrame</enum>
+                </property>
+                <property name="text">
+                    <string>Meaning</string>
+                </property>
+                <property name="readOnly">
+                    <bool>true</bool>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>lblExample</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>650</x>
+                        <y>261</y>
+                        <width>60</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="paletteBackgroundColor">
+                    <color>
+                        <red>238</red>
+                        <green>238</green>
+                        <blue>230</blue>
+                    </color>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>16</pointsize>
+                    </font>
+                </property>
+                <property name="focusPolicy">
+                    <enum>NoFocus</enum>
+                </property>
+                <property name="frameShape">
+                    <enum>NoFrame</enum>
+                </property>
+                <property name="text">
+                    <string>Example</string>
+                </property>
+                <property name="readOnly">
+                    <bool>true</bool>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>lblMasdar</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>90</x>
+                        <y>60</y>
+                        <width>70</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="paletteBackgroundColor">
+                    <color>
+                        <red>238</red>
+                        <green>238</green>
+                        <blue>230</blue>
+                    </color>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>16</pointsize>
+                    </font>
+                </property>
+                <property name="focusPolicy">
+                    <enum>NoFocus</enum>
+                </property>
+                <property name="frameShape">
+                    <enum>NoFrame</enum>
+                </property>
+                <property name="text">
+                    <string>Masdar</string>
+                </property>
+                <property name="readOnly">
+                    <bool>true</bool>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>lblIsmP</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>390</x>
+                        <y>61</y>
+                        <width>70</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="paletteBackgroundColor">
+                    <color>
+                        <red>238</red>
+                        <green>238</green>
+                        <blue>230</blue>
+                    </color>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>16</pointsize>
+                    </font>
+                </property>
+                <property name="focusPolicy">
+                    <enum>NoFocus</enum>
+                </property>
+                <property name="frameShape">
+                    <enum>NoFrame</enum>
+                </property>
+                <property name="text">
+                    <string>Ism P</string>
+                </property>
+                <property name="readOnly">
+                    <bool>true</bool>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>lblIsmS</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>650</x>
+                        <y>61</y>
+                        <width>70</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="paletteBackgroundColor">
+                    <color>
+                        <red>238</red>
+                        <green>238</green>
+                        <blue>230</blue>
+                    </color>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>16</pointsize>
+                    </font>
+                </property>
+                <property name="focusPolicy">
+                    <enum>NoFocus</enum>
+                </property>
+                <property name="frameShape">
+                    <enum>NoFrame</enum>
+                </property>
+                <property name="text">
+                    <string>Ism S</string>
+                </property>
+                <property name="readOnly">
+                    <bool>true</bool>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pbAdd</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>250</x>
+                        <y>421</y>
+                        <width>96</width>
+                        <height>37</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>&amp;Add</string>
+                </property>
+                <property name="accel">
+                    <string>Alt+A</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pbExtraRevision</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>480</x>
+                        <y>420</y>
+                        <width>152</width>
+                        <height>37</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>&amp;Extra Revision</string>
+                </property>
+                <property name="accel">
+                    <string>Alt+E</string>
+                </property>
+                <property name="toolTip" stdset="0">
+                    <string>Extra revision</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pbDelete</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>361</x>
+                        <y>421</y>
+                        <width>97</width>
+                        <height>37</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>&amp;Delete</string>
+                </property>
+                <property name="accel">
+                    <string>Alt+D</string>
+                </property>
+            </widget>
+            <widget class="QListBox">
+                <item>
+                    <property name="text">
+                        <string>QiSaS</string>
+                    </property>
+                </item>
+                <item>
+                    <property name="text">
+                        <string>Ghunya</string>
+                    </property>
+                </item>
+                <item>
+                    <property name="text">
+                        <string>raHeeq</string>
+                    </property>
+                </item>
+                <item>
+                    <property name="text">
+                        <string>minhaaj</string>
+                    </property>
+                </item>
+                <property name="name">
+                    <cstring>lbBooks</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>9</x>
+                        <y>175</y>
+                        <width>178</width>
+                        <height>280</height>
+                    </rect>
+                </property>
+                <property name="selectionMode">
+                    <enum>Multi</enum>
+                </property>
+            </widget>
+            <widget class="QButtonGroup">
+                <property name="name">
+                    <cstring>bgRevision</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>234</x>
+                        <y>313</y>
+                        <width>400</width>
+                        <height>80</height>
+                    </rect>
+                </property>
+                <property name="title">
+                    <string></string>
+                </property>
+                <widget class="QRadioButton">
+                    <property name="name">
+                        <cstring>rbReviseArabic</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>20</x>
+                            <y>10</y>
+                            <width>120</width>
+                            <height>34</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Revise Arabic</string>
+                    </property>
+                </widget>
+                <widget class="QRadioButton">
+                    <property name="name">
+                        <cstring>rbShowBoth</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>true</bool>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>290</x>
+                            <y>10</y>
+                            <width>106</width>
+                            <height>34</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Show Both</string>
+                    </property>
+                </widget>
+                <widget class="QRadioButton">
+                    <property name="name">
+                        <cstring>rbReviseEnglish</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>155</x>
+                            <y>8</y>
+                            <width>120</width>
+                            <height>34</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Revise English</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>checkBox3</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>260</x>
+                            <y>50</y>
+                            <width>130</width>
+                            <height>25</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Revise again</string>
+                    </property>
+                </widget>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>Sections</string>
+            </attribute>
+            <widget class="QFrame">
+                <property name="name">
+                    <cstring>frame4</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>-2</x>
+                        <y>1</y>
+                        <width>726</width>
+                        <height>82</height>
+                    </rect>
+                </property>
+                <property name="frameShape">
+                    <enum>StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                    <enum>Raised</enum>
+                </property>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel1</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>18</x>
+                            <y>13</y>
+                            <width>50</width>
+                            <height>29</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Kalima</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>cbPubPrint1</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>257</x>
+                            <y>51</y>
+                            <width>89</width>
+                            <height>24</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Print</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>cbPubPrint2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>422</x>
+                            <y>50</y>
+                            <width>89</width>
+                            <height>24</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Print</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>lePubKalima1</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>419</x>
+                            <y>9</y>
+                            <width>159</width>
+                            <height>36</height>
+                        </rect>
+                    </property>
+                    <property name="backgroundOrigin">
+                        <enum>AncestorOrigin</enum>
+                    </property>
+                    <property name="font">
+                        <font>
+                            <pointsize>14</pointsize>
+                        </font>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>NoFocus</enum>
+                    </property>
+                    <property name="readOnly">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>lePubKalima2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>250</x>
+                            <y>9</y>
+                            <width>159</width>
+                            <height>36</height>
+                        </rect>
+                    </property>
+                    <property name="backgroundOrigin">
+                        <enum>WindowOrigin</enum>
+                    </property>
+                    <property name="font">
+                        <font>
+                            <pointsize>14</pointsize>
+                        </font>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>NoFocus</enum>
+                    </property>
+                    <property name="readOnly">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>lePubKalima3</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>80</x>
+                            <y>9</y>
+                            <width>159</width>
+                            <height>36</height>
+                        </rect>
+                    </property>
+                    <property name="backgroundOrigin">
+                        <enum>ParentOrigin</enum>
+                    </property>
+                    <property name="font">
+                        <font>
+                            <pointsize>14</pointsize>
+                        </font>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>NoFocus</enum>
+                    </property>
+                    <property name="readOnly">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+            </widget>
+            <widget class="QFrame">
+                <property name="name">
+                    <cstring>frame5</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>509</x>
+                        <y>244</y>
+                        <width>203</width>
+                        <height>180</height>
+                    </rect>
+                </property>
+                <property name="frameShape">
+                    <enum>StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                    <enum>Raised</enum>
+                </property>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pbAddSection</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>19</x>
+                            <y>54</y>
+                            <width>159</width>
+                            <height>37</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>&amp;New Section</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pbDeleteSection</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>19</x>
+                            <y>97</y>
+                            <width>159</width>
+                            <height>37</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Delete Section</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>leSectionName</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>19</x>
+                            <y>12</y>
+                            <width>159</width>
+                            <height>36</height>
+                        </rect>
+                    </property>
+                </widget>
+            </widget>
+            <widget class="QFrame">
+                <property name="name">
+                    <cstring>frame6</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>510</x>
+                        <y>100</y>
+                        <width>203</width>
+                        <height>134</height>
+                    </rect>
+                </property>
+                <property name="frameShape">
+                    <enum>StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                    <enum>Raised</enum>
+                </property>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pbAddToSection</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>16</x>
+                            <y>9</y>
+                            <width>170</width>
+                            <height>37</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Add to Section</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pbRemoveFromSection</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>16</x>
+                            <y>52</y>
+                            <width>170</width>
+                            <height>37</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Remove From Section</string>
+                    </property>
+                </widget>
+            </widget>
+            <widget class="QListBox">
+                <property name="name">
+                    <cstring>lbSectionWords</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>257</x>
+                        <y>97</y>
+                        <width>239</width>
+                        <height>365</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QListView">
+                <column>
+                    <property name="text">
+                        <string>Section</string>
+                    </property>
+                    <property name="clickable">
+                        <bool>true</bool>
+                    </property>
+                    <property name="resizable">
+                        <bool>true</bool>
+                    </property>
+                </column>
+                <property name="name">
+                    <cstring>lvSections</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>7</x>
+                        <y>95</y>
+                        <width>233</width>
+                        <height>364</height>
+                    </rect>
+                </property>
+                <property name="sizePolicy">
+                    <sizepolicy>
+                        <hsizetype>7</hsizetype>
+                        <vsizetype>5</vsizetype>
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                    </sizepolicy>
+                </property>
+                <property name="font">
+                    <font>
+                        <family>Sans</family>
+                        <pointsize>8</pointsize>
+                    </font>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>Section Layout</string>
+            </attribute>
+            <widget class="QSplitter">
+                <property name="name">
+                    <cstring>splitter2</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>276</x>
+                        <y>132</y>
+                        <width>418</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="orientation">
+                    <enum>Horizontal</enum>
+                </property>
+            </widget>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>lblInformDND</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>248</x>
+                        <y>329</y>
+                        <width>318</width>
+                        <height>29</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>drag and drop each word to its correct position</string>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>leLayoutSectionName</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>445</x>
+                        <y>34</y>
+                        <width>246</width>
+                        <height>36</height>
+                    </rect>
+                </property>
+                <property name="alignment">
+                    <set>AlignRight</set>
+                </property>
+            </widget>
+            <widget class="lineeditdrag">
+                <property name="name">
+                    <cstring>leLayoutKalima3</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>195</x>
+                        <y>141</y>
+                        <width>233</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="lineeditdrag">
+                <property name="name">
+                    <cstring>leLayoutKalima5</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>187</x>
+                        <y>185</y>
+                        <width>244</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="lineeditdrag">
+                <property name="name">
+                    <cstring>leLayoutKalima7</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>188</x>
+                        <y>229</y>
+                        <width>244</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="lineeditdrag">
+                <property name="name">
+                    <cstring>leLayoutKalima9</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>190</x>
+                        <y>269</y>
+                        <width>244</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="lineeditdrag">
+                <property name="name">
+                    <cstring>leLayoutKalima2</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>440</x>
+                        <y>95</y>
+                        <width>247</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="lineeditdrag">
+                <property name="name">
+                    <cstring>leLayoutKalima4</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>442</x>
+                        <y>143</y>
+                        <width>244</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="lineeditdrag">
+                <property name="name">
+                    <cstring>leLayoutKalima6</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>445</x>
+                        <y>186</y>
+                        <width>244</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="lineeditdrag">
+                <property name="name">
+                    <cstring>leLayoutKalima8</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>444</x>
+                        <y>230</y>
+                        <width>244</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="lineeditdrag">
+                <property name="name">
+                    <cstring>leLayoutKalima10</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>444</x>
+                        <y>269</y>
+                        <width>244</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="lineeditdrag">
+                <property name="name">
+                    <cstring>leLayoutKalima1</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>191</x>
+                        <y>96</y>
+                        <width>238</width>
+                        <height>31</height>
+                    </rect>
+                </property>
+            </widget>
+        </widget>
+    </widget>
+</widget>
+<menubar>
+    <property name="name">
+        <cstring>menubar</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>743</width>
+            <height>28</height>
+        </rect>
+    </property>
+    <item text="&amp;File" name="fileMenu">
+        <action name="fileSaveAction"/>
+        <action name="fileBooks"/>
+        <action name="filePreferences"/>
+        <separator/>
+        <action name="filePrintAction"/>
+        <action name="fileSearchAction"/>
+        <separator/>
+        <action name="fileExitAction"/>
+    </item>
+    <item text="&amp;Edit" name="editMenu">
+        <action name="editUndoAction"/>
+        <action name="editRedoAction"/>
+        <separator/>
+        <action name="editCutAction"/>
+        <action name="editCopyAction"/>
+        <action name="editPasteAction"/>
+        <separator/>
+        <action name="editFindAction"/>
+    </item>
+    <item text="&amp;Help" name="helpMenu">
+        <action name="helpContentsAction"/>
+        <action name="helpIndexAction"/>
+        <separator/>
+        <action name="helpAboutAction"/>
+    </item>
+</menubar>
+<toolbars>
+    <toolbar dock="2">
+        <property name="name">
+            <cstring>toolBar</cstring>
+        </property>
+        <property name="label">
+            <string>Tools</string>
+        </property>
+        <action name="fileSaveAction"/>
+        <action name="filePrintAction"/>
+        <action name="editFindAction"/>
+    </toolbar>
+</toolbars>
+<customwidgets>
+    <customwidget>
+        <class>lineeditdrag</class>
+        <header location="global">/home/alynch/vocab/lineeditdrag.h</header>
+        <sizehint>
+            <width>20</width>
+            <height>40</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image1</pixmap>
+        <property type="Int">focusPolicy</property>
+        <property type="String">text</property>
+    </customwidget>
+    <customwidget>
+        <class>lineeditarabic</class>
+        <header location="global">/home/haq/vocab/lineeditarabic.h</header>
+        <sizehint>
+            <width>20</width>
+            <height>40</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image1</pixmap>
+        <property type="String">text</property>
+    </customwidget>
+</customwidgets>
+<actions>
+    <action>
+        <property name="name">
+            <cstring>fileNewAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image2</iconset>
+        </property>
+        <property name="text">
+            <string>New</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;New</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+N</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fileOpenAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image3</iconset>
+        </property>
+        <property name="text">
+            <string>Open</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Open...</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+O</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fileSaveAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image4</iconset>
+        </property>
+        <property name="text">
+            <string>Save</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Save</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+S</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fileSaveAsAction</cstring>
+        </property>
+        <property name="text">
+            <string>Save As</string>
+        </property>
+        <property name="menuText">
+            <string>Save &amp;As...</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>filePrintAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image5</iconset>
+        </property>
+        <property name="text">
+            <string>Print</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Print...</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+P</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fileExitAction</cstring>
+        </property>
+        <property name="text">
+            <string>Exit</string>
+        </property>
+        <property name="menuText">
+            <string>E&amp;xit</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>editUndoAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset></iconset>
+        </property>
+        <property name="text">
+            <string>Undo</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Undo</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+Z</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>editRedoAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image6</iconset>
+        </property>
+        <property name="text">
+            <string>Redo</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Redo</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+Y</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>editCutAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset></iconset>
+        </property>
+        <property name="text">
+            <string>Cut</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Cut</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+X</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>editCopyAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image7</iconset>
+        </property>
+        <property name="text">
+            <string>Copy</string>
+        </property>
+        <property name="menuText">
+            <string>C&amp;opy</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+C</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>editPasteAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image8</iconset>
+        </property>
+        <property name="text">
+            <string>Paste</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Paste</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+V</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>editFindAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image9</iconset>
+        </property>
+        <property name="text">
+            <string>Find</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Find...</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+F</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>helpContentsAction</cstring>
+        </property>
+        <property name="text">
+            <string>Contents</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Contents...</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>helpIndexAction</cstring>
+        </property>
+        <property name="text">
+            <string>Index</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Index...</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>helpAboutAction</cstring>
+        </property>
+        <property name="text">
+            <string>About</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;About</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fileBooks</cstring>
+        </property>
+        <property name="text">
+            <string>Books...</string>
+        </property>
+        <property name="menuText">
+            <string>Books...</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>filePreferences</cstring>
+        </property>
+        <property name="text">
+            <string>Preferences...</string>
+        </property>
+        <property name="menuText">
+            <string>Preferences...</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fileSearchAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image9</iconset>
+        </property>
+        <property name="text">
+            <string>Search...</string>
+        </property>
+        <property name="menuText">
+            <string>Search...</string>
+        </property>
+    </action>
+</actions>
+<images>
+    <image name="image0">
+        <data format="PNG" length="803">89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff61000002ea49444154789c25d05b6e1b551c80f1ef9c3973731c27766227a185b4060a2a42420509c406786505ac831db010f680fa528905940850535185e0d8692eb6135fe7e2993973fe3c6407dff753c3512149e2c873471829aa4ad86c84ad2d4d23d6d4b590a60e00cf8328d2582b743a868bc16ba506c3426a2bacd6355529388146ac31bec2378ac5c2525633d2c5af5455c94efb0782f84b8e0e028240615c2d28055a2bc248e169a86b280b47147a200be6b73fd36efd4e661b8caffea0f7e817b4f71949e6d0e3db132502695ae369c8328720684f513bc8b3531ae16bdaad359ddd3bdaad37ac97bfe14488428deef65e485509beafa8ec430d807382ad84a8f10979f18ca2f4d11a9c84f8c64323582b98f9dc22c0625913858a28d2acd60ead20d30ee8a2c39ff87798e07942147f4bf7e0479c2844409dfc994a550979eea86bb0f601d278e06ac10f344a594412025fa3d416f946b3b767080385c933c77c9e8232ecee86d4b580138aa2a6111bb2cce21b4510eee204c441103c7c2e9635bad914e6b325b3bb15efde4dd15a10a9793fba675338f2dc32192fa86bcb7fe7536a2b8c6f9728143b3b1ec656259f3eebf1f6744223f6383f1b134601abd586d52a63b5c80843c3f8664d96568c86f74c262bf6f763d64985b9b95e329b57585ba394c1da9a6e2ba42a2ad6cb14631483f31bbefbfe984623268e0d87877b0c0763be7af101467b8ae964c5d7df3c214972ca124e5e0ff8fcf9216952613c8f6e6f9b8bc13d7fff75cdde7e4c10781c1db5988c5798645dd26c869cbeb9268e239c68fa1ff7686e35f07441b1d9d06a853cedb7e8744282d067769f114686b27498b27a104f538be7795c0c17f4fb5d96cb9464bd4104f23cc3b992b3b37b6ce578fe458fabcb05c7c71fa15ebe1ccae30f3b6469c1e5e59ae5b2a677d0e49fb7b76c35436c55f0e8f13677d384274fdb68adb91ccd30be8f6f14ead5abf7329f670481e6f0a88bd61ef35982e707b4b60304c7f5d59cd6b6613a4de9f59a743a31a3d18a7ebfcdff948598d5a1f801c30000000049454e44ae426082</data>
+    </image>
+    <image name="image1">
+        <data format="PNG" length="1002">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000003b149444154789cad945f4c5b551cc73fe7dc4b7b4bcba0762d45c43114323599ee6192609c51d883892ce083f1718b3ebb185f8dc91e972cf39d2d2a2f1af664b6f1e0fe3863a0718969700eb0c52142da0242a1bd6d696f7bcff101585203ceb8fd9ece39f99dcff9fe7edf939f88c562ec465f5f9fe609442c161362173c3e3eae7b7a7ac8e7f36432196cdbfe4f907c3e4f2291201e8fe338cec3737357e9e8e828aded1e229d650e1f2d51754b082110124c13a4dc5ea341eb9dc284c0558a853f3ce8cb0677ef500fde7d39d2596679e326597b8e9abb85d7a770ab16ab6983ec5a05b487a70e36f0f4e10afe408d6a558310980108478dba4a1e8233990c5d474b64ed39aa3a8fe5f3317fbf81dbd70bccfeb205947632fd74f6589c1c6ea2f70d03a58ba0c1f2c9bdc1b66de3b8256a6e11cbe7e3ee1d181b590124fe2693aeee08d223c82c3a2c24b7b874bec8f26288774f7bd054504aef0dde6e99c0eb83f9fb266323cb80a27fb0958141836044605a2ee5523393371cc646fee2da37195aa35d0c0c5b4859ac03d7e91712dcaac5adab3650a3ff9d08ef7dd8404bb48869e5d958b5b87dadc4c9a1464e9f0d0326df7ebd86bd2e310cb1bf62d384d59441f2d70a070e1c60e09489929b988681bdd9cc97170bcc4c65595f71f8e0e3301337fc24a7732467831875a47f289652b0be5e4151e6d07316c1b0c0340d8ab92023e76d66a6b2840e36d2fb7a13fee632475e6edc367ea98a90fb98b7dd6310ca0328a44761582e1bab41befabcc0ec940d28bc5e93b68e064cab84e1d9beaeb48934eac1f53b01c1b000fca496aa54b61a99fcde61662a4b4b4b23d1680be9d426173e4df3602a48ea411989a4fd590f52a8fd156b05ed9d350e3defe3cfdf4b4c7ce770ea7d3fb9f520afbe1620daeee5c26735d20b9b9cfb6811a754a439e4e5c5639a4caa1e5caf586bfc0197b78702005cb9b4cae4cd3267ce8638fe964bd72b393e39d74928d242617303a756a37f284447770dcdbffc6384a05a85de1306e9a52057c7527c7131c3c42d3f475eb2303c82d4fc3276d6811db37efeb148723082d9b08f79f97c1e5729109a9a28307cc622d2d6cdf52b2b24efe548dedb00142009862cfa879ee1a71f6cec928353511472fbf4389148b0b0e0c108081412458dfe21c9f11351e67e7358595468246d1d1e5e38a6e9e851bc39d84ab502a669331dafec0d8ec7e3e8cb06e1a881d727d1ae40180a434a8c9db129a54126ad48a7358c2b4c5352c8c374bcccdab2bb37d8719cba79fab8211f9df218e0582c261e95f8bfc04f1a1e8bc5c4dfe0a19017a725d8c60000000049454e44ae426082</data>
+    </image>
+    <image name="image2">
+        <data format="PNG" length="184">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000007f49444154789ced95510a0021084475d9db041ec0e8fa5ecbfdda852d4b11fa6b2028a3570c53a188c00edd7d819935b2504470357f5945559d36000022720f60823d11910b1fac88a894f2f599592d5b52e05aeb6f6cc153e0d6da50ebe12930e2321039f09b0c6fb3542a223ae0033ee085cc2b1d790b3ce1ae3f6f9b150f6d5433af8c7fa5080000000049454e44ae426082</data>
+    </image>
+    <image name="image3">
+        <data format="PNG" length="231">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000000ae49444154789cb594510ec3200c436db45371b6691fd3cee66bb18f5135a219235af04f442b5e2c03a124ec50d942dd09be4537d45a9b5d4be2f85f1243e06393d748126d53661d9e854a624ac6633c40cff8576e51280010406b0d00dab104b9c69d19e887774201f64ebc7c8f342fc678b0ce553cc76b752e37e368d69edc8c2df4f58c01ef8f4f7533fe176a1e482ef4e2380b6ac0b9d0d36a57161430833e130aacdef62f9acd8ab4793cea0d051970cd5b32cc0a0000000049454e44ae426082</data>
+    </image>
+    <image name="image4">
+        <data format="PNG" length="521">89504e470d0a1a0a0000000d494844520000001200000012080600000056ce8e57000001d049444154789cad93318b134114c77fbb0ad7056c6c3207294e028720a4091e888b58c829b9b3d63eb52284ec17c83749a9553a51c46f90a05584d3ec594439b9c59d24e7ce7b169709311b130bfff0d8b7f3e6fde7b7b3bca016dc06e0e8e4f38ea20484a40801218a30ae1cce3e31e4e9c97047104242ce1142ae2008df2a4f66211078a37179a4007b7b7b6cd2703804e03439dd05d267c18b34f445638c763a1d8da24855555d7ea1f9ccea2f9beac5cf339d9d8f757af65527dfbf681445da6ab5d418a3c03e5002b8ba7aa28ae3e5dbd7bc19fff863fddef56b3cbcb50f409ee77e791748817461e48b2a8ec777ee722c39eae6b1940338e77c5ba940e48b2ac2abf7efd6121ddebcb16ab4508108751c1f1c7034279115aa954f2b1a39e7a8d7ebdc7ff0a8b06959d56a753b918850abd510114404555de4fedd3987886c26f20dfd7effaf44954a0555dd4ca4aa0c0603badd2e599661adc55a4bbbdda6d168e09ca3d7eb512e97b71301645946b3d904208e63002693c9a2bef58e3cb2b516b81c179f4fa7d385d1d6bfe6375a6b89e3186b2d5996158cd6dd51307f1a63ccc82fae0eae1fd4652549f21cf8087c00126f54020c97b3532a74ad570a8c80044883a5426929fed5c8c7ffd36f90c544584eaf63270000000049454e44ae426082</data>
+    </image>
+    <image name="image5">
+        <data format="PNG" length="725">89504e470d0a1a0a0000000d494844520000001200000012080600000056ce8e570000029c49444154789c8dd4cf4b14611cc7f1f7ee8c3156b88a1a4d147848a8a08342d1ce4deab06e5d0a919a42c8b54b2004fe05211e8aa4c024b01f109412c51e823c6cea212c8d9082888112360cdcd2c5d96a9c7d9071bf1dda4dd144bf300c3c3f5e7c9e67be4c884dca8e45a5502820c093d4db08b0082c6fb66f1d52aad1fb5d62c7a262c7a2025400da96117f61566449561e11f1673e891d6bd83a68c71a447c7f05f17d915fbef873b3e2cf4cc9ecab7b020860029abe16b02c4bea2a84c7832f5606833c04900f72804201ce17a734db008c87d722ed8976005c9521af1479cf85409157390814ca73515fdf733cd10bd051daabad462e272e931a4991683e84a9e5f0fc790ca30acf77d10385f23c58ca71a537497d5d80f3393b04bc0316b4d549745da77e7f3da9c9342d9d578937eea356fb064140b0b48cca3a78fe773abaae71fbc6513c576f71a6b337014f2b25d1751d1528f4b04eed9e5ada2eb4911cffc8d9ceebfc2ed45015fe4a762e4b477792c7038df40fa4490e3b178b079a0f599625c3cf87895447c86432a45ea6282b94912fe48b170d866130363ec683bb0f68bfd44eeedb04078f9ca1a7bb07e000900e5996257db7fa307483aadd556cdfb69d48750437e3f2ecc533c2e1306ed6054029f50f77a61d068706014e02e33a80e33898b5e6df853a3003668d49ebe9d67f49fbeff463e8062a50a4a7d364e633a5efb403d042c5eefc09609fb389c7e298a649e5ce4a426521cacbca89ec8a609a2600e7edf3e4e673b89ecbc4e404402b3002102e766733d052ec56b1cfd9f2e8e123191d1e95a937538220afdfbc96a6134d123d162d7575028817c350c22a804a60ef86686a742d72aa18420bb1bec2c0ce55efc3c57b78ba6a4d07f0039802e680e5ff415b4117810f250460336823b4c09a1fdc1f77b456eb8c7f39e60000000049454e44ae426082</data>
+    </image>
+    <image name="image6">
+        <data format="PNG" length="204">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000009349444154789ced943d0e80200c46a9f1548cc4631907c2b148c75e0b27b0226083b2f12d24d03efa0740446a849621d409e65af30df418f6a36c4c64400a063e155a639038d52ed01a433c4b11a3bfa02d47be72bb3ca854e3987e2b5d2203255829d3aee6b522fd04cee1bf82df1add05964c4f023b2b73928e64758e9d55ca6cf20791eb560ade90daeb930ae67f3cc10f9d5ba746084960f50a0000000049454e44ae426082</data>
+    </image>
+    <image name="image7">
+        <data format="PNG" length="601">89504e470d0a1a0a0000000d494844520000001200000012080600000056ce8e570000022049444154789c7d93316bdb4018861feb54d236364e486c483643a74241816c5d8ae8509274711743fa375a53daa19060ba79f790a9433a97924ca65b5767f1a4c11d9a88820baeecf87477b23ad872edc8f60bc7e9ee7befd17b1f5ca652a9c42cd1f9f9791e1800511cc7cfa49496312633ebc9e572df81c806a8d56a2948bd5ec775dd5eb3d9dc057e4b292dcff3d6c3301477ac79a06727ab52a93457154270f9ed2b2f0e5f5e379bcdddc16020c2301452cabb200164ac65d70278fbee3d00aeeb5e5f5d5d6d6aad97faed459b6a18f0e9e31bfc3f12afdde2f9d12b8ac5e297a47e7c7cfc3a97cb29dbb647c95eea0f6a1810ab0013deb279af472c6f002897cbd46a350a8502f57afdb3effb59638cb510340b8954c028ec935101003b3b3b944a2584105c5c5cd06834ce7cdfcf260c6b1524524332264c5dbd5aad02d06834ce804dc09af668112452018cd4ffc44a71727242b7dba5dd6e73707000f008b899265a0489c221563c4ea4b5462985528ab5b5358220488e3e9826bae9b4f9a56f89cd80381c82e9333212c23eb1192732c64c41c998950df0d43d4af561568ee3cc25d25a1345d13ce8f4f4f4706f6fef491004d9d982e7791fcae5321b1b1b68ada78912600ab4bdbdad1cc7f929a5b4ef80d8dfdf279fcfcf2549be53202144bcb5b52517bc213a9d4e0ab234d1aadeb8aebbaa8ce338b45a2d00328c5f6f7e32cf6a1d780c3c9cf896e92ff023318805660bb83f9957812260f00f77b05da09c271e650000000049454e44ae426082</data>
+    </image>
+    <image name="image8">
+        <data format="PNG" length="293">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000000ec49444154789cb5954d0e83201085df989e6a1237bd96c44583d7eaa6c95c6bba402dc850d0d29798093ff3cd13044944f00fddbe0d32b31efb44845ac0b439b62000a0512f159056b1a1156ab53759f9044001c03f3c0007c0c3cd6e07c52ee3b6353f764e00f438495ef50de59133780c1e420883219e51396ffd2a7c3289476e04a77906f83318bfdeb9986ab02b5f89a9d6cd2bc3dd9c27d94a37cf5ce3a313d5a988235aa03a6587275be3129c68c9a071c1005f54e44ecd8e6bae2d7837c7477817c756d19f1d5b058996be6bdccdb1a5ddc07ad16bf9f17a568057aafdf3989f85ebfdbbaae0ab7a030d36e3e726e8d8990000000049454e44ae426082</data>
+    </image>
+    <image name="image9">
+        <data format="PNG" length="1059">89504e470d0a1a0a0000000d494844520000001200000012080600000056ce8e57000003ea49444154789c75945b6c530518c77fe7f4b0b56bb7765d4b3bd8d8d60d6cd46918080146c0c50cc283f060004544131ebc3cf80e3ef0202f46498cfa2472099198301209289085c283dcd4311c97752029ec745d57d8e5f4764ecfd50726098bfe9fbea75ffedfe5ff09cc6ae7cef71a154509d7d7d727f28542c3e49327cc8f4470bbdd5cbd7279692c169beaefef1fe57f24016ce8dd18131de79be696964debdfe861f14b9db87d7554549554324945d3060d5dbbd2d3d3f3612291b80d387341c2d6ad5b1dcbb258d5bd962d3b76100b87489b30a95928ba8528894445834bc78f71a2af0fcb325f4e242ede9d0b13dd6e37fefa106f6e7f9bf670080188ba1c1c43439e9ae6fa834724c6a658bee52d1677b463548cb55d5d5d1e40781ee4f1f0ceae77a90904904b3a00139ace1355c7066cd1c5402acd9569838defef66cd9a555f783c9e26407c6e46c9e1242dad31344b643c5f46776c466654729a4e4e33192d18a4d2191a033e96b52f6160f066edd0d050089001eddf1645807245a56c54785c29733d57607c1622ab3a99cc28a5091915d0d51233ca0c8542210c543de7281e7f81bfefdea569758474b1424937a8983659c3e1e14416e5fe1d6a4261ba1aa3dcbb7c017f9ddff0f97cf38ac5a2383ba7a78e7443e7eb2fbf42498dd01689905366181a9519be731365f82f6c6f80cdaff7b232308f13470e333cf2e05ab15429cf5dbf6bc58a15fb962f5fc66fe7cfb23ade4e475b070bc34162cd4dbcf26227bbba5f6389fa983d9f7cc4e56b831cd8b3b8c5d4a7aede4ba98380fe0c148bc5f67577773333a370f487434c3eceb2c8e3a649b2a99e90499c3bc3f1ef0f32f0fb457e3ab092cdbbfbb870eed026a13a7e6d7c3c9d026c00491004dadada080402041b82643319ceff789487b2ccc26814b1ba9a05418905eb0364f2759c3e7d8983c753ac5bb7fe543c1eff20994c9e048a922008d4d6d6128d46f0d7d5901e7d44666c8ca5af2ec1d42bf87c5eaa5d06722ac7c95f6f3191cf512eabecdfff397bf77e76389fcfcfcf6432475c9d9d9dfb7a7b7b09057cd454b9f0d5cca3cee726e8f732bfa196804fa2c1ef452d595cfa6302ad5cb6066fdf121bc311366ce8652c9de9362d734c0410040149b4f1d6541169f0d3d61ca1a32542c7a208b1e6088b1aeb5910f2532e97191a1abcaae50b66dfa99fc966736cdbbecdd3d4d4fcade4384fb367991a8ea9e2124cbc552296e0c2925cd88688633a78aa1d244902f8a5582c5ad3caf4ba33e7ce52e57271e3c6c0d3379295936465b0cd328ea1e2182ab6a93eab1d43c5e55888a20890b9777fe43b51144b8aa26c0a0643b4b6b61e930441e0e34ff7ccbdafff942008cce6eb4fdbb6d35393937d388eb7542ac9ff0002dfce396eaf002c0000000049454e44ae426082</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>fileNewAction</sender>
+        <signal>activated()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>fileNew()</slot>
+    </connection>
+    <connection>
+        <sender>fileOpenAction</sender>
+        <signal>activated()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>fileOpen()</slot>
+    </connection>
+    <connection>
+        <sender>fileSaveAction</sender>
+        <signal>activated()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>fileSave()</slot>
+    </connection>
+    <connection>
+        <sender>fileSaveAsAction</sender>
+        <signal>activated()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>fileSaveAs()</slot>
+    </connection>
+    <connection>
+        <sender>filePrintAction</sender>
+        <signal>activated()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>filePrint()</slot>
+    </connection>
+    <connection>
+        <sender>fileExitAction</sender>
+        <signal>activated()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>fileExit()</slot>
+    </connection>
+    <connection>
+        <sender>editUndoAction</sender>
+        <signal>activated()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>editUndo()</slot>
+    </connection>
+    <connection>
+        <sender>editRedoAction</sender>
+        <signal>activated()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>editRedo()</slot>
+    </connection>
+    <connection>
+        <sender>editCutAction</sender>
+        <signal>activated()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>editCut()</slot>
+    </connection>
+    <connection>
+        <sender>editCopyAction</sender>
+        <signal>activated()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>editCopy()</slot>
+    </connection>
+    <connection>
+        <sender>editPasteAction</sender>
+        <signal>activated()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>editPaste()</slot>
+    </connection>
+    <connection>
+        <sender>editFindAction</sender>
+        <signal>activated()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>editFind()</slot>
+    </connection>
+    <connection>
+        <sender>helpIndexAction</sender>
+        <signal>activated()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>helpIndex()</slot>
+    </connection>
+    <connection>
+        <sender>helpContentsAction</sender>
+        <signal>activated()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>helpContents()</slot>
+    </connection>
+    <connection>
+        <sender>helpAboutAction</sender>
+        <signal>activated()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>helpAbout()</slot>
+    </connection>
+    <connection>
+        <sender>pbFirst</sender>
+        <signal>clicked()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>kalimaFirst()</slot>
+    </connection>
+    <connection>
+        <sender>pbLast</sender>
+        <signal>clicked()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>kalimaLast()</slot>
+    </connection>
+    <connection>
+        <sender>pbPrevious</sender>
+        <signal>clicked()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>kalimaPrevious()</slot>
+    </connection>
+    <connection>
+        <sender>pbNext</sender>
+        <signal>clicked()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>kalimaNext()</slot>
+    </connection>
+    <connection>
+        <sender>pbClose</sender>
+        <signal>clicked()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>mainClose()</slot>
+    </connection>
+    <connection>
+        <sender>pbSearch</sender>
+        <signal>clicked()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>kalimaSearch()</slot>
+    </connection>
+    <connection>
+        <sender>rbReviseArabic</sender>
+        <signal>clicked()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>rbReviseArabic_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>rbReviseEnglish</sender>
+        <signal>clicked()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>rbReviseEnglish_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>rbShowBoth</sender>
+        <signal>clicked()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>rbShowBoth_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>pbReveal</sender>
+        <signal>clicked()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>pbReveal_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>cmbOrderBy</sender>
+        <signal>highlighted(const QString&amp;)</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>cmbOrderBy_highlighted(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>cmbOrderBy</sender>
+        <signal>activated(const QString&amp;)</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>cmbOrderBy_activated(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>pbUnicode</sender>
+        <signal>clicked()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>pbUnicode_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>filePreferences</sender>
+        <signal>activated()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>filePreferences_activated()</slot>
+    </connection>
+    <connection>
+        <sender>fileBooks</sender>
+        <signal>activated()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>fileBooks_activated()</slot>
+    </connection>
+    <connection>
+        <sender>pbAddSection</sender>
+        <signal>clicked()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>pbAddSection_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>pbDeleteSection</sender>
+        <signal>clicked()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>pbDeleteSection_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>lvSections</sender>
+        <signal>selectionChanged(QListViewItem*)</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>lvSections_selectionChanged(QListViewItem*)</slot>
+    </connection>
+    <connection>
+        <sender>pbAddToSection</sender>
+        <signal>clicked()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>pbAddToSection_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>pbRemoveFromSection</sender>
+        <signal>clicked()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>pbRemoveFromSection_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>pbAdd</sender>
+        <signal>clicked()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>pbAdd_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>pbDelete</sender>
+        <signal>clicked()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>pbDelete_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>fileSearchAction</sender>
+        <signal>activated()</signal>
+        <receiver>frmMainEntry</receiver>
+        <slot>kalimaSearch()</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>leJidhr1</tabstop>
+    <tabstop>leJidhr2</tabstop>
+    <tabstop>leJidhr3</tabstop>
+    <tabstop>leJidhr4</tabstop>
+    <tabstop>leIsmS</tabstop>
+    <tabstop>leIsmP</tabstop>
+    <tabstop>leFilMa</tabstop>
+    <tabstop>leFilMu</tabstop>
+    <tabstop>leMasdar</tabstop>
+    <tabstop>leHarf</tabstop>
+    <tabstop>leMeaning</tabstop>
+    <tabstop>leExample</tabstop>
+    <tabstop>rbReviseArabic</tabstop>
+    <tabstop>rbReviseEnglish</tabstop>
+    <tabstop>rbShowBoth</tabstop>
+    <tabstop>pbAdd</tabstop>
+    <tabstop>pbDelete</tabstop>
+    <tabstop>pbExtraRevision</tabstop>
+    <tabstop>lbBooks</tabstop>
+    <tabstop>pbFirst</tabstop>
+    <tabstop>pbLast</tabstop>
+    <tabstop>pbPrevious</tabstop>
+    <tabstop>pbNext</tabstop>
+    <tabstop>pbReveal</tabstop>
+    <tabstop>pbSearch</tabstop>
+    <tabstop>cmbOrderBy</tabstop>
+    <tabstop>pbUnicode</tabstop>
+    <tabstop>tabVocab</tabstop>
+    <tabstop>pbClose</tabstop>
+    <tabstop>leId</tabstop>
+    <tabstop>lblId</tabstop>
+    <tabstop>lblJidhr</tabstop>
+    <tabstop>lblIsmS</tabstop>
+    <tabstop>lblIsmP</tabstop>
+    <tabstop>lblMasdar</tabstop>
+    <tabstop>lblFilMa</tabstop>
+    <tabstop>lblFilMu</tabstop>
+    <tabstop>lblMeaning</tabstop>
+    <tabstop>lblExample</tabstop>
+    <tabstop>cbPubPrint1</tabstop>
+    <tabstop>cbPubPrint2</tabstop>
+    <tabstop>pbAddSection</tabstop>
+    <tabstop>pbDeleteSection</tabstop>
+    <tabstop>leSectionName</tabstop>
+    <tabstop>pbAddToSection</tabstop>
+    <tabstop>pbRemoveFromSection</tabstop>
+    <tabstop>lbSectionWords</tabstop>
+    <tabstop>lvSections</tabstop>
+    <tabstop>leLayoutSectionName</tabstop>
+</tabstops>
+<includes>
+    <include location="local" impldecl="in implementation">main3.ui.h</include>
+</includes>
+<slots>
+    <slot>fileNew()</slot>
+    <slot>fileOpen()</slot>
+    <slot>fileSave()</slot>
+    <slot>fileSaveAs()</slot>
+    <slot>filePrint()</slot>
+    <slot>fileExit()</slot>
+    <slot>editUndo()</slot>
+    <slot>editRedo()</slot>
+    <slot>editCut()</slot>
+    <slot>editCopy()</slot>
+    <slot>editPaste()</slot>
+    <slot>editFind()</slot>
+    <slot>helpIndex()</slot>
+    <slot>helpContents()</slot>
+    <slot>helpAbout()</slot>
+    <slot>kalimaFirst()</slot>
+    <slot>kalimaLast()</slot>
+    <slot>kalimaPrevious()</slot>
+    <slot>kalimaNext()</slot>
+    <slot>pbClose_clicked()</slot>
+    <slot>mainClose()</slot>
+    <slot>kalimaAdd()</slot>
+    <slot>kalimaDelete()</slot>
+    <slot>kalimaSearch()</slot>
+    <slot>rbReviseArabic_clicked()</slot>
+    <slot>rbReviseEnglish_clicked()</slot>
+    <slot>rbShowBoth_clicked()</slot>
+    <slot>pbReveal_clicked()</slot>
+    <slot>cmbOrderBy_highlighted( const QString &amp; )</slot>
+    <slot>cmbOrderBy_activated( const QString &amp; )</slot>
+    <slot>pbUnicode_clicked()</slot>
+    <slot>filePreferences_activated()</slot>
+    <slot>fileBooks_activated()</slot>
+    <slot>pbAddSection_clicked()</slot>
+    <slot>pbDeleteSection_clicked()</slot>
+    <slot>lvSectionView_selectionChanged( QListViewItem * )</slot>
+    <slot>lvSections_selectionChanged( QListViewItem * )</slot>
+    <slot>pbAddToSection_clicked()</slot>
+    <slot>pbRemoveFromSection_clicked()</slot>
+    <slot>pbAdd_clicked()</slot>
+    <slot>pbDelete_clicked()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>lineeditarabic.h</includehint>
+    <includehint>lineeditarabic.h</includehint>
+    <includehint>lineeditarabic.h</includehint>
+    <includehint>lineeditarabic.h</includehint>
+    <includehint>lineeditarabic.h</includehint>
+    <includehint>lineeditarabic.h</includehint>
+    <includehint>lineeditarabic.h</includehint>
+    <includehint>lineeditarabic.h</includehint>
+    <includehint>lineeditarabic.h</includehint>
+    <includehint>lineeditarabic.h</includehint>
+    <includehint>lineeditarabic.h</includehint>
+    <includehint>lineeditdrag.h</includehint>
+    <includehint>lineeditdrag.h</includehint>
+    <includehint>lineeditdrag.h</includehint>
+    <includehint>lineeditdrag.h</includehint>
+    <includehint>lineeditdrag.h</includehint>
+    <includehint>lineeditdrag.h</includehint>
+    <includehint>lineeditdrag.h</includehint>
+    <includehint>lineeditdrag.h</includehint>
+    <includehint>lineeditdrag.h</includehint>
+    <includehint>lineeditdrag.h</includehint>
+</includehints>
+</UI>

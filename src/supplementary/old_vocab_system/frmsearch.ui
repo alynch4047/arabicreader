@@ -1,0 +1,229 @@
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<class>frmSearch</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>frmSearch</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>553</width>
+            <height>482</height>
+        </rect>
+    </property>
+    <property name="font">
+        <font>
+            <family>Bitstream Cyberbit</family>
+            <pointsize>14</pointsize>
+        </font>
+    </property>
+    <property name="caption">
+        <string>Search</string>
+    </property>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>leMeaning</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>254</x>
+                <y>96</y>
+                <width>169</width>
+                <height>30</height>
+            </rect>
+        </property>
+        <property name="font">
+            <font>
+            </font>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>lblArabic</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>441</x>
+                <y>44</y>
+                <width>98</width>
+                <height>29</height>
+            </rect>
+        </property>
+        <property name="font">
+            <font>
+            </font>
+        </property>
+        <property name="text">
+            <string>Arabic Word</string>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>lblMeaning</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>440</x>
+                <y>97</y>
+                <width>102</width>
+                <height>29</height>
+            </rect>
+        </property>
+        <property name="font">
+            <font>
+            </font>
+        </property>
+        <property name="text">
+            <string>Meaning</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pbSearch</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>318</x>
+                <y>152</y>
+                <width>116</width>
+                <height>39</height>
+            </rect>
+        </property>
+        <property name="font">
+            <font>
+            </font>
+        </property>
+        <property name="text">
+            <string>&amp;Search</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pbOK</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>409</x>
+                <y>423</y>
+                <width>116</width>
+                <height>39</height>
+            </rect>
+        </property>
+        <property name="font">
+            <font>
+            </font>
+        </property>
+        <property name="text">
+            <string>&amp;OK</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pbCancel</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>280</x>
+                <y>423</y>
+                <width>116</width>
+                <height>39</height>
+            </rect>
+        </property>
+        <property name="font">
+            <font>
+            </font>
+        </property>
+        <property name="text">
+            <string>&amp;Cancel</string>
+        </property>
+    </widget>
+    <widget class="QTable">
+        <column>
+            <property name="text">
+                <string>Id</string>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>Arabic</string>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>Meaning</string>
+            </property>
+        </column>
+        <property name="name">
+            <cstring>tblResults</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>15</x>
+                <y>206</y>
+                <width>424</width>
+                <height>199</height>
+            </rect>
+        </property>
+        <property name="numRows">
+            <number>3</number>
+        </property>
+        <property name="numCols">
+            <number>3</number>
+        </property>
+    </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>leArabic</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>255</x>
+                <y>43</y>
+                <width>169</width>
+                <height>30</height>
+            </rect>
+        </property>
+        <property name="font">
+            <font>
+            </font>
+        </property>
+    </widget>
+</widget>
+<connections>
+    <connection>
+        <sender>pbSearch</sender>
+        <signal>clicked()</signal>
+        <receiver>frmSearch</receiver>
+        <slot>pbSearch_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>pbOK</sender>
+        <signal>clicked()</signal>
+        <receiver>frmSearch</receiver>
+        <slot>pbOK_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>pbCancel</sender>
+        <signal>clicked()</signal>
+        <receiver>frmSearch</receiver>
+        <slot>pbCancel_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>tblResults</sender>
+        <signal>doubleClicked(int,int,int,const QPoint&amp;)</signal>
+        <receiver>frmSearch</receiver>
+        <slot>tblResults_doubleClicked(int,int,int,const QPoint&amp;)</slot>
+    </connection>
+</connections>
+<includes>
+    <include location="local" impldecl="in implementation">frmsearch.ui.h</include>
+</includes>
+<slots>
+    <slot>pbSearch_clicked()</slot>
+    <slot>pbOK_clicked()</slot>
+    <slot>pbCancel_clicked()</slot>
+    <slot>tblResults_doubleClicked( int, int, int, const QPoint &amp; )</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

@@ -1,0 +1,30 @@
+
+CREATE TABLE kalima (
+    kalima_id integer,
+    kalima_ism_s character varying(255),
+    kalima_ism_p character varying(255),
+    kalima_fil_ma character varying(255),
+    kalima_fil_mu character varying(255),
+    kalima_masdar character varying(255),
+    kalima_harf character varying(255),
+    kalima_meaning character varying(255),
+    kalima_example character varying(255),
+    kalima_jidhr1 character varying(255),
+    kalima_jidhr2 character varying(255),
+    kalima_jidhr3 character varying(255),
+    kalima_jidhr4 character varying(255),
+    kalima_jidhr5 character varying(255),
+    kalima_sort_kalima bigint,
+    kalima_sort_jidhr bigint,
+    section_id integer,
+    kalima_layout_seq integer
+);
+
+
+CREATE TABLE section (
+    section_id integer,
+    section_name character varying(255)
+);
+
+
+

@@ -1,0 +1,9 @@
+export JARS=`pwd`/jars
+export WEBDIR=`pwd`/static/applications
+rm /tmp/arlogging.log
+export PYTHONPATH=`pwd`/third_party/cherrypy-3.1.1
+python build.py
+cp $WEBDIR/arabic_reader.js $WEBDIR/arabic_reader_uncompressed.js
+java -jar $JARS/yuicompressor-2.3.5.jar  $WEBDIR/arabic_reader.js -o $WEBDIR/arabic_reader.js                             
+python run_server.py $*
+

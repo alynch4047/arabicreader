@@ -1,0 +1,51 @@
+<!--library dialogs -->
+
+<div id="confirm_library_delete_dialog" dojoType="dijit.Dialog" 
+  execute="library.do_delete_library_file(arguments[0]);"
+	title="Delete Personal Library File">
+	<div dojotype="dijit.layout.ContentPane">
+		<div id="confirm_library_delete_content">
+			<table>
+		        <tr>
+			        <td colspan="2">
+			          <p id="library_delete_message">
+			          This will delete your library file.
+			          
+			          Click OK to continue or click on the 'x' to cancel.
+			          </p>
+			        </td>
+		        </tr>
+		        <tr>
+	                <td colspan="2" align="center">
+	                     <button dojoType=dijit.form.Button type="submit">OK</button>
+	                </td>
+		        </tr>
+		    </table>
+		</div>
+	</div>
+</div>
+
+<div id="confirm_library_share_dialog" dojoType="dijit.Dialog" 
+  execute="library.do_share_library_file(arguments[0]);"
+	title="Share Personal Library File">
+	<div dojotype="dijit.layout.ContentPane">
+		<div id="confirm_library_share_content">
+			<table>
+		        <tr>
+			        <td colspan="2">
+			          <p id="library_share_message">
+			          This will share your library file with all users.
+			          
+			          Click OK to continue or click on the 'x' to cancel.
+			          </p>
+			        </td>
+		        </tr>
+		        <tr>
+	                <td colspan="2" align="center">
+	                     <button dojoType=dijit.form.Button type="submit">OK</button>
+	                </td>
+		        </tr>
+		    </table>
+		</div>
+	</div>
+</div>

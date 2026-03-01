@@ -1,0 +1,21 @@
+
+
+/*** Central Text Section ******************/
+
+
+.moused_central_word {
+text-decoration: underline;
+color: green;
+}
+
+.normal_central_word {
+}
+
+#ar_info_pane {
+position: absolute;
+top:100;
+left:100;
+z-index: 999;
+border:solid black 1px;
+padding:5px;
+}

@@ -1,0 +1,119 @@
+ 
+ <!-- My Reader -->
+ <div dojoType="dijit.layout.ContentPane" title="Upload" id="navigate_my_reader" align="left" >
+	<H3 align="center">In this area you can change your personal details and also view statistics about
+	your use of the site.
+	</H3> 
+	
+	<div>
+	<button dojoType="dijit.form.Button" label="Change Password" id="my_reader_change_password" 
+				onclick="my_reader.show_change_password">
+				<span width="140px"> </span>
+	</button>
+	</div>
+	<table>
+	  <tr>
+	    <td align="right">User name / email address:
+	    </td>
+	    <td id="my_reader_email_address">
+	    </td>
+	  </tr>
+	   <tr>
+	    <td align="right">Nickname:
+	    </td>
+	    <td id="my_reader_nickname">
+	    </td>
+	  </tr>
+	  <tr>
+	    <td align="right">Number of words added:
+	    </td>
+	    <td id="my_reader_num_words_added">
+	    </td>
+	  </tr>
+	  <tr>
+	    <td align="right">Last logged on:
+	    </td>
+	    <td id="my_reader_last_logged_on">
+	    </td>
+	  </tr>
+	</table>
+	<div>
+	<button dojoType="dijit.form.Button" label="Deregister from ArabicReader" id="my_reader_deregister" 
+				onclick="my_reader.show_deregister">
+				<span width="140px"> </span>
+	</button>
+	</div>
+	<p id="my_reader_status">
+	</p>
+	
+	<div id="change_password_pane" dojoType="dijit.Dialog" 
+	execute="my_reader.change_password(arguments[0]);"
+		title="Change Password">
+		<div dojotype="dijit.layout.ContentPane">
+			<div id="change_password_pane_content">
+			<table>
+		        <tr>
+			        <td><label>Old Password: </label>
+			        </td>
+	                <td><input dojoType="dijit.form.TextBox" type="password" 
+	                name="change_password_old">
+	                </td>
+		        </tr>
+		        <tr>
+	                <td><label>New Password: </label>
+	                </td>
+	                <td><input dojoType="dijit.form.TextBox" type="password" 
+	                	name="change_password_new">
+	                </td>
+		        </tr>
+		        <tr>
+	                <td><label>Confirm New Password: </label>
+	                </td>
+	                <td><input dojoType="dijit.form.TextBox" type="password" 
+	                name="change_password_new_confirm">
+	                </td>
+		        </tr>
+		        <tr>
+	                <td colspan="2" align="center">
+	                     <button dojoType=dijit.form.Button type="submit">OK</button>
+	                     <button dojoType=dijit.form.Button onclick="my_reader.cancel_change_password">Cancel</button>
+	                </td>
+		        </tr>
+		    </table>
+			</div>
+		</div>
+	</div>
+	
+	<div id="deregister_pane" dojoType="dijit.Dialog" 
+	execute="my_reader.deregister(arguments[0]);"
+		title="Deregister From ArabicReader">
+		<div dojotype="dijit.layout.ContentPane">
+			<div id="deregister_pane_content">
+			<table>
+		        <tr>
+			        <td colspan="2">
+			          <p>
+			          Deregistering from ArabicReader will remove your logon details
+			          from the site. Any words that you have entered will in
+			          future be maintained by the site administrator.
+			          </p>
+			        </td>
+		        </tr>
+		        <tr>
+			        <td><label>Password: </label>
+			        </td>
+	                <td><input dojoType="dijit.form.TextBox" type="password" 
+	                name="password">
+	                </td>
+		        </tr>
+		        <tr>
+	                <td align="center" colspan="2">
+	                     <button dojoType=dijit.form.Button type="submit">OK</button>
+	                     <button dojoType=dijit.form.Button onclick="my_reader.cancel_deregister">Cancel</button>
+	                </td>
+		        </tr>
+		    </table>
+			</div>
+		</div>
+	</div>
+ </div> 			
