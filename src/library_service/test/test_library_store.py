@@ -2,7 +2,7 @@
 
 import tempfile
 import shutil
-from io import StringIO
+from io import BytesIO
 import logging
 
 import ar_logging
@@ -30,7 +30,7 @@ class TestLibraryStore(unittest.TestCase):
     def test_save_file_for_user_then_retrieve(self):
         TITLE = 'Title A'
         AUTHOR_ID = 2
-        f = StringIO.StringIO(TEST_DATA_UTF8)
+        f = BytesIO(TEST_DATA_UTF8)
         self.library_store.save_file(AUTHOR_ID, TITLE, f)
         available_titles = self.library_store.get_available_titles(AUTHOR_ID)
         self.assertEquals(available_titles, [TITLE])
@@ -43,7 +43,7 @@ class TestLibraryStore(unittest.TestCase):
     def test_get_file_page_data(self):
         TITLE = 'Title B'
         AUTHOR_ID = 2
-        f = StringIO.StringIO(TEST_DATA_UTF8)
+        f = BytesIO(TEST_DATA_UTF8)
         self.library_store.save_file(AUTHOR_ID, TITLE, f)
         
         res = \

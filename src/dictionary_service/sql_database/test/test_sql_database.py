@@ -1,17 +1,12 @@
 
-import ar_logging
-#ar_logging.add_std_out()
-import unittest
 import pickle
+import unittest
 
 from sqlalchemy import create_engine
 
-from data.unicode_data import *
-from sarf_service.constants import *
-
-from vocab_db_service.word_set import WordSet, Variation
-
 from dictionary_service.sql_database.sql_database import SQLiteSQLDatabase
+from sarf_service.constants import *
+from vocab_db_service.word_set import WordSet, Variation
 
 KALIMA_DATA = [
                (1, KAAF, TAA, BAA, 'to write',  WORD_TYPE_VERB, 1,
@@ -122,14 +117,14 @@ class TestMemoryDatabase(unittest.TestCase):
         public_links = self.database.get_public_links()
         self.assertEquals(len(public_links), 2)
         link_urls = [link['url'] for link in public_links]
-        self.assertEquals(set(['www.aljazeera.net', 'news.bbc.co.uk/hi/arabic/news/']),
+        self.assertEquals({'www.aljazeera.net', 'news.bbc.co.uk/hi/arabic/news/'},
                           set(link_urls))
         
     def test_user_links(self):
         user_links = self.database.get_user_links(1)
         self.assertEquals(len(user_links), 2)
         link_urls = [link['url'] for link in user_links]
-        self.assertEquals(set(['www.aljazeera.net', 'www.alarabiya.net']),
+        self.assertEquals({'www.aljazeera.net', 'www.alarabiya.net'},
                           set(link_urls))
         
     def test_get_user(self):

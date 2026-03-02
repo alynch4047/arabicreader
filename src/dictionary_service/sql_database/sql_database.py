@@ -83,7 +83,7 @@ class SQLDatabase(object):
         If it is already there then add 1 to the click_count.
         """
         sel = select([self.vocabulary.c.click_count],
-            self.vocabulary.c.user_id==user_id and self.vocabulary.c.kalima_id==kalima_id)
+            and_(self.vocabulary.c.user_id==user_id, self.vocabulary.c.kalima_id==kalima_id))
         results = self.engine.execute(sel).fetchall()
         if len(results) == 0:
             l.debug('add row')
@@ -100,8 +100,8 @@ class SQLDatabase(object):
             new_click_count = results[0][0] + 1
             l.debug('new click count is %s', new_click_count)
             self.engine.execute(
-                    self.vocabulary.update(self.vocabulary.c.user_id==user_id and \
-                                           self.vocabulary.c.kalima_id==kalima_id),
+                    self.vocabulary.update(and_(self.vocabulary.c.user_id==user_id,
+                                               self.vocabulary.c.kalima_id==kalima_id)),
                          click_count=new_click_count,
                          last_click_datetime=datetime.now()
                          )
@@ -156,7 +156,7 @@ class SQLDatabase(object):
         preferences_pickle_encoded = b64encode(preferences_pickle)
         self.engine.execute(self.users.update(
                     self.users.c.user_id==user_id),
-                         preferences_pickle=str(preferences_pickle_encoded),
+                         preferences_pickle=preferences_pickle_encoded.decode('ascii'),
                          )
         
     def set_password_hash(self, user_id, password_hash):

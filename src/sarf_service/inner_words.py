@@ -223,33 +223,33 @@ class InnerWords(HasTraits):
         second_last_haraka_pair = haraka_pairs[-2]
        
         # test for UKTIBU
-        if first_haraka_pair in [(HAMZA, DAMMA), (HAMZA, None)]:
+        if first_haraka_pair in [(HAMZA, DAMMA)]:
             if last_haraka_pair[1] in (None, DAMMA):
                 stripped_word = self._strip_initial_haraka_pairs(word_text)
                 append_text_op(possible_text_ops, YAA + stripped_word, PRESENT_A_U, previous_ops)
-        
+
         # test for TUKTIBU
-        if first_haraka_pair in [(TAA, DAMMA), (TAA, None)]:
+        if first_haraka_pair in [(TAA, DAMMA)]:
             if last_haraka_pair[1] in (None, DAMMA):
                 stripped_word = self._strip_initial_haraka_pairs(word_text)
                 append_text_op(possible_text_ops, YAA + stripped_word, PRESENT_TA_U, previous_ops)
-                
+
         # test for NUKTIBU
-        if first_haraka_pair in [(NUUN, DAMMA), (NUUN, None)]:
+        if first_haraka_pair in [(NUUN, DAMMA)]:
             if last_haraka_pair[1] in (None, DAMMA):
                 stripped_word = self._strip_initial_haraka_pairs(word_text)
                 append_text_op(possible_text_ops, YAA + stripped_word, PRESENT_NA_U, previous_ops)
-                
+
         # test for YUKTIBUUNA
-        if first_haraka_pair in [(YAA, DAMMA), (YAA, None)]:
+        if first_haraka_pair in [(YAA, DAMMA)]:
             if last_haraka_pair in [(NUUN, FATHA), (NUUN, None)]:
                 if second_last_haraka_pair in [(WAAW, SUKUUN), (WAAW, None)]:
                     stripped_word = self._strip_initial_haraka_pairs(word_text)
                     stripped_word = self._strip_final_haraka_pairs(stripped_word, count=2)
                     append_text_op(possible_text_ops, YAA + stripped_word, PRESENT_YA_UUNA, previous_ops)
-                    
+
         # test for TUKTIBUUNA
-        if first_haraka_pair in [(TAA, DAMMA), (TAA, None)]:
+        if first_haraka_pair in [(TAA, DAMMA)]:
             if last_haraka_pair in [(NUUN, FATHA), (NUUN, None)]:
                 if second_last_haraka_pair in [(WAAW, SUKUUN), (WAAW, None)]:
                     stripped_word = self._strip_initial_haraka_pairs(word_text)

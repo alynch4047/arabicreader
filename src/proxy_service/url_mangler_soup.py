@@ -1,6 +1,7 @@
 
 import logging
 import re
+from urllib.parse import urljoin
 
 from traits.api import HasTraits
 
@@ -44,15 +45,9 @@ class URLMangler(HasTraits):
     def _get_soup(self, text, url):
         override_encoding = get_override_encoding(url)
         if override_encoding:
-            soup = BeautifulSoup(text, isHTML=True, fromEncoding=override_encoding)
+            soup = BeautifulSoup(text, 'html.parser', from_encoding=override_encoding)
         else:
-            soup = BeautifulSoup(text, isHTML=True)
-        if soup.head is None:
-            l.debug('cant process text (no head) %s', text)
-            raise Exception('Error parsing the document: cannot find the document head')
-        if soup.body is None:
-            l.debug('cant process text (no body) %s', text)
-            raise Exception('Error parsing the document: cannot find the document body')
+            soup = BeautifulSoup(text, 'html.parser')
         return soup
     
     def get_absolute_links(self, base_url, text):
@@ -90,9 +85,7 @@ class URLMangler(HasTraits):
             return url
         if not base_url.endswith('/'):
             base_url += '/'
-        if url.startswith('/'):
-           return self.site_address(base_url) + '/' + url
-        return base_url + url
+        return urljoin(base_url, url)
     
     def _get_directory(self, url):
         if url[-1] != '/':

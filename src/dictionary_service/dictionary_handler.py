@@ -70,6 +70,10 @@ class DictionaryHandler(Handler):
         words = self.dictionary.get_words_matching_text(word_text)
         return self._get_word_sets(words)
     
+    def _get_meanings_for_word(self, word_text, session):
+        word_text = to_canonical_letters(word_text)
+        return self.dictionary.get_meanings_for_word(word_text)
+
     def _unknown_words(self, data, session, words=[]):
         unknown_words = {}
         for word_text in words:

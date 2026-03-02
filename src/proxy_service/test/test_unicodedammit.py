@@ -14,18 +14,15 @@ class TestUnicodeDammit(unittest.TestCase):
        from proxy_service import test
        package_dir = os.sep.join(test.__file__.split(os.sep)[:-1])
        al_jazeera_html_path = os.path.join(package_dir, 'aljazeera.html')
-       xml = open(al_jazeera_html_path).read()
-       ucd = UnicodeDammit(xml, isHTML=True)
-       markup, document_encoding, sniffed_encoding = \
-                     ucd._detectEncoding(xml, True)
-       #print document_encoding, sniffed_encoding 
-       self.assertEquals(document_encoding, 'windows-1256')
+       xml = open(al_jazeera_html_path, 'rb').read()
+       ucd = UnicodeDammit(xml, is_html=True)
+       self.assertEquals(ucd.original_encoding, 'windows-1256')
        
    def test_small_aljazeera(self):
        from proxy_service import test
        package_dir = os.sep.join(test.__file__.split(os.sep)[:-1])
        al_jazeera_html_path = os.path.join(package_dir, 'small_aljazeera.html')
-       xml = open(al_jazeera_html_path).read()
+       xml = open(al_jazeera_html_path, 'rb').read()
        
        soup = BeautifulSoup(xml, isHTML=True)
        print(str(soup))

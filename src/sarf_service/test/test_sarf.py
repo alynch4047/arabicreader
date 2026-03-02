@@ -25,7 +25,7 @@ class TestSarf(unittest.TestCase):
     
     def setUp(self):
         word_database = create_test_word_database()
-        self.all_words = word_database.words
+        self.all_words = word_database
         self.sarf = Sarf()
         
     def test_get_possible_roots(self):

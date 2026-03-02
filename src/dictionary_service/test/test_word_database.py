@@ -98,17 +98,17 @@ class TestWordDatabase(unittest.TestCase):
         self.assertEquals(len(self.test_word_database.words), num_words + 2)
         self.assert_(word in self.test_word_database.words_by_root[KTB])
         self.assertEquals(word, self.test_word_database.words_by_id[1000])
-        self.assert_(word in self.test_word_database._words_by_kalima[500])
+        self.assert_(word in self.test_word_database.words_by_kalima[500])
         
         self.test_word_database.remove_word(word)
         self.assert_(word not in self.test_word_database.words)
         self.assertEquals(len(self.test_word_database.words), num_words + 1)
         self.assert_(1000 not in self.test_word_database.words_by_id)
-        self.assert_(word not in self.test_word_database._words_by_kalima[500])
+        self.assert_(word not in self.test_word_database.words_by_kalima[500])
         self.assert_(word not in self.test_word_database.words_by_root[KTB])
         
         self.assert_(1001 in self.test_word_database.words_by_id)
-        self.assert_(word2 in self.test_word_database._words_by_kalima[500])
+        self.assert_(word2 in self.test_word_database.words_by_kalima[500])
         self.assert_(word2 in self.test_word_database.words_by_root[KTB])
         
                 
