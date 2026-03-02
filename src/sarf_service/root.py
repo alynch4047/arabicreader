@@ -1,15 +1,7 @@
+from traitlets import HasTraits
+from traits.api import Int
+from traits.api import Interface, Str, List, provides
 
-
-from traits.api import HasTraits, Interface, implements, Any, Str, List
-from traits.api import TraitString, Int
-
-
-#class Root(TraitString):
-#    
-#    def __init__ ( self, *param):
-#        kwargs = {minlen:3, maxlen:6}
-#        TraitString.__init__ ( self, *param, **kwargs)
-        
 Root = Str
 
 
@@ -19,10 +11,8 @@ class IReference(Interface):
     ayat = Int
     word_ix = Int
     
-
+@provides(IReference)
 class Reference(HasTraits):
-    
-    implements(IReference)
     
     sura = Int
     ayat = Int
@@ -43,10 +33,8 @@ class IRootMeaning(Interface):
     # the references in texts, dictionaries etc
     references = List(IReference)
     
-
+@provides(IRootMeaning)
 class RootMeaning(HasTraits):
-    
-    implements(IRootMeaning)
     
     root = Root
     

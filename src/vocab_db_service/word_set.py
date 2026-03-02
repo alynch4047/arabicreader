@@ -93,19 +93,19 @@ class WordSet(HasTraits):
                 #l.debug('set var %s %s to %s', variation_id, key, value)
                 setattr(variation, key, value)
                 #l.debug('vars by id is %s', variations_by_id)
-        self.variations = variations_by_id.values()
+        self.variations = list(variations_by_id.values())
         l.debug('form data is %s', repr(self))
-        
+
         self._make_root_canonical()
         check_security(self.meaning)
         for variation in self.variations:
             check_security(variation.text)
             try:
                 core_text = to_core_letters(variation.text)
-            except Exception, ex:
+            except Exception as ex:
                 raise Exception(
             'Sorry, the arabic text contains an invalid (non-arabic) character')
-    
+
     def populate_from_url(self, url):
         variations_by_id = {}
         form_data_pairs = url.split('&')
@@ -131,25 +131,25 @@ class WordSet(HasTraits):
                 #l.debug('set var %s %s to %s', variation_id, key, value)
                 setattr(variation, key, value)
                 #l.debug('vars by id is %s', variations_by_id)
-        self.variations = variations_by_id.values()
+        self.variations = list(variations_by_id.values())
         l.debug('form data is %s', repr(self))
-        
+
         self._make_root_canonical()
         check_security(self.meaning)
         for variation in self.variations:
             check_security(variation.text)
             try:
                 core_text = to_core_letters(variation.text)
-            except Exception, ex:
+            except Exception as ex:
                 raise Exception(
             'Sorry, the arabic text contains an invalid (non-arabic) character')
-        
+
     def _make_root_canonical(self):
         try:
             self.root_f = to_core_letters(self.root_f)
             self.root_c = to_core_letters(self.root_c)
             self.root_l = to_core_letters(self.root_l)
-        except Exception, ex:
+        except Exception as ex:
             raise Exception('One or more of the root letters is not valid (%s)' % ex)
         
         if self.root_f == ALIF or self.root_c == ALIF or self.root_l == ALIF:

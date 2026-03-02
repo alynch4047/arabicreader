@@ -8,4 +8,4 @@ class TestConfig(unittest.TestCase):
     
     def test_pro_data_location(self):
         loc = config.PRO_DIR
-        print loc
+        print(loc)

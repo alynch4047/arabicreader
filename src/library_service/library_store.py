@@ -63,7 +63,7 @@ class LibraryStore(HasTraits):
         user_dir = self._make_user_dir(user_id)
         filename = self._generate_file_name(user_dir)
         save_file_path = os.path.join(user_dir, filename)
-        f = file(save_file_path, 'wb+')
+        f = open(save_file_path, 'wb+')
         while True:
             data = input_file.read(8192)
             if not data:
@@ -92,7 +92,7 @@ class LibraryStore(HasTraits):
         """ Return a list of the available titles for the given user"""
         if user_id < MIN_GUEST_ID:
             shelf = self._get_shelf(user_id)
-            titles = shelf.keys()
+            titles = list(shelf.keys())
             return titles
         else:
             return []
@@ -129,7 +129,7 @@ class LibraryStore(HasTraits):
                         user_name = user_details['nickname']
                     else:
                         user_name = 'unknown user'
-                    shared_titles.append((user_id, unicode(title, 'utf8'), user_name))
+                    shared_titles.append((user_id, title.decode('utf-8') if isinstance(title, bytes) else title, user_name))
             
         l.debug('shared titles are %s', shared_titles)
         return shared_titles
@@ -152,7 +152,7 @@ class LibraryStore(HasTraits):
         document_user_id = int(document_user_id)
         if user_id != document_user_id:
             raise Exception('You can only delete your own documents')
-        title = unicode(title).encode('utf-8')
+        title = str(title).encode('utf-8')
         
         shelf = self._get_shelf(user_id)
         if title in shelf:
@@ -171,7 +171,7 @@ class LibraryStore(HasTraits):
         document_user_id = int(document_user_id)
         if user_id != document_user_id:
             raise Exception('You can only share your own documents')
-        title = unicode(title).encode('utf-8')
+        title = str(title).encode('utf-8')
         shelf = self._get_shelf(user_id)
         details = shelf[title]
         details[1] = True

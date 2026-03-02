@@ -78,7 +78,7 @@ class DictionaryHandler(Handler):
                 meanings = self.dictionary.get_meanings_for_word(canonical_word_text)
                 if len(meanings) == 0:
                     unknown_words[word_text] = True
-            except Exception, ex:
+            except Exception as ex:
                 l.error('checking unknown words')
         return unknown_words
     

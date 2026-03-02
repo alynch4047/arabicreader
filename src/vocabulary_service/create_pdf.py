@@ -29,7 +29,7 @@ class VocabPDF(HasTraits):
         os_handle, file_path = tempfile.mkstemp('.ps')
         l.debug('ps file is %s', file_path)
         os.close(os_handle)
-        f = file(file_path, 'w')
+        f = open(file_path, 'w')
         print_layout = PrintLayout(f)
         print_layout.printUsingFunc(self._make_pdf_content_all_words)
         f.close()
@@ -39,7 +39,7 @@ class VocabPDF(HasTraits):
                          '-dEmbedAllFonts=true', 
                          file_path, pdf_file_path)
         l.debug('res is %s', res)
-        pdf_data = file(pdf_file_path).read()
+        pdf_data = open(pdf_file_path).read()
         l.debug('pdf file is %s', pdf_file_path)
         os.remove(file_path)
         os.remove(pdf_file_path)
@@ -101,7 +101,7 @@ def split_first_line_at(text, split_point, line_width):
         return [text]
     line = text[:split_point]
     line_remainder = text[split_point:]
-    print line_remainder
+    print(line_remainder)
     return [line] + split_into_lines(line_remainder, line_width)
 
 
@@ -116,7 +116,7 @@ def find_first_comma_space(text, from_ix=0):
 
 
 def split_into_lines(text, line_width):
-    print text
+    print(text)
     if len(text) <= line_width:
         return [text]
     else:

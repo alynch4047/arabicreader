@@ -20,8 +20,8 @@ def make_columns(image0):
             dividers.append(c)
             
     dividers.sort(key=get_x_coord)
-    print 'dividers', dividers
-    
+    print('dividers', dividers)
+
     rgb = image0.to_rgb()
     rotation_angle = get_dividers_rotation_angle(dividers, rgb)
     rotated0 = image0.rotate(-rotation_angle, RGBPixel(255, 255, 255), 1)
@@ -36,14 +36,14 @@ def make_columns(image0):
     for c in ccs:
         if c.nrows > 1000:
             dividers.append(c)
-            print c.nrows, c.ncols, c.offset_x, c.offset_y
+            print(c.nrows, c.ncols, c.offset_x, c.offset_y)
             for x in range(c.ncols):
                 for y in range(c.nrows):
                     image0.set(Point(x + c.offset_x, y + c.offset_y), 255)
             
     dividers.sort(key=get_x_coord)
-    print 'dividers', dividers
-    
+    print('dividers', dividers)
+
     column_images = []
     
     init_col = 0
@@ -51,7 +51,7 @@ def make_columns(image0):
         top_left_point = Point(init_col, 0)
         right_col_x = divider.offset_x
         lower_right_point = Point(right_col_x + divider.ncols / 2, image0.nrows - 1)
-        print top_left_point, lower_right_point
+        print(top_left_point, lower_right_point)
         column_image = image0.subimage(top_left_point, lower_right_point)
         column_images.append(column_image)
         init_col = right_col_x + divider.ncols / 2
@@ -73,9 +73,9 @@ def get_dividers_rotation_angle(dividers, rgb):
         rgb.draw_hollow_rect(bottom_ten_rows_subimage.ul, bottom_ten_rows_subimage.lr, RGBPixel(255,0,0))
         top_proj_cols = top_ten_rows_subimage.projection_cols()
         bottom_proj_cols = bottom_ten_rows_subimage.projection_cols()
-        print top_proj_cols
-        print bottom_proj_cols
-        print
+        print(top_proj_cols)
+        print(bottom_proj_cols)
+        print()
         avg_xs = []
         for proj in (top_proj_cols, bottom_proj_cols):
             num_pixels = sum(proj)
@@ -83,18 +83,18 @@ def get_dividers_rotation_angle(dividers, rgb):
             for ix, num in enumerate(proj):
                 weighted += (ix+1) * num
             avg_x = weighted / num_pixels
-            print num_pixels, weighted, avg_x
+            print(num_pixels, weighted, avg_x)
             avg_xs.append(avg_x)
         height_diff = divider.nrows - 10
         x_diff = abs(avg_xs[0] - avg_xs[1])
-        print 'diffs', height_diff, x_diff
+        print('diffs', height_diff, x_diff)
         tan_theta = x_diff / height_diff
         theta = math.atan2(height_diff, x_diff)
-        print 'theta', 90 - (theta * 180.0/ math.pi)
+        print('theta', 90 - (theta * 180.0/ math.pi))
         theta_deg = 90 - (theta * 180.0/ math.pi)
         angles.append(theta_deg)
-        
-    print 'angles', angles
+
+    print('angles', angles)
             
     rgb.save_PNG(os.path.join(TMP_DIR,"out_dividers.png"))
     

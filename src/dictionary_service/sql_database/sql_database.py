@@ -156,7 +156,7 @@ class SQLDatabase(object):
         preferences_pickle_encoded = b64encode(preferences_pickle)
         self.engine.execute(self.users.update(
                     self.users.c.user_id==user_id),
-                         preferences_pickle=unicode(preferences_pickle_encoded),
+                         preferences_pickle=str(preferences_pickle_encoded),
                          )
         
     def set_password_hash(self, user_id, password_hash):
@@ -236,9 +236,9 @@ class SQLDatabase(object):
         word_set.kalima_id = self._get_kalima_sequence()
         self.engine.execute(self.kalima.insert(),
                          kalima_id=word_set.kalima_id,
-                         kalima_jidhr1=unicode(word_set.root_f),
-                         kalima_jidhr2=unicode(word_set.root_c),
-                         kalima_jidhr3=unicode(word_set.root_l),
+                         kalima_jidhr1=str(word_set.root_f),
+                         kalima_jidhr2=str(word_set.root_c),
+                         kalima_jidhr3=str(word_set.root_l),
                          kalima_meaning=word_set.meaning,
                          kalima_type=word_set.word_type,
                          user_id=user_id,
@@ -249,7 +249,7 @@ class SQLDatabase(object):
             self.engine.execute(self.kalima_variation.insert(),
                          kalima_id=word_set.kalima_id,
                          kalvar_id=variation.kalvar_id,
-                         kalvar_text=unicode(variation.text),
+                         kalvar_text=str(variation.text),
                          kalvar_number=variation.number,
                          kalvar_tense=variation.tense,
                          )
@@ -275,9 +275,9 @@ class SQLDatabase(object):
         self._assert_changes_allowed(word_set.kalima_id, user_id)
         self.engine.execute(self.kalima.update(
                     self.kalima.c.kalima_id==word_set.kalima_id),
-                         kalima_jidhr1=unicode(word_set.root_f),
-                         kalima_jidhr2=unicode(word_set.root_c),
-                         kalima_jidhr3=unicode(word_set.root_l),
+                         kalima_jidhr1=str(word_set.root_f),
+                         kalima_jidhr2=str(word_set.root_c),
+                         kalima_jidhr3=str(word_set.root_l),
                          kalima_meaning=word_set.meaning,
                          kalima_type=word_set.word_type
                          )
@@ -286,7 +286,7 @@ class SQLDatabase(object):
             if variation.kalvar_id != 0:
                 self.engine.execute(self.kalima_variation.update(
                     self.kalima_variation.c.kalvar_id==variation.kalvar_id),
-                         kalvar_text=unicode(variation.text),
+                         kalvar_text=str(variation.text),
                          kalvar_number=variation.number,
                          kalvar_tense=variation.tense,
                          )
@@ -295,7 +295,7 @@ class SQLDatabase(object):
                 self.engine.execute(self.kalima_variation.insert(),
                          kalima_id=word_set.kalima_id,
                          kalvar_id=variation.kalvar_id,
-                         kalvar_text=unicode(variation.text),
+                         kalvar_text=str(variation.text),
                          kalvar_number=variation.number,
                          kalvar_tense=variation.tense,
                          )
@@ -318,7 +318,7 @@ class SQLDatabase(object):
     def add_test_user(self, user_id, nickname):
         self.engine.execute(self.users.insert(),
                          user_id=user_id,
-                         nickname=unicode(nickname)
+                         nickname=str(nickname)
                          )
     def add_user(self, email_address, password_hash, nickname):
         user_id = self._get_user_sequence()
@@ -334,7 +334,7 @@ class SQLDatabase(object):
         self.engine.execute(self.links.insert(),
                         link_id=link_id,
                         user_id=user_id,
-                        url=unicode(url),
+                        url=str(url),
                         difficulty=difficulty,
                         public=public
                          )
@@ -394,7 +394,7 @@ class SQLDatabase(object):
         
         try:
             text = to_canonical_letters(text)
-        except Exception, ex:
+        except Exception as ex:
             l.exception('error getting text for word of id %s', kalvar_id)
             text = ''
         
@@ -437,12 +437,12 @@ class SQLiteSQLDatabase(SQLDatabase):
         self.link_sequence = itertools.count(1)
     
     def _get_kalima_sequence(self):
-        return self.kalima_sequence.next()
-    
+        return next(self.kalima_sequence)
+
     def _get_kalvar_sequence(self):
-        return self.kalvar_sequence.next()
-    
+        return next(self.kalvar_sequence)
+
     def _get_link_sequence(self):
-        return self.link_sequence.next()
+        return next(self.link_sequence)
 
 

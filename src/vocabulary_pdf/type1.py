@@ -95,8 +95,8 @@ class type1font:
                 pos += 1
             # should be 'RD' here
             if self.charstringsdata[pos:pos + 2] != 'RD':
-                print "RD ERROR at ", pos
-                print repr(self.charstringsdata[pos:pos + 1])
+                print("RD ERROR at ", pos)
+                print(repr(self.charstringsdata[pos:pos + 1]))
                 return
             pos += 2
             #eat whitespace
@@ -114,7 +114,7 @@ class type1font:
                 pos += 1
             # should be 'ND' here
             if self.charstringsdata[pos:pos + 2] != 'ND':
-                print "ND ERROR at ", pos
+                print("ND ERROR at ", pos)
                 return
             pos += 2
             #eat whitespace

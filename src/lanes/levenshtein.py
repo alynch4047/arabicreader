@@ -36,7 +36,7 @@ for word in open(DICTIONARY_FILEPATH, "rt").read().split():
     WordCount += 1
     trie.insert( word )
 
-print "Read %d words into %d nodes" % (WordCount, NodeCount)
+print("Read %d words into %d nodes" % (WordCount, NodeCount))
 
 # The search function returns a list of all words that are less than the given
 # maximum distance from the target word
@@ -63,7 +63,7 @@ def searchRecursive( node, letter, word, previousRow, results, maxCost ):
 
     # Build one row for the letter, with a column for each letter in the target
     # word, plus one for the empty string at column 0
-    for column in xrange( 1, columns ):
+    for column in range( 1, columns ):
 
         insertCost = currentRow[column - 1] + 1
         deleteCost = previousRow[column] + 1
@@ -91,6 +91,6 @@ start = time.time()
 results = search( "beconaang", 3 )
 end = time.time()
 
-for result in results: print result        
+for result in results: print(result)
 
-print "Search took %g s" % (end - start)
+print("Search took %g s" % (end - start))

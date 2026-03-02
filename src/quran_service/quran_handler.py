@@ -24,4 +24,4 @@ class QuranHandler(object):
             return 'Invalid URL or syra/ayat no when getting ayat'
     
     def _get_root_info(self, root):
-        root = unicode(root,'utf-8')
+        root = root.decode('utf-8') if isinstance(root, bytes) else root

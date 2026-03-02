@@ -218,11 +218,11 @@ def reverse(text):
 
 
 def encode(text):
-    return unicode(text).encode('UTF-8')
+    return str(text).encode('UTF-8')
 
 
 def decode(text):
-    return unicode(text,'UTF-8')
+    return text.decode('UTF-8') if isinstance(text, bytes) else text
 
 
 def get_string_width(text, fontSize):
@@ -234,7 +234,7 @@ def get_string_width(text, fontSize):
         if code < len(encoding):
             charName = encoding[code][1:]
             if charName not in _font.charWidths.keys():
-                print charName, "not in widths"
+                print(charName, "not in widths")
                 raise LookupError
             else:
                 width += _font.charWidths[charName]

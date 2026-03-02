@@ -1,14 +1,14 @@
 
-import urllib
+import urllib.parse
 import logging
-from urlparse import urlparse
+from urllib.parse import urlparse
 import time
 
 from traits.api import HasTraits, Str, Instance
 
 from server.api import Handler
 
-from proxy_service.BeautifulSoup import UnicodeDammit
+from bs4 import UnicodeDammit
 from proxy_service.hmtl_mangler import HTMLMangler
 from proxy_service.url_mangler import URLMangler
 from proxy_service.proxy_cache import ProxyCache
@@ -68,7 +68,7 @@ class ProxyHandler(Handler):
             text = self.html_mangler.add_head_info(text)
             text = self.html_mangler.set_charset_to_utf8(text, ud.originalEncoding)
             return text.encode('utf8')
-        except Exception, ex:
+        except Exception as ex:
             l.exception('processing url %s', url)
             return 'Sorry, the server had an error while trying to load that site. Please try another site!'
         

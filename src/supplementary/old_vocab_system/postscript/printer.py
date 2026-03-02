@@ -2,6 +2,9 @@ import logging
 import string
 import sys
 
+from PyQt5.QtGui import QPainter, QFont
+from PyQt5.QtPrintSupport import QPrinter
+
 # This module does PostScript printing jobs
 from constants import *
 from utils import (reversePhrase, stripTashkeel, replaceTashkeel, presentationTashkeel,

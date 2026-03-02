@@ -51,7 +51,7 @@ class TestSarf(unittest.TestCase):
         self.assertEquals(words[0].text, KITAAB)
         words = self.sarf.get_possible_words(LILKUTUB, self.all_words)
         self.assertEquals(len(words), 2)
-        print words
+        print(words)
         self.assertEquals(words[1].text, KUTUB)
         words = self.sarf.get_possible_words(YAKTUBU, self.all_words)
         self.assertEquals(len(words), 1)

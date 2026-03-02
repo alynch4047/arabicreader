@@ -44,17 +44,17 @@ def _get_best_fit_word(available_word_ccs):
     for word_ccs in available_word_ccs:
         word = _get_str_from_glyphs(word_ccs)
         likely_words = get_likely_words_in_dictionary(word)
-        print 'likely words for',word, 'is', likely_words
+        print('likely words for', word, 'is', likely_words)
         word_probabilities.extend(likely_words)
     if len(word_probabilities) == 0:
         word = _get_str_from_glyphs(available_word_ccs[-1])
-        print word,'not found in dictionary'
+        print(word, 'not found in dictionary')
         return word
     def get_prob(x):
         return x[1]
     word_probabilities.sort(key=get_prob)
     most_likely_match = word_probabilities[-1]
-    print most_likely_match[0],'found in dictionary with probability',most_likely_match[1]
+    print(most_likely_match[0], 'found in dictionary with probability', most_likely_match[1])
     return most_likely_match[0]
         
 def _get_available_words(ccs, classifier, available_words, level=0):
@@ -67,7 +67,7 @@ def _get_available_words(ccs, classifier, available_words, level=0):
     for ix, cc in enumerate(ccs):
         classifier.classify_list_automatic([cc])
         long_name = glyph_long_name(cc)
-        print long_name, cc.ncols, cc.get_confidence()
+        print(long_name, cc.ncols, cc.get_confidence())
         is_capital = (long_name.find('capital') != -1)
         if is_capital:
             max_width = 35
@@ -76,19 +76,19 @@ def _get_available_words(ccs, classifier, available_words, level=0):
         current_confidence = cc.get_confidence()
         replace = False
         if current_confidence < 0.3 and cc.ncols > max_width:
-            print 'try split this char into',
+            print('try split this char into', end=' ')
             replace_ccs = cc.splitx()
             classifier.classify_list_automatic(replace_ccs)
-            print [glyph_name(c) for c in replace_ccs]
+            print([glyph_name(c) for c in replace_ccs])
             confidences = [c.get_confidence() for c in replace_ccs]
             avg_confidence = sum(confidences) / len(confidences)
-            print 'new confidences are', confidences, avg_confidence
+            print('new confidences are', confidences, avg_confidence)
             if (avg_confidence) > current_confidence:
                 # XXX don't split m into ni
                 if glyph_name(cc) == 'm' and _get_str_from_glyphs(replace_ccs) == 'ni':
                     pass
                 else:
-                    print '(replace)'
+                    print('(replace)')
                     replace = True
         if replace:
             new_ccs_split.extend(replace_ccs)
@@ -125,7 +125,7 @@ def _join_broken_ccs(ccs, classifier):
         classifier.classify_list_automatic([joined_cc])
         confidence = joined_cc.get_confidence()
         if confidence > avg_confidence:
-            print 'join glyphs',[glyph_name(c) for c in cc_pair], 'to make', glyph_name(joined_cc)
+            print('join glyphs', [glyph_name(c) for c in cc_pair], 'to make', glyph_name(joined_cc))
             new_ccs.append(joined_cc)
             ix += 2
         else:
@@ -136,8 +136,8 @@ def _join_broken_ccs(ccs, classifier):
             break
         if ix >= len(ccs):
             break
-    print'before joining:', _get_str_from_glyphs(ccs)
-    print 'after joining', _get_str_from_glyphs(new_ccs)
+    print('before joining:', _get_str_from_glyphs(ccs))
+    print('after joining', _get_str_from_glyphs(new_ccs))
 
     return new_ccs
 

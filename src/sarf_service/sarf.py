@@ -72,7 +72,7 @@ class Sarf(HasTraits):
                 try:
                     if word.matches(word_text):
                         possible_words.append(word)
-                except Exception, ex:
+                except Exception as ex:
                     l.exception('matching word')
         return possible_words
         

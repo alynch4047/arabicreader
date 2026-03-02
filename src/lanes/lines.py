@@ -96,8 +96,8 @@ def make_lines(image, ix, ccs, leftmost_ccs, rightmost_ccs, rgb):
             else:
                 lines.append(line)
             
-    print 'num lines', len(lines)
-    print len(ccs), 'ccs in make lines'
+    print('num lines', len(lines))
+    print(len(ccs), 'ccs in make lines')
     for cc in ccs:
         for line in lines:
             if (cc not in line.ccs) and overlaps_y(cc, line):
@@ -128,7 +128,7 @@ def make_lines(image, ix, ccs, leftmost_ccs, rightmost_ccs, rgb):
 
 
 def classify_ccs(lines, rgb):    
-    print 'load classifier'
+    print('load classifier')
     from gamera import knn
     Word.classifier = knn.kNNInteractive([], CLASSIFIER_FEATURES, 0)
     classifier_data_path = os.path.join(TRAINING_DIR, "classifier_glyphs.xml")
@@ -146,10 +146,10 @@ def classify_ccs(lines, rgb):
             rgb.draw_line(FloatPoint(word.offset_x, line.offset_y),
                             FloatPoint(word.offset_x + word.ncols, line.offset_y + line.nrows),
                              RGBPixel(0,0,255))
-        print
-        
+        print()
+
     for line in lines:
         for word in line.words:
-            print ''.join(word.chrs),
-        print
+            print(''.join(word.chrs), end=' ')
+        print()
     

@@ -6,13 +6,13 @@ dictionary_words = set([])
 
 def _load_dictionary():
     global dictionary_words
-    print 'load dictionary'
-    for word in file(DICTIONARY_FILEPATH).readlines():
+    print('load dictionary')
+    for word in open(DICTIONARY_FILEPATH).readlines():
         word = word.strip()
         if word.endswith("'s"):
             continue
         dictionary_words.add(word)
-    print 'end load dictionary: ', len(dictionary_words), 'found'
+    print('end load dictionary: ', len(dictionary_words), 'found')
     dictionary_words.add('TA')
 
 def get_likely_words_in_dictionary(word):

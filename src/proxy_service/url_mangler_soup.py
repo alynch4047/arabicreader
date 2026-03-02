@@ -4,7 +4,7 @@ import re
 
 from traits.api import HasTraits
 
-from proxy_service.BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 from proxy_service.override_encoding import get_override_encoding
 
 l = logging.getLogger(__name__)

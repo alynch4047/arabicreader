@@ -14,9 +14,9 @@ from sarf_service.inner_words import InnerWords, SWITCH_TAA_MARBUTA, SUFFIX_HU
 from sarf_service.word_mangler import to_canonical_letters, arabic_string_matches
 
 def print_matches(matches):
-    print 
+    print()
     for text, ops in matches:
-        print 'matches', out_in_gb(text), ops
+        print('matches', out_in_gb(text), ops)
 
 
 class TestInnerWords(unittest.TestCase):
@@ -241,7 +241,7 @@ class TestInnerWords(unittest.TestCase):
         
         text = to_canonical_letters(u'كَتَبَتِ')
         matches = self.inner_words.get_inner_word_texts(text)
-        print 'matches', matches
+        print('matches', matches)
         self.assert_(KATABAT_ in [match[0] for match in matches])
         
         

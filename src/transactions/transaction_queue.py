@@ -2,7 +2,7 @@
 import logging
 import threading
 import time
-import Queue
+import queue as Queue
 import atexit
 
 from traits.api import HasTraits, Instance, Int
@@ -41,10 +41,10 @@ class TransactionProcessor(threading.Thread):
             while not self.queue.empty():
                 try:
                     sql, bind_vars = self.queue.get()
-                except Queue.Empty, ex:
+                except Queue.Empty as ex:
                     break
                 self.cursor.execute(sql, bind_vars)
-        except Exception, ex:
+        except Exception as ex:
             l.exception('logging call (%s)', ex)
         finally:
             pass
@@ -74,6 +74,6 @@ class TransactionQueue(HasTraits):
     
     def _transaction_processor_default(self):
         transaction_processor = TransactionProcessor(self.queue, self.commit_interval)
-        transaction_processor.setDaemon(True)
+        transaction_processor.daemon = True
         return transaction_processor
     

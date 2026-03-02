@@ -1,17 +1,17 @@
 
 import os
 import logging
-from optparse import OptionParser
+import argparse
 
-from server.configobj import ConfigObj
+from configobj import ConfigObj
 
 l = logging.getLogger(__name__)
 
-parser = OptionParser()
-parser.add_option("-c", dest="config_filepath",
-                  help="path to configuration file")
+parser = argparse.ArgumentParser(add_help=False)
+parser.add_argument("-c", dest="config_filepath",
+                    help="path to configuration file")
 
-options, args = parser.parse_args()
+options, _ = parser.parse_known_args()
 
 if options.config_filepath is None:
     if 'AR_CONFIG_FILE' in os.environ:

@@ -4,7 +4,7 @@ import re
 
 from traits.api import HasTraits, Str, Instance
 
-from proxy_service.BeautifulSoup import BeautifulSoup, NavigableString, Tag
+from bs4 import BeautifulSoup, NavigableString, Tag
 from proxy_service.url_mangler import URLMangler
 
 l = logging.getLogger(__name__)
@@ -44,7 +44,7 @@ class HTMLMangler(HasTraits):
                                         single_or_double_quote
         patterns.append(pattern)
         for pattern in patterns:
-            new_html = unicode('')
+            new_html = ''
             start_ix = 0
             url_start = url_end = None
             compiled_pattern = re.compile(pattern, re.IGNORECASE)
@@ -54,7 +54,7 @@ class HTMLMangler(HasTraits):
                 fixed_url = self.url_mangler.get_absolute_url(document_url_dir,
                                                               match_object.groups()[0])
                 new_html += html[start_ix:url_start]
-                new_html += unicode(fixed_url)
+                new_html += str(fixed_url)
                 start_ix = url_end
             if url_end:
                 new_html += html[url_end:]
@@ -78,7 +78,7 @@ class HTMLMangler(HasTraits):
             if navstr.__class__ == NavigableString:
                 if navstr.parent.name in ['a', 'script']:
                     continue
-                words = unicode(navstr).split()
+                words = str(navstr).split()
                 new_text = ''
                 for word in words:
                     if ord(word[0]) > 0x600:  #x621 - x654

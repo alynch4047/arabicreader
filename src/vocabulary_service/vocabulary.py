@@ -2,7 +2,7 @@
 import logging
 from datetime import datetime
 
-from traits.api import HasTraits, Interface, implements
+from traits.api import HasTraits, Interface
 from traits.api import Instance, Any, Str, List, Dict
 
 from dictionary_service.api import WordDatabase, SQLDatabase

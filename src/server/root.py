@@ -2,7 +2,7 @@
 import logging
 import cherrypy
 import simplejson
-import urllib
+import urllib.parse
 import random
 
 random.seed()
@@ -61,7 +61,7 @@ class Root(object):
         url, use_json = self._get_use_json(url)
 
         if kwargs:
-            for key, value in kwargs.iteritems():
+            for key, value in kwargs.items():
                 kwargs[key] = self._remove_cache_buster(value)
                     
         resp = self._get(handler, url, use_json, **kwargs)
@@ -90,7 +90,7 @@ class Root(object):
         return self._post(handler, url, use_json, **kwargs)
         
     def _unquote(self, url):
-        url = urllib.unquote(url)
+        url = urllib.parse.unquote(url)
         url = url.replace('\n','')
         url = url.replace('\t','')
         url = url.replace('\r','')
@@ -101,30 +101,30 @@ class Root(object):
         try:
             #logger.debug('quoted url is %s', url)
             url = self._unquote(url)
-            for key, value in kwargs.iteritems():
+            for key, value in kwargs.items():
                 value = self._unquote(value)
-                kwargs[key] = unicode(value, encoding='utf-8')
-            url = unicode(url, encoding='utf-8')
+                kwargs[key] = value
+            url = url
             #logger.debug('unquoted url is %s', url)
             session = self._get_session()
             #logger.debug('get data for session %s', session)
             return server_out(handler.get_url(url, use_json, session=session, **kwargs))
-        except Exception, ex:
+        except Exception as ex:
             logger.exception('processing service')
-            
+
     def _post(self, handler, url, use_json, **kwargs):
         try:
             #logger.debug('quoted url is %s', url)
             url = self._unquote(url)
-            url = unicode(url, encoding='utf-8')
+            url = url
             #logger.debug('unquoted url is %s', url)
             session = self._get_session()
             url, use_json = self._get_use_json(url)
             #logger.debug('get data for session %s', session)
             return server_out(handler.get_url(url, use_json, session=session, **kwargs))
-        except Exception, ex:
+        except Exception as ex:
             logger.exception('processing service')
-            
+
     def _get_session(self):
         from session_service.api import MIN_GUEST_ID, MAX_GUEST_ID
         user_id = get_cookie_data('user_id')

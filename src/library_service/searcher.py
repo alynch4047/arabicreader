@@ -51,11 +51,11 @@ class Searcher(HasTraits):
     def get_search_page(self, user_id):
         page = ''.join([
                        self._get_todays_recommended_read(),
-                       unicode(self._get_my_library(user_id)),
+                       str(self._get_my_library(user_id)),
                        self._get_shared_library(),
-                       unicode(self._get_latest_news()),
-                       unicode(self._get_recent_additions()),
-                       unicode(self._get_search_query_page(), 'utf-8')])
+                       str(self._get_latest_news()),
+                       str(self._get_recent_additions()),
+                       self._get_search_query_page()])
         
         return u'<div class="search_page">' + page + u'</div>'
     
@@ -106,7 +106,7 @@ class Searcher(HasTraits):
                                     title=title).respond()
             return Template(self._my_library_html,
                             my_documents_html=my_documents_html).respond()
-        except Exception, ex:
+        except Exception as ex:
             l.exception("getting My Library html: %s", ex)
             return 'Sorry: There was an error retrieving your library. Please contact the administrator.'
     

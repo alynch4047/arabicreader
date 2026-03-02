@@ -15,7 +15,7 @@ class TestSessionHandler(unittest.TestCase):
         
     def test_make_password(self):
         password = self.session_handler._make_password()
-        print password
+        print(password)
         self.assert_(len(password), 6)
         
     def test_register(self):

@@ -1,5 +1,5 @@
 
-import urllib
+import urllib.parse
 import logging
 import threading
 import shelve
@@ -60,7 +60,7 @@ class ProxyCache(HasTraits):
             l.debug('url not in proxy cache: %s', url)
             file_name = self._generate_file_name(self.proxy_cache_dir)
             file_path = os.path.join(self.proxy_cache_dir, file_name)
-            f = file(file_path, 'w+')
+            f = open(file_path, 'w+')
             f.write(text)
             try:
                 _lock.acquire()
@@ -71,7 +71,7 @@ class ProxyCache(HasTraits):
             l.debug('get url from proxy cache: %s', url)
             date, file_name = self.shelf[url]
             file_path = os.path.join(self.proxy_cache_dir, file_name)
-            text = file(file_path, 'r+').read()
+            text = open(file_path, 'r+').read()
         return text
     
     def _generate_file_name(self, cache_dir):

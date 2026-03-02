@@ -63,7 +63,7 @@ class Printer(object):
             haraka = h[1]
             x = h[2]
             y = h[3]
-            haraka = unichr(unicode_to_baghdad(ord(haraka)))
+            haraka = chr(unicode_to_baghdad(ord(haraka)))
             self.postscript.psOut(str(ARABIC_FONT_SIZE) + ' FB\n' + str(x) + ' ' +
                                     str(y) + ' moveto \n(' + haraka + ') show')
 

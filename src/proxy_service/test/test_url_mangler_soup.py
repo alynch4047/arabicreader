@@ -7,7 +7,7 @@ import simplejson
 
 from sarf_service.test.test_words import *
 
-from proxy_service.BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 from proxy_service.url_mangler_soup import URLMangler
 
 

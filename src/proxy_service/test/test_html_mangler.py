@@ -7,7 +7,7 @@ import simplejson
 
 from sarf_service.test.test_words import *
 
-from proxy_service.BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 from proxy_service.url_mangler import URLMangler
 from proxy_service.hmtl_mangler import HTMLMangler
 
@@ -34,7 +34,7 @@ class TestHTMLMangler(unittest.TestCase):
 </body>
 </html>
 """
-        html = unicode(html)
+        html = str(html)
         new_html = self.html_mangler.fixup_header_links(html, 'http://www.abc.com/start/url/')
         self.assertEquals(new_html,
 """
@@ -70,7 +70,7 @@ class TestHTMLMangler(unittest.TestCase):
 </body>
 </html>
 """
-        html = unicode(html)
+        html = str(html)
         new_html = self.html_mangler.fixup_header_links(html, 'http://www.abc.com/start/url/')
         self.assertEquals(new_html,
 """

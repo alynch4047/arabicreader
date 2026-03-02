@@ -28,7 +28,7 @@ class Handler(HasTraits):
         data = ''
         try:
             data = func(input_data, session, **kwargs)
-        except Exception, ex:
+        except Exception as ex:
             l.exception('processing url %s', ex)
             success = 0
             try:
@@ -42,7 +42,7 @@ class Handler(HasTraits):
             return_data['num_elements'] = 1
         return_data['success'] = success
         return_data['data'] = data
-        json_data = simplejson.dumps(return_data, encoding='utf-8')
+        json_data = simplejson.dumps(return_data)
         #l.debug('json data is %s', json_data)
         return json_data
             

@@ -39,7 +39,7 @@ live_word_database = WordDatabase(sql_database=live_sql_database)
 live_session_store = SessionStore(sql_database=live_sql_database)
 live_dictionary = Dictionary(word_database=live_word_database)
 # trigger loading of DB before web service starts
-print 'There are %s words in the database' % len(live_dictionary.words)
+print('There are %s words in the database' % len(live_dictionary.words))
 
 
 def handlers_factory():

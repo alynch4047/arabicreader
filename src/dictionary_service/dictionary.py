@@ -2,7 +2,7 @@
 
 import logging
 
-from traits.api import (HasTraits, Interface, implements, List, 
+from traits.api import (HasTraits, provides,
                                  Dict, Instance, Delegate)
 
 from sarf_service.api import to_canonical_letters
@@ -12,10 +12,8 @@ from dictionary_service.i_word_database import IWordDatabase
 
 l = logging.getLogger(__name__)
 
-
+@provides(IDictionary)
 class Dictionary(HasTraits):
-    
-    implements(IDictionary)
     
     words_by_root = Delegate('word_database')
     

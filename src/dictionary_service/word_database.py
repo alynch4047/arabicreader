@@ -2,7 +2,7 @@
 import logging
 import threading
 
-from traits.api import HasTraits, List, Dict, Instance, implements
+from traits.api import HasTraits, List, Dict, Instance, provides
 
 from data.unicode_data import ALIF, HAMZA
 from sarf_service.api import IWord, to_core_letters
@@ -13,9 +13,8 @@ from dictionary_service.sql_database.sql_database import SQLDatabase
 l = logging.getLogger(__name__)
 
 
+@provides(IWordDatabase)
 class WordDatabase(HasTraits):
-    
-    implements(IWordDatabase)
     
     sql_database = Instance(SQLDatabase)
     

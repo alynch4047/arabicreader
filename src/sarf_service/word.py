@@ -1,7 +1,7 @@
 import logging
 
-from traits.api import HasTraits, Interface, implements, Any, Str, List
-from traits.api import TraitString, Int, Instance
+from traits.api import HasTraits, Interface, provides, Str, List
+from traits.api import Int, Instance
 
 from sarf_service.constants import *
 from sarf_service.root import RootMeaning, IRootMeaning
@@ -59,10 +59,8 @@ class IWord(Interface):
     def is_noun(self):
         """ Return true if the word is a noun"""
     
-
+@provides(IWord)
 class Word(HasTraits):
-    
-    implements(IWord)
     
     id = Int
     text = Str

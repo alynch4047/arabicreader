@@ -9,5 +9,5 @@ class QuranURL(object):
     quran_handler = QuranHandler(QURAN_DATA_LOC)
     
     def GET(self, url):
-        print QuranURL.quran_handler.get_url(url)
+        print(QuranURL.quran_handler.get_url(url))
 

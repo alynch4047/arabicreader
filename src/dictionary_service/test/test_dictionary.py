@@ -26,7 +26,7 @@ class TestDictionary(unittest.TestCase):
         
     def test_get_words_of_same_root(self):
         words_by_root = self.dictionary.get_words_of_same_root(KITAAB)
-        print words_by_root
+        print(words_by_root)
         self.assertEquals(len(words_by_root[KTB]), 4)
         
 #    def test_get_words_of_root(self):

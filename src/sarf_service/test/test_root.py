@@ -1,12 +1,12 @@
 
-import ar_logging
 import unittest
 
 from data.unicode_data import *
+
 KALB = KAAF + LAAM + BAA
 FAKATABA = FAA + KAAF + TAA + BAA
 
-from sarf_service.root import Root, RootMeaning
+from sarf_service.root import RootMeaning
 
 
 class TestRoot(unittest.TestCase):
