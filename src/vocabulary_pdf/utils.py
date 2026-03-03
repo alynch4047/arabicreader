@@ -151,7 +151,7 @@ def strip_tashkeel_with_location(x, y, text):
                                     PRESENTATION_SUKUUN]:
                     newy = shadda_y + 200 * ARABIC_FONT_SIZE / 1000
                 elif  tashkeel_ord in [PRESENTATION_KASRATAAN, PRESENTATION_KASRA]:
-                    tashkeel_char = unichr(PRESENTATION_FATHA)
+                    tashkeel_char = chr(PRESENTATION_FATHA)
                     newy = shadda_y - 130 * ARABIC_FONT_SIZE / 1000
             else:
                 if tashkeel_ord in TASHKEEL_CODE_UPPER:
@@ -187,14 +187,14 @@ def get_char_details(unicode_letter):
 
 def presentation_tashkeel(text):
     """ change tashkeel from unicode 0x0600 to presentation form """
-    text = text.replace(unichr(0x64b),unichr(0xfe71))
-    text = text.replace(unichr(0x64c),unichr(0xfe72))
-    text = text.replace(unichr(0x64d),unichr(0xfe74))
-    text = text.replace(unichr(0x64e),unichr(0xfe77))
-    text = text.replace(unichr(0x64f),unichr(0xfe79))
-    text = text.replace(unichr(0x650),unichr(0xfe7b))
-    text = text.replace(unichr(0x651),unichr(0xfe7d))
-    text = text.replace(unichr(0x652),unichr(0xfe7f))
+    text = text.replace(chr(0x64b),chr(0xfe71))
+    text = text.replace(chr(0x64c),chr(0xfe72))
+    text = text.replace(chr(0x64d),chr(0xfe74))
+    text = text.replace(chr(0x64e),chr(0xfe77))
+    text = text.replace(chr(0x64f),chr(0xfe79))
+    text = text.replace(chr(0x650),chr(0xfe7b))
+    text = text.replace(chr(0x651),chr(0xfe7d))
+    text = text.replace(chr(0x652),chr(0xfe7f))
     return text
 
 

@@ -54,14 +54,14 @@ def shape(text):
                ((rightChar == None) or CHAR_ATTRIBUTES[rightChar] in (JOIN_NONE, JOIN_RIGHT)):
                 #print "use isolated form"
                 charForm = CHAR_ISOLATED_FORM[ord(text[i])]
-                shapedText += unichr(charForm)
+                shapedText += chr(charForm)
             # check for initial form
             elif (rightChar == None or CHAR_ATTRIBUTES[rightChar] in (JOIN_NONE, JOIN_RIGHT)) and \
                (CHAR_ATTRIBUTES[leftChar] in (JOIN_RIGHT, JOIN_DUAL)) and \
                CHAR_ATTRIBUTES[thisChar] in (JOIN_LEFT, JOIN_DUAL):
                 #print "use initial form"
                 charForm = CHAR_INITIAL_FORM[ord(text[i])]
-                shapedText += unichr(charForm)
+                shapedText += chr(charForm)
             # check for final form (we know not isolated or initial)
             elif  CHAR_ATTRIBUTES[thisChar] == JOIN_RIGHT or \
                (((leftChar == None) or  CHAR_ATTRIBUTES[leftChar] in (JOIN_NONE, JOIN_LEFT)) and \
@@ -69,7 +69,7 @@ def shape(text):
                CHAR_ATTRIBUTES[thisChar] in (JOIN_RIGHT, JOIN_DUAL)):
                 #print "use final form"
                 charForm = CHAR_FINAL_FORM[ord(text[i])]
-                shapedText += unichr(charForm)
+                shapedText += chr(charForm)
             # check for medial form    
             # if this char is dual join and left character is dual or right join and
             # right character is dual or left form then we want medial form
@@ -78,7 +78,7 @@ def shape(text):
                 # use medial form
                 #print "use medial form"
                 charForm = CHAR_MEDIAL_FORM[ord(text[i])]
-                shapedText += unichr(charForm)
+                shapedText += chr(charForm)
             elif CHAR_ATTRIBUTES[thisChar] == JOIN_STRIP_OUT:
                 pass
             else:
@@ -109,7 +109,7 @@ def shaddas_before_harakaat(text):
     for ix in shadda_indices:
         if ix > 0 and ord(text[ix-1]) in TASHKEEL:
             letter_list[ix] = letter_list[ix-1]
-            letter_list[ix-1] = unichr(SHADDA)
+            letter_list[ix-1] = chr(SHADDA)
     return ''.join(letter_list)
 
     

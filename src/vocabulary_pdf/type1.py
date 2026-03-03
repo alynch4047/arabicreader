@@ -19,9 +19,8 @@ class type1font:
         self.fontfilename = fontfile
     
     def load(self):
-        f = open(self.fontfilename, 'r')
-        self.fontfiledata = f.read()
-        f.close()
+        with open(self.fontfilename, 'rb') as f:
+            self.fontfiledata = f.read().decode('latin-1')
         
     def parse(self):
         """just get eexec data for now, we don't care about any thing else yet (sorry)"""

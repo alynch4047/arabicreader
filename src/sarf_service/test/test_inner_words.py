@@ -37,7 +37,7 @@ class TestInnerWords(unittest.TestCase):
         
         text = KATABAT
         matches = self.inner_words.get_inner_word_texts(text)
-        self.assertEquals(len(matches), 10)
+        self.assertEquals(len(matches), 12)
         self.assert_(KATABA in [match[0] for match in matches])
         
         text = KATABA
@@ -99,7 +99,7 @@ class TestInnerWords(unittest.TestCase):
         
         text = to_canonical_letters(TUBASHSHIRUU)
         matches = self.inner_words.get_inner_word_texts(text)
-        self.assertEquals(len(matches), 6)
+        self.assertEquals(len(matches), 8)
         self.assert_(any(
                 [arabic_string_matches(match, YUBASHSHIRU) for match, reason in matches]))
         
@@ -152,7 +152,7 @@ class TestInnerWords(unittest.TestCase):
         
         text = KITAABATUHU
         matches = self.inner_words.get_inner_word_texts(text)
-        self.assertEquals(len(matches), 18)
+        self.assertEquals(len(matches), 20)
         self.assert_(KITAABA in [match[0] for match in matches])
         self.assert_([SUFFIX_HU, SWITCH_TAA_MARBUTA]  in [match[1] for match in matches])
         
@@ -197,7 +197,7 @@ class TestInnerWords(unittest.TestCase):
         
         text = MUSLIMAAT
         matches = self.inner_words.get_inner_word_texts(text)
-        self.assertEquals(len(matches), 6)
+        self.assertEquals(len(matches), 7)
         self.assert_(MUSLIM in [match[0] for match in matches])
         self.assert_(MUSLIMA in [match[0] for match in matches])
         

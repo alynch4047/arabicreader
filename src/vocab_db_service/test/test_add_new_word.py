@@ -31,6 +31,7 @@ class TestWordAdder(unittest.TestCase):
         class Session(object):
             def __init__(self):
                 self.user_id = 1
+                self.nickname = ''
         session = Session()
         self.word_adder.add_word_set(url, session)
         

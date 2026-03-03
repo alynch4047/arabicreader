@@ -5,7 +5,7 @@ from traits.api import HasTraits, Str, Int, Instance, CInt, List, Dict
 
 from dictionary_service.api import IDictionary, WordDatabase
 
-from vocab_db_service.word_set import WordSet, make_word_set_from_args
+from vocab_db_service.word_set import WordSet, make_word_set_from_args, make_word_set_from_url
 
 l = logging.getLogger(__name__)
 
@@ -74,7 +74,10 @@ class WordAdder(HasTraits):
         return [kalima_id, root, word_type, meaning, nickname, words_data]
     
     def add_word_set(self, url, session, **kwargs):
-        word_set = make_word_set_from_args(kwargs)
+        if kwargs:
+            word_set = make_word_set_from_args(kwargs)
+        else:
+            word_set = make_word_set_from_url(url)
         word_set.validate()
         assert(word_set.kalima_id == 0)
         new_kalima_id = self.word_database.add_word_set(word_set, session)

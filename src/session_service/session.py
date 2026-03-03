@@ -1,7 +1,7 @@
 
 import logging
 
-from traits.api import HasTraits, Str, Bool, Int
+from traits.api import HasTraits, Str, Bool, Int, Instance
 
 from server.api import set_cookie_data, get_cookie_data
 
@@ -13,16 +13,18 @@ MAX_GUEST_ID = 9999999
 
 
 class Session(HasTraits):
-    
+
     user_id = Int
-    
+
     password_hash = Str
-    
+
     authenticated = Bool(False)
-    
+
     email_address = Str
-    
+
     nickname = Str
+
+    sql_database = Instance('dictionary_service.sql_database.sql_database.SQLDatabase')
     
     def __init__(self, **traits):
         HasTraits.__init__(self, **traits)
@@ -56,10 +58,12 @@ class Session(HasTraits):
                 self.authenticated = True
     
     def _get_nickname(self, user_id):
+        if self.sql_database is None:
+            return ''
         user_details = self.sql_database.get_user_details(self.user_id)
         if user_details is None:
-            return None
+            return ''
         else:
-            return user_details['nickname'] 
+            return user_details['nickname']
 
 

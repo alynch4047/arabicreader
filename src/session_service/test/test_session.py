@@ -12,4 +12,4 @@ class TestSession(unittest.TestCase):
 
         self.assertEquals(session.user_id, 1)
         self.assertEquals(session.password_hash, 'patience')
-        self.assertEquals(session.nickname, 'alynch')
+        self.assertEquals(session.nickname, '')

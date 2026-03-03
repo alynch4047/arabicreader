@@ -18,12 +18,12 @@ class TestVocabulary(unittest.TestCase):
         vocabulary = Vocabulary(session=guest_session,
                                 word_database=self.word_database,
                                 sql_database=self.word_database.sql_database)
-        res = vocabulary.get_all_words()
+        res = vocabulary.get_all_word_ids()
         self.assertEquals(len(res), 0)
         vocabulary.add_word(1)
-        res = vocabulary.get_all_words()
+        res = vocabulary.get_all_word_ids()
         self.assertEquals(len(res), 1)
-        
+
     def test_guest_add_word(self):
         guest_session = Session(user_id=MIN_GUEST_ID)
         vocabulary = Vocabulary(session=guest_session,
@@ -37,10 +37,10 @@ class TestVocabulary(unittest.TestCase):
         vocabulary = Vocabulary(session=session,
                                 word_database=self.word_database,
                                 sql_database=self.word_database.sql_database)
-        res = vocabulary.get_all_words()
+        res = vocabulary.get_all_word_ids()
         self.assertEquals(len(res), 0)
         vocabulary.add_word(1)
-        res = vocabulary.get_all_words()
+        res = vocabulary.get_all_word_ids()
         self.assertEquals(len(res), 1)
         
       
