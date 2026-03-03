@@ -1,6 +1,4 @@
 import logging
-import string
-import sys
 
 from PyQt5.QtGui import QPainter, QFont
 from PyQt5.QtPrintSupport import QPrinter
@@ -65,7 +63,7 @@ def printAtPS(x,y,text, align, fontAbbrev='FT'):
 def printComment(comment):
     psOut('% ' + comment + '\n')
 
-def printAtPSArabic(x,y,text, sizeonly=FALSE):
+def printAtPSArabic(x,y,text, sizeonly=False):
     """ postscript printing method, assume prolog and epilog handled elsewhere
         also takes a unicode string and converts it to the base Type1 font char codes
         return the width of the string"""
@@ -78,7 +76,7 @@ def printAtPSArabic(x,y,text, sizeonly=FALSE):
         if unicharindex >= 0xfe70:
             type1code = unicharindex - 0xfe70 + 50
         else:
-            type1code = unicharindex;
+            type1code = unicharindex
         if type1code >= 0 and type1code < 256:
             arabictext += chr(type1code) # basic glyph for Baghdad
         else:
@@ -97,14 +95,14 @@ def printAtPSArabic(x,y,text, sizeonly=FALSE):
     return xOffset
 
 def shapePhrase(text):
-	ret = ''
-	words = text.split()
-	for i in range(len(words)):
-		word = words[i]
-		if ret != '':
-			ret += ' '
-		ret += shape(word)
-	return ret
+    ret = ''
+    words = text.split()
+    for i in range(len(words)):
+        word = words[i]
+        if ret != '':
+            ret += ' '
+        ret += shape(word)
+    return ret
 
 def charjoin(text):
     """join any necessary characters e.g. laam + alif"""
@@ -121,19 +119,19 @@ def charjoin(text):
     replaceChars2 = { ALIF_LAAM:ALIF_LAAM_REPLACE, ALIF_MADD_LAAM:ALIF_MADD_LAAM_REPLACE }
 
     for replaceString in replaceChars3.keys():
-        try: 
-            text = string.replace(text, replaceString, replaceChars3[replaceString])
+        try:
+            text = text.replace(replaceString, replaceChars3[replaceString])
         except (UnicodeDecodeError, UnicodeEncodeError):
-            print "replace string", repr(replaceString)
-            print "text", repr(text)
-            print repr(replaceChars3)
+            print("replace string", repr(replaceString))
+            print("text", repr(text))
+            print(repr(replaceChars3))
     for replaceString in replaceChars2.keys():
         try:
-            text = string.replace(text, replaceString, replaceChars2[replaceString])
+            text = text.replace(replaceString, replaceChars2[replaceString])
         except (UnicodeDecodeError, UnicodeEncodeError):
-            print "replace string", repr(replaceString)
-            print "text", repr(text)
-            print repr(replaceChars2)
+            print("replace string", repr(replaceString))
+            print("text", repr(text))
+            print(repr(replaceChars2))
         #print "replacing 2 char"
     return text
 
@@ -172,14 +170,14 @@ def shape(text):
                ((rightChar == None) or charAttributes[rightChar] in (JOIN_NONE, JOIN_RIGHT)):
                 #print "use isolated form"
                 charForm = charIsolatedForm[ord(text[i])]
-                shapedText += unichr(charForm)
+                shapedText += chr(charForm)
             # check for initial form
             elif (rightChar == None or charAttributes[rightChar] in (JOIN_NONE, JOIN_RIGHT)) and \
                (charAttributes[leftChar] in (JOIN_RIGHT, JOIN_DUAL)) and \
                charAttributes[thisChar] in (JOIN_LEFT, JOIN_DUAL):
                 #print "use initial form"
                 charForm = charInitialForm[ord(text[i])]
-                shapedText += unichr(charForm)
+                shapedText += chr(charForm)
             # check for final form (we know not isolated or initial)
             elif  charAttributes[thisChar] == JOIN_RIGHT or \
                (((leftChar == None) or  charAttributes[leftChar] in (JOIN_NONE, JOIN_LEFT)) and \
@@ -187,7 +185,7 @@ def shape(text):
                charAttributes[thisChar] in (JOIN_RIGHT, JOIN_DUAL)):
                 #print "use final form"
                 charForm = charFinalForm[ord(text[i])]
-                shapedText += unichr(charForm)
+                shapedText += chr(charForm)
             # check for medial form    
             # if this char is dual join and left character is dual or right join and
             # right character is dual or left form then we want medial form
@@ -196,9 +194,9 @@ def shape(text):
                 # use medial form
                 #print "use medial form"
                 charForm = charMedialForm[ord(text[i])]
-                shapedText += unichr(charForm)
+                shapedText += chr(charForm)
             else:
-                print "Form not found! "
+                print("Form not found!")
                 shapedText += text[i]
         #print "shaped text without tashkeel is " + repr(shapedText)
         shapedText = replaceTashkeel(shapedText, tashkeel)
