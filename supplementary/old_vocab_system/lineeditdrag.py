@@ -4,8 +4,8 @@ from constants import *
 class lineeditdrag(QLineEdit):
     def __init__(self,a, name):
         QLineEdit.__init__(self,a,name)
-        self.setAcceptDrops(TRUE)
-        self.setMouseTracking(FALSE)
+        self.setAcceptDrops(True)
+        self.setMouseTracking(False)
         self.name = name
 
     def mouseMoveEvent(self,e):
@@ -14,14 +14,14 @@ class lineeditdrag(QLineEdit):
         self.emit(PYSIGNAL("startdrag"),(text,self.name))
 
     def dragEnterEvent(self,e):
-        if unicode(self.text()) == '' or self.text() == None:
+        if str(self.text()) == '' or self.text() == None:
             e.accept()
         else:
             e.ignore()
 
     def dragMoveEvent(self,e):
         #print repr(self.text()), str(self.text())
-        if unicode(self.text()) == '' or self.text() == None:
+        if str(self.text()) == '' or self.text() == None:
             e.accept()
         else:
             e.ignore()

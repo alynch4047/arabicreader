@@ -8,7 +8,7 @@ def psOut(text):
         logging.debug('ps out %s', text)
         psFile.write(text + '\n')
     except:
-        print "exception text is",repr(text)
+        print("exception text is", repr(text))
         raise
 
 def postscriptProlog():

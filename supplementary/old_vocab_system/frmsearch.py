@@ -95,16 +95,12 @@ class frmSearch(QDialog):
 
 
     def pbSearch_clicked(self):
-        print "frmSearch.pbSearch_clicked(): Not implemented yet"
-
+        print("frmSearch.pbSearch_clicked(): Not implemented yet")
     def pbOK_clicked(self):
-        print "frmSearch.pbOK_clicked(): Not implemented yet"
-
+        print("frmSearch.pbOK_clicked(): Not implemented yet")
     def pbCancel_clicked(self):
-        print "frmSearch.pbCancel_clicked(): Not implemented yet"
-
+        print("frmSearch.pbCancel_clicked(): Not implemented yet")
     def tblResults_doubleClicked(self,a0,a1,a2,a3):
-        print "frmSearch.tblResults_doubleClicked(int,int,int,const QPoint&): Not implemented yet"
-
+        print("frmSearch.tblResults_doubleClicked(int,int,int,const QPoint&): Not implemented yet")
     def __tr(self,s,c = None):
         return qApp.translate("frmSearch",s,c)

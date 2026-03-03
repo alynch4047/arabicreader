@@ -35,12 +35,12 @@ for kal in rows:
         myJidhr3=kal[12]
         myJidhr4=kal[13]
         myJidhr5=kal[14]
-	mySortKalima=kal[15]
-	mySortJidhr=kal[16]
-	mySectionId=kal[17]
+    mySortKalima=kal[15]
+    mySortJidhr=kal[16]
+    mySectionId=kal[17]
 
-	if mySectionId == None:
-		mySectionId = 0
+    if mySectionId == None:
+        mySectionId = 0
 
         isql = "insert into kalima (kalima_id) "
         isql += "values (" + leId + ");"
@@ -65,6 +65,6 @@ for kal in rows:
         sql += " kalima_sort_jidhr = "  + str(mySortJidhr) + " ,  "
         sql += " section_id = "  + str(mySectionId) + "   "
         sql += " where kalima_id =  " + leId + ";"
-	print sql
+    print(sql)
         scur.execute(sql)
         scnx.commit()

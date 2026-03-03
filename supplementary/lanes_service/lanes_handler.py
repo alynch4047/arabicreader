@@ -15,7 +15,7 @@ class LanesHandler(object):
         return ' you requested lanes pg %s' % page_no
     
     def _get_root_info(self, root):
-        root = unicode(root,'utf-8')
+        root = root.decode('utf-8') if isinstance(root, bytes) else root
         chars_in_root = len(root)
         root_faa = root[0]
         root_ayn = root[1]

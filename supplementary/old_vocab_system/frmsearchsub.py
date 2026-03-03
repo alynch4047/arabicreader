@@ -46,7 +46,7 @@ class frmSearchSub(frmSearch):
         KALIMA_FIL_MU, KALIMA_HARF, KALIMA_MEANING
         from kalima  """ 
         sql += sqlCondition + 'order by  ' + sqlOrderBy + ";"
-        print sql
+        print(sql)
         cur.execute(sql)
         rows = cur.fetchall()
         # clear all rows in results table

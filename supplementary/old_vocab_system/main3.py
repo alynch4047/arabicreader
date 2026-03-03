@@ -1121,127 +1121,86 @@ class MainEntry(QMainWindow):
 
 
   def fileNew(self):
-    print "MainEntry.fileNew(): Not implemented yet"
-
+    print("MainEntry.fileNew(): Not implemented yet")
   def fileOpen(self):
-    print "MainEntry.fileOpen(): Not implemented yet"
-
+    print("MainEntry.fileOpen(): Not implemented yet")
   def fileSave(self):
-    print "MainEntry.fileSave(): Not implemented yet"
-
+    print("MainEntry.fileSave(): Not implemented yet")
   def fileSaveAs(self):
-    print "MainEntry.fileSaveAs(): Not implemented yet"
-
+    print("MainEntry.fileSaveAs(): Not implemented yet")
   def filePrint(self):
-    print "MainEntry.filePrint(): Not implemented yet"
-
+    print("MainEntry.filePrint(): Not implemented yet")
   def fileExit(self):
-    print "MainEntry.fileExit(): Not implemented yet"
-
+    print("MainEntry.fileExit(): Not implemented yet")
   def editUndo(self):
-    print "MainEntry.editUndo(): Not implemented yet"
-
+    print("MainEntry.editUndo(): Not implemented yet")
   def editRedo(self):
-    print "MainEntry.editRedo(): Not implemented yet"
-
+    print("MainEntry.editRedo(): Not implemented yet")
   def editCut(self):
-    print "MainEntry.editCut(): Not implemented yet"
-
+    print("MainEntry.editCut(): Not implemented yet")
   def editCopy(self):
-    print "MainEntry.editCopy(): Not implemented yet"
-
+    print("MainEntry.editCopy(): Not implemented yet")
   def editPaste(self):
-    print "MainEntry.editPaste(): Not implemented yet"
-
+    print("MainEntry.editPaste(): Not implemented yet")
   def editFind(self):
-    print "MainEntry.editFind(): Not implemented yet"
-
+    print("MainEntry.editFind(): Not implemented yet")
   def helpIndex(self):
-    print "MainEntry.helpIndex(): Not implemented yet"
-
+    print("MainEntry.helpIndex(): Not implemented yet")
   def helpContents(self):
-    print "MainEntry.helpContents(): Not implemented yet"
-
+    print("MainEntry.helpContents(): Not implemented yet")
   def helpAbout(self):
-    print "MainEntry.helpAbout(): Not implemented yet"
-
+    print("MainEntry.helpAbout(): Not implemented yet")
   def kalimaFirst(self):
-    print "MainEntry.kalimaFirst(): Not implemented yet"
-
+    print("MainEntry.kalimaFirst(): Not implemented yet")
   def kalimaLast(self):
-    print "MainEntry.kalimaLast(): Not implemented yet"
-
+    print("MainEntry.kalimaLast(): Not implemented yet")
   def kalimaPrevious(self):
-    print "MainEntry.kalimaPrevious(): Not implemented yet"
-
+    print("MainEntry.kalimaPrevious(): Not implemented yet")
   def kalimaNext(self):
-    print "MainEntry.kalimaNext(): Not implemented yet"
-
+    print("MainEntry.kalimaNext(): Not implemented yet")
   def pbClose_clicked(self):
-    print "MainEntry.pbClose_clicked(): Not implemented yet"
-
+    print("MainEntry.pbClose_clicked(): Not implemented yet")
   def mainClose(self):
-    print "MainEntry.mainClose(): Not implemented yet"
-
+    print("MainEntry.mainClose(): Not implemented yet")
   def kalimaAdd(self):
-    print "MainEntry.kalimaAdd(): Not implemented yet"
-
+    print("MainEntry.kalimaAdd(): Not implemented yet")
   def kalimaDelete(self):
-    print "MainEntry.kalimaDelete(): Not implemented yet"
-
+    print("MainEntry.kalimaDelete(): Not implemented yet")
   def kalimaSearch(self):
-    print "MainEntry.kalimaSearch(): Not implemented yet"
-
+    print("MainEntry.kalimaSearch(): Not implemented yet")
   def rbReviseArabic_clicked(self):
-    print "MainEntry.rbReviseArabic_clicked(): Not implemented yet"
-
+    print("MainEntry.rbReviseArabic_clicked(): Not implemented yet")
   def rbReviseEnglish_clicked(self):
-    print "MainEntry.rbReviseEnglish_clicked(): Not implemented yet"
-
+    print("MainEntry.rbReviseEnglish_clicked(): Not implemented yet")
   def rbShowBoth_clicked(self):
-    print "MainEntry.rbShowBoth_clicked(): Not implemented yet"
-
+    print("MainEntry.rbShowBoth_clicked(): Not implemented yet")
   def pbReveal_clicked(self):
-    print "MainEntry.pbReveal_clicked(): Not implemented yet"
-
+    print("MainEntry.pbReveal_clicked(): Not implemented yet")
   def cmbOrderBy_highlighted(self,a0):
-    print "MainEntry.cmbOrderBy_highlighted(const QString&): Not implemented yet"
-
+    print("MainEntry.cmbOrderBy_highlighted(const QString&): Not implemented yet")
   def cmbOrderBy_activated(self,a0):
-    print "MainEntry.cmbOrderBy_activated(const QString&): Not implemented yet"
-
+    print("MainEntry.cmbOrderBy_activated(const QString&): Not implemented yet")
   def pbUnicode_clicked(self):
-    print "MainEntry.pbUnicode_clicked(): Not implemented yet"
-
+    print("MainEntry.pbUnicode_clicked(): Not implemented yet")
   def filePreferences_activated(self):
-    print "MainEntry.filePreferences_activated(): Not implemented yet"
-
+    print("MainEntry.filePreferences_activated(): Not implemented yet")
   def fileBooks_activated(self):
-    print "MainEntry.fileBooks_activated(): Not implemented yet"
-
+    print("MainEntry.fileBooks_activated(): Not implemented yet")
   def pbAddSection_clicked(self):
-    print "MainEntry.pbAddSection_clicked(): Not implemented yet"
-
+    print("MainEntry.pbAddSection_clicked(): Not implemented yet")
   def pbDeleteSection_clicked(self):
-    print "MainEntry.pbDeleteSection_clicked(): Not implemented yet"
-
+    print("MainEntry.pbDeleteSection_clicked(): Not implemented yet")
   def lvSectionView_selectionChanged(self,a0):
-    print "MainEntry.lvSectionView_selectionChanged(QListViewItem*): Not implemented yet"
-
+    print("MainEntry.lvSectionView_selectionChanged(QListViewItem*): Not implemented yet")
   def lvSections_selectionChanged(self,a0):
-    print "MainEntry.lvSections_selectionChanged(QListViewItem*): Not implemented yet"
-
+    print("MainEntry.lvSections_selectionChanged(QListViewItem*): Not implemented yet")
   def pbAddToSection_clicked(self):
-    print "MainEntry.pbAddToSection_clicked(): Not implemented yet"
-
+    print("MainEntry.pbAddToSection_clicked(): Not implemented yet")
   def pbRemoveFromSection_clicked(self):
-    print "MainEntry.pbRemoveFromSection_clicked(): Not implemented yet"
-
+    print("MainEntry.pbRemoveFromSection_clicked(): Not implemented yet")
   def pbAdd_clicked(self):
-    print "MainEntry.pbAdd_clicked(): Not implemented yet"
-
+    print("MainEntry.pbAdd_clicked(): Not implemented yet")
   def pbDelete_clicked(self):
-    print "MainEntry.pbDelete_clicked(): Not implemented yet"
-
+    print("MainEntry.pbDelete_clicked(): Not implemented yet")
   def __tr(self,s,c = None):
     return qApp.translate("MainEntry",s,c)

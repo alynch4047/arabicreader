@@ -26,7 +26,7 @@ TOOLBAR_OPEN = 1
 
 class pyPartsMW (KParts.MainWindow):
     def __init__ (self, *args):
-        apply (KParts.MainWindow.__init__, (self,) + args)
+        KParts.MainWindow.__init__(self, *args)
 
         # Create the actions for our menu/toolbar to use
         # Keep in mind that the part loaded will provide its
@@ -38,12 +38,12 @@ class pyPartsMW (KParts.MainWindow):
 
         quitAction = KStdAction.quit (self.close, self.actionCollection ())
 
-        self.m_toolbarAction = KStdAction.showToolbar(self.optionsShowToolbar, self.actionCollection());
-        self.m_statusbarAction = KStdAction.showStatusbar(self.optionsShowStatusbar, self.actionCollection());
+        self.m_toolbarAction = KStdAction.showToolbar(self.optionsShowToolbar, self.actionCollection())
+        self.m_statusbarAction = KStdAction.showStatusbar(self.optionsShowStatusbar, self.actionCollection())
         self.m_openFileAction = KStdAction.open(self.openFile, self.actionCollection())
 
-        KStdAction.keyBindings(self.optionsConfigureKeys, self.actionCollection());
-        KStdAction.configureToolbars(self.optionsConfigureToolbars, self.actionCollection());
+        KStdAction.keyBindings(self.optionsConfigureKeys, self.actionCollection())
+        KStdAction.configureToolbars(self.optionsConfigureToolbars, self.actionCollection())
 
         self.path = os.getcwd () + '/'
         self.setGeometry (0, 0, 600, 600)
@@ -54,8 +54,7 @@ class pyPartsMW (KParts.MainWindow):
         self.partArgs = QStringList()
         self.partArgs.append(QString("Browser/View"))
 
-        print repr(self.partArgs)
-
+        print(repr(self.partArgs))
         self.part = createReadOnlyPart ("libkghostviewpart", self,"gvpart","KParts::ReadOnlyPart",self.partArgs )
 
         # set the part as the main widget (you can use it in other
@@ -73,22 +72,18 @@ class pyPartsMW (KParts.MainWindow):
         #self.myURL = KURL("file:/home/alynch/postscript/arabic-present-A.pdf")
 
         self.myURL = KURL("file:" + self.path + "psout.pdf")
-        print str(self.myURL.fileName())
+        print(str(self.myURL.fileName()))
         self.part.openURL(self.myURL)
-        print self.part.url()
-        print self.part.url().path()
-        
-
+        print(self.part.url())
+        print(self.part.url().path())
     def openFile(self):
         self.myFile = kfile.KFileDialog.getOpenFileName()
         self.myURL = KURL("file:" + str(self.myFile))
-        print self.myURL.fileName()
+        print(self.myURL.fileName())
         if self.part.openURL(self.myURL) == TRUE:
-            print "opened"
+            print("opened")
         else:
-            print "failed"
-
-
+            print("failed")
     # slots for our actions
     def optionsShowToolbar (self):
         if self.m_toolbarAction.isChecked():
@@ -110,7 +105,7 @@ class pyPartsMW (KParts.MainWindow):
     def optionsConfigureToolbars (self):
         dlg = KEditToolbar (self.actionCollection(), self.xmlFile ())
         if dlg.exec_loop ():
-                self.createGUI(self);
+                self.createGUI(self)
 
 
     # some boilerplate left over from pyKLess/KLess
@@ -142,17 +137,17 @@ class pyPartsMW (KParts.MainWindow):
 
     def dynamicActions (self):
         fakeFiles = ["kaction.sip", "kxmlguiclient.sip"]
-        self.unplugActionList("recent");
+        self.unplugActionList("recent")
         self.dynamicActionsList = []
         for i in range (len (fakeFiles)):
             act = KAction (i18n (fakeFiles [i]), KShortcut.null (), None, fakeFiles [i][:-4] + "open")
-            self.dynamicActionsList.append(act);
+            self.dynamicActionsList.append(act)
 
         for a in self.dynamicActionsList:
-            print a.name ()
+            print(a.name ())
         print
 
-        self.plugActionList("recent", self.dynamicActionsList);
+        self.plugActionList("recent", self.dynamicActionsList)
 
     def slotFake (self, id = -1):
         pass

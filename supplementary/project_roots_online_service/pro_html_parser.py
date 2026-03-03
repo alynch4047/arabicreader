@@ -1,8 +1,8 @@
 import os
 import logging
-from HTMLParser import HTMLParser
+from html.parser import HTMLParser
 
-from traits.api import HasTraits, Interface, implements, Any, Str, List, Dict
+from traits.api import HasTraits, Interface, Any, Str, List, Dict
 
 from sarf_service.root import IRootMeaning, Root, RootMeaning
 
@@ -37,7 +37,7 @@ class PROHTMLParser(HTMLParser, HasTraits):
     def _parse_html_files(self, file_names):
         for file_name in file_names:
             file_path = os.path.join(self.pro_html_directory, file_name)
-            data = file(file_path).read()
+            data = open(file_path).read()
             self.feed(data)
             
     def handle_starttag(self, tag, attrs):
@@ -52,7 +52,7 @@ class PROHTMLParser(HTMLParser, HasTraits):
         matches, root = self._matches_root_letters(data)
         if matches:
             self._current_root = root
-            assert(isinstance(root, unicode))
+            assert isinstance(root, str)
         else:
             if self._current_root != '':
                 matches, definition = self._matches_definition(data)

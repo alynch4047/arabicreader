@@ -76,57 +76,57 @@ def stripTashkeelWithLocation(x,y,text):
 
 def presentationTashkeel(text):
     """ change tashkeel from unicode 0x0600 to presentation form """
-    text = text.replace(unichr(0x64b),unichr(0xfe70))
-    text = text.replace(unichr(0x64c),unichr(0xfe72))
-    text = text.replace(unichr(0x64d),unichr(0xfe74))
-    text = text.replace(unichr(0x64e),unichr(0xfe76))
-    text = text.replace(unichr(0x64f),unichr(0xfe78))
-    text = text.replace(unichr(0x650),unichr(0xfe7a))
-    text = text.replace(unichr(0x651),unichr(0xfe7c))
-    text = text.replace(unichr(0x652),unichr(0xfe7e))
+    text = text.replace(chr(0x64b),chr(0xfe70))
+    text = text.replace(chr(0x64c),chr(0xfe72))
+    text = text.replace(chr(0x64d),chr(0xfe74))
+    text = text.replace(chr(0x64e),chr(0xfe76))
+    text = text.replace(chr(0x64f),chr(0xfe78))
+    text = text.replace(chr(0x650),chr(0xfe7a))
+    text = text.replace(chr(0x651),chr(0xfe7c))
+    text = text.replace(chr(0x652),chr(0xfe7e))
     return text
 
 def reversePhrase(text):
-	ret = ''
-	words = text.split()
-	for i in range(len(words)):
-		j = len(words) - i - 1 # reverse word order too
-		word = words[j]
-		if ret != '':
-			ret += ' '
-		ret += reverse(word)
-	return ret
-		
+    ret = ''
+    words = text.split()
+    for i in range(len(words)):
+        j = len(words) - i - 1 # reverse word order too
+        word = words[j]
+        if ret != '':
+            ret += ' '
+        ret += reverse(word)
+    return ret
+        
 
 def reverse(text):
-	rev = ''
-	for i in range(len(text)):
-		rev += text[len(text) - i - 1]
-	return rev
+    rev = ''
+    for i in range(len(text)):
+        rev += text[len(text) - i - 1]
+    return rev
 
 def encode(text):
-	return unicode(text).encode('UTF-8')
+    return str(text).encode('UTF-8')
 
 def decode(text):
-	return unicode(text,'UTF-8')
+    return text.decode('UTF-8') if isinstance(text, bytes) else text
 
 def alphaSortValWord(word):
-	sortNumber = 0
-	word = stripTashkeel(word)[1]
-	for i in range(len(word)):
-	    sortNumber +=  41 ** (10 - i) * alphaSortVal(word[i])
-	return sortNumber
+    sortNumber = 0
+    word = stripTashkeel(word)[1]
+    for i in range(len(word)):
+        sortNumber +=  41 ** (10 - i) * alphaSortVal(word[i])
+    return sortNumber
 
 
 def alphaSortVal(char):
-	if len(unicode(char))> 0:
-		val = ord(unicode(char))
-		if val >= 0x622 and val <= 0x64a:
-			if val <= 0x627: # hamza
-				return 1
-			# exclude tashkiil (0x64B - 0x650) and odd stuff e.g. ufefb and ufef5 laa and laa madd
-			return val - 0x621
-	return 0
+    if len(str(char))> 0:
+        val = ord(str(char))
+        if val >= 0x622 and val <= 0x64a:
+            if val <= 0x627: # hamza
+                return 1
+            # exclude tashkiil (0x64B - 0x650) and odd stuff e.g. ufefb and ufef5 laa and laa madd
+            return val - 0x621
+    return 0
 
 def getStringWidth(text, fontSize):
     """ get widths of each character in the string and return the total width (needs text to be shaped already)"""
@@ -137,7 +137,7 @@ def getStringWidth(text, fontSize):
         if code < len(encoding):
             charName = encoding[code][1:]
             if charName not in font.charWidths.keys():
-                print charName, "not in widths"
+                print(charName, "not in widths")
                 raise LookupError
             else:
                 width += font.charWidths[charName]
@@ -147,9 +147,9 @@ def getStringWidth(text, fontSize):
 
 
 if __name__ == '__main__':
-	print "?abcdefg?"
-	print '?' + reverse("abcdefg") + '?'
-	print  '?' + u'\u0020\u0050' + '?'
-	print '?' + reverse(u'\u0020\u0050') + '?'
-	print "this is a test OK" 
-	print '?' + reversePhrase("this is a test OK") + '?'
+    print("?abcdefg?")
+    print('?' + reverse("abcdefg") + '?')
+    print( '?' + u'\u0020\u0050' + '?')
+    print('?' + reverse(u'\u0020\u0050') + '?')
+    print("this is a test OK")
+    print('?' + reversePhrase("this is a test OK") + '?')

@@ -6,7 +6,7 @@ def psOut(text):
     try:
         psFile.write(text + '\n')
     except:
-        print "exception text is",repr(text)
+        print("exception text is", repr(text))
         raise
 
 def postscriptProlog():

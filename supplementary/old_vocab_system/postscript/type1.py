@@ -1,4 +1,4 @@
-from string import *
+from string import whitespace
 from baghdad import *
 
 standardEncoding = []
@@ -21,14 +21,13 @@ class type1font:
         self.fontfilename = fontfile
     
     def load(self):
-        f = open(self.fontfilename,'r')
-        self.fontfiledata = f.read()
-        f.close()
+        with open(self.fontfilename, 'rb') as f:
+            self.fontfiledata = f.read().decode('latin-1')
         
     def parse(self):
         """just get eexec data for now, we don't care about any thing else yet (sorry)"""
-        eexecpos = find(self.fontfiledata,"eexec")
-        cleartomarkpos = find(self.fontfiledata,"cleartomark")
+        eexecpos = self.fontfiledata.find("eexec")
+        cleartomarkpos = self.fontfiledata.find("cleartomark")
         # go back from cleartomarkpos getting 512 ascii zeros to find end of eexec data
         numzeros = 0
         pos = cleartomarkpos
@@ -48,9 +47,9 @@ class type1font:
     def eexecparse(self):
         """ the main thing here is to get the charstrings and decrypt them """
         # find charstringscipher in execdataplain
-        charstringspos = find(self.eexecdataplain,'/CharStrings')
-        beginpos = find(self.eexecdataplain,'begin',charstringspos)
-        endpos = find(self.eexecdataplain,'end', beginpos)
+        charstringspos = self.eexecdataplain.find('/CharStrings')
+        beginpos = self.eexecdataplain.find('begin',charstringspos)
+        endpos = self.eexecdataplain.find('end', beginpos)
         charstringsoffset = 6
         self.charstringsdata = self.eexecdataplain[beginpos + charstringsoffset:endpos]
 
@@ -60,11 +59,11 @@ class type1font:
         charseqno = 0
         while pos <= len(self.charstringsdata) - 1:
            # first check that we have at least one record left
-           recfound = find(self.charstringsdata,'ND', pos)
+           recfound = self.charstringsdata.find('ND', pos)
            if recfound == -1:
                #print "ND not found",pos,recfound
                break
-           recfound = find(self.charstringsdata,'RD', pos)
+           recfound = self.charstringsdata.find('RD', pos)
            if recfound == -1:
                #print "RD not found"
                break
@@ -97,8 +96,8 @@ class type1font:
                pos += 1
            # should be 'RD' here
            if self.charstringsdata[pos:pos+2] != 'RD':
-               print "RD ERROR at ", pos
-               print repr(self.charstringsdata[pos:pos+1])
+               print("RD ERROR at ", pos)
+               print(repr(self.charstringsdata[pos:pos+1]))
                return
            pos += 2
            #eat whitespace
@@ -116,7 +115,7 @@ class type1font:
                pos += 1
            # should be 'ND' here
            if self.charstringsdata[pos:pos+2] != 'ND':
-               print "ND ERROR at ", pos
+               print("ND ERROR at ", pos)
                return
            pos += 2
            #eat whitespace
@@ -195,11 +194,9 @@ def main():
     l = {}
     for k in baghdad.charstrings.keys():
         l[baghdad.charstrings[k][0]] = k
-    print l
-
+    print(l)
     baghdad.loadAFM("BAGHD___.AFM")
-    print repr(baghdad.charWidths)
-
+    print(repr(baghdad.charWidths))
     #k = baghdad.charstrings.keys()
     #s = [(baghdad.charstrings[x][1],x) for x in k]
     #print repr(s)    

@@ -43,7 +43,7 @@ def printAtBuffer(x,y,text,QT, align=ALIGN_LEFT, fontAbbrev='FT'):
 def printAtArabicBuffer(x,y,text,QT):
     global printBuffer
     printBuffer.append([y,BUFF_ARABIC,x,text,QT])
-    return printAtPSArabic(x,y,text, sizeonly=TRUE)
+    return printAtPSArabic(x,y,text, sizeonly=True)
 
 def printCommentBuffer(comment,y):
     global printBuffer
@@ -53,15 +53,15 @@ def bufferToPrinter(QT):
     global printBuffer, sectionPageIndex
     # first sort buffer by y co-ordinate, so that we can paginate properly
     # use ripple sort as it is already close to sorted
-    rippled=TRUE
+    rippled=True
     while rippled:
-        rippled = FALSE
+        rippled = False
         for i in range(len(printBuffer)-1):
             if printBuffer[i][0] < printBuffer[i+1][0]:
                 temp = printBuffer[i+1][:]
                 printBuffer[i+1] = printBuffer[i][:]
                 printBuffer[i] = temp[:]
-                rippled = TRUE
+                rippled = True
 
     debugFile = open('debugout','w')
     for i in range(len(printBuffer)):
@@ -120,15 +120,15 @@ def printTitle(QT):
 
 def sortSectionPageIndex():
     global sectionPageIndex
-    rippled=TRUE
+    rippled=True
     while rippled:
-        rippled = FALSE
+        rippled = False
         for i in range(len(sectionPageIndex)-1):
             if sectionPageIndex[i][1] > sectionPageIndex[i+1][1]:
                 temp = sectionPageIndex[i+1][:]
                 sectionPageIndex[i+1] = sectionPageIndex[i][:]
                 sectionPageIndex[i] = temp[:]
-                rippled = TRUE
+                rippled = True
     
 def printSectionPageIndex(QT,pageNo):
     global xpos, ypos, sectionPageIndex
@@ -198,12 +198,11 @@ def printAllSections(QT, pageSizeX, pageSizeY):
     cur = cnx.cursor() # use own cursor here
     cur.execute(sql)
     row = cur.fetchone()
-    print "rowcount is ", cur.rowcount
-
+    print("rowcount is ", cur.rowcount)
     column = 0 # left hand column (two sections per page)
     
     while row != None:
-        print "print section" , row[0]
+        print("print section" , row[0])
         if column == 0:
             saveYPos = ypos
             newY = printSectionWords(NO_QT,row[0],MARGIN_HORIZONTAL, ypos, sectionWidth)
@@ -237,8 +236,8 @@ def printEntry(QT, entryData, x, y, maxX):
     arabicWord1 = entryData[1]
     arabicWord2 = entryData[2]
     meaning = entryData[3]
-    width1 = printAtArabicBuffer(x + maxX,y,arabicWord1,QT);
-    width2 = printAtArabicBuffer(x + maxX - width1 - 10,ypos,arabicWord2,QT);
+    width1 = printAtArabicBuffer(x + maxX,y,arabicWord1,QT)
+    width2 = printAtArabicBuffer(x + maxX - width1 - 10,ypos,arabicWord2,QT)
     printAtBuffer(x,y,meaning,QT)
 
 def printSectionWords(QT, sectionId, x, y, sectionWidth):
