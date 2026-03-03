@@ -1,0 +1,4 @@
+cherrypy>=18.0
+beautifulsoup4>=4.0
+configobj>=5.0
+sqlalchemy>=1.4,<2.0
