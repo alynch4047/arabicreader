@@ -5,9 +5,6 @@ from utils import *
 import printlayout
 import os 
 from constants import *
-import string
-import codecs
-
 
 cnx = connect("vocab.db")
 cur = cnx.cursor()
@@ -75,7 +72,7 @@ class MainEntrySub(MainEntry):
     def fileSave(self):
         self.kalimaUpdateCurrent()
     def filePrint(self):
-        printlayout.printAllSections(NO_QT,PAGE_SIZE_HORIZONTAL, PAGE_SIZE_VERTICAL)
+        printlayout.printAllSections(NO_QT, PAGE_SIZE_HORIZONTAL, PAGE_SIZE_VERTICAL)
 
         os.system('gv psout.ps')
     def goToKalima(self,index):
@@ -151,12 +148,12 @@ class MainEntrySub(MainEntry):
         # each letter has a value
 
         myKalimaSortNumber = 0
-        if len(unicode(self.leIsmS.text()))> 0:
-            mySortWord = unicode(self.leIsmS.text())
-        elif len(unicode(self.leFilMa.text()))> 0:
-            mySortWord = unicode(self.leFilMa.text())
+        if len(str(self.leIsmS.text()))> 0:
+            mySortWord = str(self.leIsmS.text())
+        elif len(str(self.leFilMa.text()))> 0:
+            mySortWord = str(self.leFilMa.text())
         else:
-            mySortWord = unicode(self.leHarf.text())
+            mySortWord = str(self.leHarf.text())
         if mySortWord:
             myKalimaSortNumber = alphaSortValWord(mySortWord)
             
@@ -191,37 +188,37 @@ class MainEntrySub(MainEntry):
         self.displayRevisionMode()
         kal = self.kalimaGetCurrent()
         self.leId.setText(str(kal[0]))
-        if kal[1] <> None and kal[1] <> '':
+        if kal[1] !=None and kal[1] !='':
             self.leIsmS.setText(decode(kal[1]))
             self.lePubKalima1.setText(decode(kal[1]))
-        if kal[2] <> None and kal[2] <> '':
+        if kal[2] !=None and kal[2] !='':
             self.leIsmP.setText(decode(kal[2]))
             self.lePubKalima2.setText(decode(kal[2]))
-        if kal[3] <> None and kal[3] <> '':
+        if kal[3] !=None and kal[3] !='':
             self.leFilMa.setText(decode(kal[3]))
             self.lePubKalima1.setText(decode(kal[3]))
-        if kal[4] <> None and kal[4] <> '':
+        if kal[4] !=None and kal[4] !='':
             self.leFilMu.setText(decode(kal[4]))
             self.lePubKalima2.setText(decode(kal[4]))
-        if kal[5] <> None and kal[5] <> '':
+        if kal[5] !=None and kal[5] !='':
             self.leMasdar.setText(decode(kal[5]))
             self.lePubKalima3.setText(decode(kal[5]))
-        if kal[6] <> None and kal[6] <> '':
+        if kal[6] !=None and kal[6] !='':
             self.leHarf.setText(decode(kal[6]))
             self.lePubKalima1.setText(decode(kal[6]))
-        if kal[7] <> None:
+        if kal[7] !=None:
             self.leMeaning.setText(decode(kal[7]))
-        if kal[8] <> None:
+        if kal[8] !=None:
             self.leExample.setText(decode(kal[8]))
-        if kal[10] <> None:
+        if kal[10] !=None:
             self.leJidhr1.setText(decode(kal[10]))
-        if kal[11] <> None:
+        if kal[11] !=None:
             self.leJidhr2.setText(decode(kal[11]))
-        if kal[12] <> None:
+        if kal[12] !=None:
             self.leJidhr3.setText(decode(kal[12]))
-        if kal[13] <> None:
+        if kal[13] !=None:
             self.leJidhr4.setText(decode(kal[13]))
-        #if kal[14] <> None:
+        #if kal[14] !=None:
         #self.leJidhr5.setText(decode(kal[14]))
         self.kalimaSectionUpdateCurrent()
         
@@ -231,7 +228,7 @@ class MainEntrySub(MainEntry):
         
     def kalimaGetIndexList(self):
         self.kalimaGetSortOrder()
-        print "Sorting by " + self.kalimaSortOrder
+        print("Sorting by " + self.kalimaSortOrder)
         sql = "select kalima_id from kalima order by " + self.kalimaSortOrder +  " ;"
         cur.execute(sql)
         self.kalimaIndexList = cur.fetchall()
@@ -362,11 +359,11 @@ class MainEntrySub(MainEntry):
         self.close()
 
     def pbUnicode_clicked(self):
-        myUnicodeWord = unicode(self.leIsmS.text())
+        myUnicodeWord = str(self.leIsmS.text())
         if len(myUnicodeWord) == 0:
-            myUnicodeWord = unicode(self.leFilMa.text())
+            myUnicodeWord = str(self.leFilMa.text())
         if myUnicodeWord:
-            print repr(myUnicodeWord)
+            print(repr(myUnicodeWord))
 
     def editUndo(self):
         self.kalimaShowCurrent()
@@ -386,7 +383,7 @@ class MainEntrySub(MainEntry):
         rows = cur.fetchall()
         for row in rows:
             sectionName = row[0]
-            alphaSection = self.sections[string.upper(sectionName[0:1])]
+            alphaSection = self.sections[sectionName[0:1].upper()]
             saveLVItems.append(QListViewItem(alphaSection, sectionName)) # otherwise it gets deleted and bad things happen - like seg faults
         alphaSection = self.sections['U']
         saveLVItems.append(QListViewItem(alphaSection, 'unallocated')) # otherwise it gets deleted and bad things happen - like seg faults
@@ -396,7 +393,7 @@ class MainEntrySub(MainEntry):
         sectionName = str(self.leSectionName.text())
         if sectionName == '':
             return
-        alphaSection = self.sections[string.upper(sectionName[0:1])]
+        alphaSection = self.sections[sectionName[0:1].upper()]
         newSection = QListViewItem(alphaSection, sectionName)
         saveLVItems.append(newSection) # otherwise it gets deleted and bad things happen - like seg faults
         alphaSection.setOpen(1)
@@ -421,14 +418,14 @@ class MainEntrySub(MainEntry):
         cur.execute(sql)
         row = cur.fetchone()
         if row == None:
-            print "section id not found"
+            print("section id not found")
             return (None, None)
         else:
             return (row[0], sectionName)
 
     def getSelectedKalimaId(self):
         global saveLBItems
-        kalimaName = unicode(self.lbSectionWords.selectedItem().text())
+        kalimaName = str(self.lbSectionWords.selectedItem().text())
         if kalimaName == '':
             return None
         return saveLBItems[kalimaName]
@@ -461,7 +458,7 @@ class MainEntrySub(MainEntry):
         """ show the words in the section in the kalima list box"""
         global saveLBItems
         if sectionId == None:
-            print "section id not found in change selection"
+            print("section id not found in change selection")
             return
         self.clearWordList()
         sql = """select kalima_id, kalima_ism_s,
@@ -482,11 +479,11 @@ class MainEntrySub(MainEntry):
             saveLBItems[desc] = row[0]  # otherwise it gets deleted and bad things happen - like seg faults, also saves id for future
 
     def getRowDescription(self, row):
-        if row[1] <> None and row[1] != '':
+        if row[1] !=None and row[1] != '':
             desc = decode(row[1])
-        elif row[3] <> None and row[3] != '':
+        elif row[3] !=None and row[3] != '':
             desc = decode(row[3])
-        elif row[6] <> None and row[6] != '':
+        elif row[6] !=None and row[6] != '':
             desc = decode(row[6])
         else:
             desc = 'no desc'
@@ -496,7 +493,7 @@ class MainEntrySub(MainEntry):
         """add the current kalima to the selected section"""
         #print "abc = " + self.lvSections.selectedItem().text(0)
         if str(self.lvSections.selectedItem().text(0)) == "unallocated":
-            print "must choose a section other than unallocated first"
+            print("must choose a section other than unallocated first")
             return
         
         sectionId, sectionName = self.getSelectedSectionId()

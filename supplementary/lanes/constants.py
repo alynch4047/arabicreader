@@ -4,7 +4,7 @@ import os
 PROJECT_DIR = r'/home/alynch/workspace/lanes_lexicon'
 PROJECT_DIR = r"D:\Documents and Settings\alynch\workspace\lanes_lexicon"
 TMP_DIR = r'/tmp'
-TRAINING_DIR = os.path.join(PROJECT_DIR, 'training' ,'t2')
+TRAINING_DIR = os.path.join(PROJECT_DIR, 'training', 't2')
 PAGES_DIR = os.path.join(PROJECT_DIR, 'pages')
 DICTIONARY_FILEPATH = os.path.join(PROJECT_DIR, "dictionaries", "british-english")
 

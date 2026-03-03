@@ -2,7 +2,7 @@ import os
 
 PROJECT_DIR = '/home/alynch/projects/lanes'
 TMP_DIR = '/tmp'
-TRAINING_DIR = os.path.join(PROJECT_DIR, 'training' ,'l3')
+TRAINING_DIR = os.path.join(PROJECT_DIR, 'training', 'l3')
 PAGES_DIR = os.path.join(PROJECT_DIR, 'pages')
 
 
